@@ -4,9 +4,23 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
+import * as SessionApiUtils from './util/session_api_utils';
+import * as SessionActions from './actions/session_actions';
+
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
 
+  window.user = {
+    username: "Bobby",
+    email: "totallylegit.com",
+    password: "123123",
+    birthday: "2000-01-01"
+  }
+
+  window.login = SessionApiUtils.login;
+  window.signup = SessionApiUtils.signup;
+  window.logout = SessionApiUtils.logout;
+
   const root = document.getElementById('root');
-  ReactDOM.render(<Root store={store}/>, root)
+  ReactDOM.render(<Root store={store}/>, root);
 })
