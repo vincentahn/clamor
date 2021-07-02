@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     birthday: "2000-01-01"
   }
 
-  window.login = SessionApiUtils.login;
-  window.signup = SessionApiUtils.signup;
-  window.logout = SessionApiUtils.logout;
+  window.login = SessionActions.login;
+  window.signup = SessionActions.signup;
+  window.logout = SessionActions.logout;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);

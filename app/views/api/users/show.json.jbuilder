@@ -1,1 +1,1 @@
-json.extract! @user, :id, :username, :email, :birthday
+json.currentUserId current_user.id

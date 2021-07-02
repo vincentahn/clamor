@@ -35,5 +35,4 @@ bundle.js.map
 npm-debug.log
 
 # My additions
-Gemfile.lock
 package-lock.json
