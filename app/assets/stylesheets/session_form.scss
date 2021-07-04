@@ -1,0 +1,45 @@
+.session-page{
+  background: asset_url("clamor_header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
+  .session-form{
+    background-color: rgba(50, 50, 50, 0.85);
+    color: white;
+    display: flex;
+    height: 250px;
+    padding: 30px;
+    width: 500px;
+
+    // Positioning in middle of screen
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+
+  .form-side{
+    width: 80%
+  }
+
+  h1{
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0
+  }
+
+  h2{
+    font-size: 12px;
+    margin: 10px 0
+  }
+
+  h3{
+    font-size: 12px;
+    margin: 10px 0 5px
+  }
+
+  .demo-side{
+    text-align: center;
+  }
+}

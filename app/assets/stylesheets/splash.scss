@@ -1,0 +1,45 @@
+.splash{
+  header{
+    align-items: center;
+    background-color: #351075;
+    display: flex;
+    justify-content: space-evenly
+  }
+  
+  h1{
+    font-size: 50px;
+  }
+
+  nav{
+    display: flex;
+    justify-content: space-evenly;  
+
+    a {
+      color: white
+    }
+  }
+
+  .link-button{
+    border-radius: 12px;
+    background-color: white;
+    color: #351075;
+    padding: 5px 15px;
+    text-align: center
+  }
+
+  .intro-header{
+    background: asset_url("clamor_header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover
+  }
+
+  h4 a{
+    color: white
+  }
+
+  .main-block{
+    height: 800px;
+  }
+
+  color: white
+}
