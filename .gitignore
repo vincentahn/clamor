@@ -36,3 +36,4 @@ npm-debug.log
 
 # My additions
 package-lock.json
+config/credentials.yml.enc
