@@ -10,16 +10,7 @@ import * as SessionActions from './actions/session_actions';
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
 
-  window.user = {
-    username: "Bobby",
-    email: "totallylegit.com",
-    password: "123123",
-    birthday: "2000-01-01"
-  }
-
-  window.login = SessionActions.login;
-  window.signup = SessionActions.signup;
-  window.logout = SessionActions.logout;
+  window.store = store;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
