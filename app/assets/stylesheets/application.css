@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  *= require_reset
+ *= require_root
  *= require_splash
  *= require_session_form
+ *= require_main
+ *= require_current_user_options
  */

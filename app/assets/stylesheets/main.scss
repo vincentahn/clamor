@@ -1,0 +1,29 @@
+.main{
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+
+  .column-1{
+    background-color: rgba(32, 34, 37, 1);
+    width: 80px;
+  }
+
+  .column-2{
+    background-color: rgba(47, 49, 54, 1);
+    width: 250px;
+  }
+
+  .row-1{
+    height: calc(100% - 50px);
+    margin: 0;
+  }
+
+  .column-3{
+    background-color: rgba(54, 57, 63, 1);
+    width: 100%;
+  }
+}
