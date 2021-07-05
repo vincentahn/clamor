@@ -9,6 +9,7 @@ class LoginForm extends React.Component{
       password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   update(type){
@@ -18,6 +19,11 @@ class LoginForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.action(this.state);
+  }
+
+  handleDemoLogin(e){
+    e.preventDefault();
+    this.props.action(this.props.demoUser);
   }
 
   render(){
@@ -48,7 +54,7 @@ class LoginForm extends React.Component{
           </div>
           <div className="demo-side">
             Don't want to create an account?
-            <button>Demo User Login</button>
+            <button onClick= {this.handleDemoLogin}>Demo User Login</button>
           </div>
         </div>
 

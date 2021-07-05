@@ -3,7 +3,10 @@ import { login } from '../../actions/session_actions';
 import LoginForm from './login_form';
 
 const mapStateToProps = ({ errors }) => ({
-
+  demoUser: {
+    email: 'totallylegit@kappa.com',
+    password: 'gooddemoman'
+  }
 });
 
 const mapDispatchToProps = dispatch => ({
