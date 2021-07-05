@@ -1,22 +1,36 @@
 .splash{
+  // Splash global
+  color: white;
+
+  h1{
+    font-size: 50px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none
+  };
+
+  a:hover{
+    text-decoration: underline;
+  }
+
+  // Splash by inner component
   header{
     align-items: center;
     background-color: #351075;
     display: flex;
     justify-content: space-evenly
   }
-  
-  h1{
-    font-size: 50px;
-  }
 
   nav{
     display: flex;
     justify-content: space-evenly;  
+    padding: 20px 0;
+  }
 
-    a {
-      color: white
-    }
+  .nav-link{
+    padding: 0 20px;
   }
 
   .link-button{
@@ -33,13 +47,13 @@
     background-size: cover
   }
 
-  h4 a{
-    color: white
+  .attribution{
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 
   .main-block{
     height: 800px;
   }
-
-  color: white
 }

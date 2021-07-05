@@ -8,18 +8,18 @@ class Splash extends React.Component{
         <header>
           <h1>Clamor</h1>
           <nav>
-            <div>
+            <div className="nav-link">
               <a href="https://github.com/vincentahn">
                 Github
               </a>
             </div>
-            <div>
+            <div className="nav-link">
               <a href="">DeadLink2</a>
             </div>
-            <div>
+            <div className="nav-link">
               <a href="">DeadLink3</a>
             </div>
-            <div>
+            <div className="nav-link">
               <a href="">DeadLink4</a>
             </div>
           </nav>
@@ -29,7 +29,13 @@ class Splash extends React.Component{
           }
         </header>
         <div className="intro-header main-block">
-          <h4><a href="https://unsplash.com/@korpa">Header by Jr Korpa</a></h4>
+          <div className="attribution">
+            <h4>
+              <a href="https://unsplash.com/@korpa">
+                Header by Jr Korpa
+              </a>
+            </h4>
+          </div>
         </div>
         <div className="main-block">
           <h1>Project 1</h1>
