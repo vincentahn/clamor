@@ -4,9 +4,7 @@ import CurrentUserOptions from "./current_user_options";
 import { logout } from './../../../actions/session_actions';
 
 const mapStateToProps = store => ({
-  current_user: {
-    username: store.session.username
-  }
+  username: store.session.username
 });
 
 const mapDispatchToProps = dispatch => ({
