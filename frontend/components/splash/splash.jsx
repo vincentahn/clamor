@@ -38,14 +38,33 @@ class Splash extends React.Component{
           </div>
         </div>
         <div className="main-block">
-          <h1>Project 1</h1>
-          <p>Description 1</p>
+          <img src="" alt="No Image Yet" />
+          <div>
+            <h2>Heading 1</h2>
+            <p>Description 1</p>
+          </div>
         </div>
         <div className="main-block">
-          <h1>Project 2</h1>
-          <p>Description 2</p>
+          <img src="" alt="No Image Yet" />
+          <div>
+            <h2>Heading 2</h2>
+            <p>Description 2</p>
+          </div>
         </div>
-        <footer></footer>
+        <footer>
+          <div>
+            <h3>Imagine a place</h3>
+          </div>
+          <div>
+            <ul>
+              <li>List</li>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+            </ul>
+          </div>
+        </footer>
       </div>
     )
   }

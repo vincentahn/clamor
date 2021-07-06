@@ -1,8 +1,9 @@
 .session-page{
-  background: asset_url("clamor_header.jpg");
+  background: asset_url("session_form_background.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  position: relative;
 
   .session-form{
     background-color: rgba(50, 50, 50, 0.85);
@@ -41,5 +42,21 @@
 
   .demo-side{
     text-align: center;
+  }
+
+  .attribution{
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 }

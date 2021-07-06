@@ -58,7 +58,13 @@ class LoginForm extends React.Component{
           </div>
         </div>
 
-        <h4><a href="https://unsplash.com/@korpa">Header by Jr Korpa</a></h4>
+        <div className="attribution">
+          <h4>
+            <a href="https://unsplash.com/@korpa">
+              Header by Jr Korpa
+            </a>
+          </h4>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,8 @@
 .splash{
   // Splash global
-  color: white;
+  header{
+    color: white;
+  }
 
   h1{
     font-size: 50px;
@@ -44,10 +46,12 @@
   .intro-header{
     background: asset_url("clamor_header.jpg");
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
+    position: relative;
   }
 
   .attribution{
+    color: white;
     position: absolute;
     bottom: 0;
     right: 0;
