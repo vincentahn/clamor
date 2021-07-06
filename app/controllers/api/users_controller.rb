@@ -16,6 +16,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    puts params
   end
 
   def destroy

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import CurrentUserForm from "./current_user_form";
 
-import { logout } from './../../../actions/session_actions';
+import { update, logout } from './../../../actions/session_actions';
 import { closeModal } from './../../../actions/modal_actions';
 
 const mapStateToProps = store => ({
@@ -9,12 +9,14 @@ const mapStateToProps = store => ({
   email: store.session.email,
   profileUrl: store.session.profile_url 
     ? store.session.profile_url 
-    : window.defaultProfilePic
+    : window.defaultProfilePic,
+  currentUserId: store.session.currentUserId
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  update: (user, currentUserId) => dispatch(update(user, currentUserId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentUserForm);
