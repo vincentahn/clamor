@@ -8,9 +8,11 @@ class CurrentUserForm extends React.Component{
       username: props.username,
       email: props.email,
       currentPassword: '',
-      newPassword: ''
+      newPassword: '',
+      photoFile: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFileSubmit = this.handleFileSubmit.bind(this);
   }
 
   update(type){
@@ -19,7 +21,30 @@ class CurrentUserForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.update(this.state, this.props.currentUserId);
+    const formData = new FormData();
+    formData.append('user[username]', this.state.username);
+    formData.append('user[email]', this.state.email);
+    formData.append('user[currentPassword]', this.state.currentPassword);
+    formData.append('user[newPassword]', this.state.newPassword);
+
+    if(this.state.photoFile){
+      formData.append('user[photo]', this.state.photoFile);
+    }
+
+    this.props.update(formData, this.props.currentUserId);
+  }
+
+  handleFileSubmit(e){
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ profileUrl: reader.result, photoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ profileUrl: '', photoFile: null });
+    }
   }
 
   render(){
@@ -35,9 +60,15 @@ class CurrentUserForm extends React.Component{
           <form onSubmit={this.handleSubmit}>
               <h1>My Account</h1>
 
-              <a>
-                <img src={this.state.profileUrl} alt="" />
-              </a>
+              <div 
+                className="profile-photo-container"
+                style={{backgroundImage: `url(${this.state.profileUrl})`}}>
+
+                <input 
+                  className="profile-input"
+                  type="file" 
+                  onChange={this.handleFileSubmit}/>
+              </div>
 
               <h3>Username</h3>
               <input 

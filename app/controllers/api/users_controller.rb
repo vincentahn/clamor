@@ -28,6 +28,10 @@ class Api::UsersController < ApplicationController
         update_params[:password] = params[:user][:newPassword]
       end
 
+      if params[:user][:photo]
+        update_params[:profile_photo] = params[:user][:photo]
+      end
+
       if current_user.update(update_params)
         render "api/users/show"
       else

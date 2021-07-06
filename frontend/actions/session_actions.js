@@ -28,8 +28,8 @@ export const login = user => dispatch => (
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
 );
 
-export const update = (user, currentUserId) => dispatch => (
-  SessionApiUtil.update(user, currentUserId)
+export const update = (formData, currentUserId) => dispatch => (
+  SessionApiUtil.update(formData, currentUserId)
     .then(currentUser => dispatch(receiveCurrentUser(currentUserId)))
 );
 

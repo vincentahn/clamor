@@ -14,11 +14,13 @@ export const signup = user => (
   })
 );
 
-export const update = (user, currentUserId) => (
+export const update = (formData, currentUserId) => (
   $.ajax({
     method: 'PATCH',
     url: `/api/users/${currentUserId}`,
-    data: { user }
+    data: formData,
+    contentType: false,
+    processData: false
   })
 )
 
