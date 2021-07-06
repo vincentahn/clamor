@@ -28,6 +28,11 @@ export const login = user => dispatch => (
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
 );
 
+export const update = (formData, currentUserId) => dispatch => (
+  SessionApiUtil.update(formData, currentUserId)
+    .then(currentUser => dispatch(receiveCurrentUser(currentUserId)))
+);
+
 export const logout = () => dispatch => (
   SessionApiUtil.logout()
     .then(() => dispatch(logoutCurrentUser()))

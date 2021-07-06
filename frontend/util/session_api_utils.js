@@ -14,6 +14,16 @@ export const signup = user => (
   })
 );
 
+export const update = (formData, currentUserId) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${currentUserId}`,
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+)
+
 export const logout = () => (
   $.ajax({
     method: 'DELETE',
