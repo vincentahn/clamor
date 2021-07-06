@@ -7,15 +7,8 @@ const mapStateToProps = store => ({
   username: store.session.username,
   profileUrl: store.session.profile_url 
     ? store.session.profile_url 
-    : "https://play.google.com/store/apps/details?id=com.discord&hl=en_US&gl=US"
+    : window.defaultProfilePic
 });
-
-// In application.html.erb
-// window.defaultProfilePic = "<%= image_url('default_profile_pic.jpg') %>"
-
-// profileUrl: store.session.profile_url 
-//     ? store.session.profile_url 
-//     : window.defaultProfilePic
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
