@@ -7,7 +7,8 @@ class CurrentUserForm extends React.Component{
       profileUrl: props.profileUrl,
       username: props.username,
       email: props.email,
-      password: ''
+      currentPassword: '',
+      newPassword: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,11 +51,17 @@ class CurrentUserForm extends React.Component{
                 value={this.state.email}
                 onChange={this.update('email')}/>
 
-              <h3>Password</h3>
+              <h3>Current Password</h3>
               <input 
                 type="password" 
                 value={this.state.password}
-                onChange={this.update('password')}/>
+                onChange={this.update('currentPassword')}/>
+
+              <h3>New Password</h3>
+              <input 
+                type="password" 
+                value={this.state.password}
+                onChange={this.update('newPassword')}/>
 
               <button>Edit Profile</button>
           </form>
