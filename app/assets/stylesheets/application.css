@@ -18,4 +18,5 @@
  *= require_session_form
  *= require_main
  *= require_current_user_options
+ *= require_current_user_form
  */

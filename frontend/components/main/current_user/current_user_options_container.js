@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import CurrentUserOptions from "./current_user_options";
 
-import { logout } from './../../../actions/session_actions';
+import { openModal } from "../../../actions/modal_actions";
 
 const mapStateToProps = store => ({
   username: store.session.username,
@@ -11,7 +11,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  openUserForm: () => dispatch(openModal('openUserForm'))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentUserOptions);

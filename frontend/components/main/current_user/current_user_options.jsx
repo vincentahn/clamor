@@ -6,7 +6,7 @@ class CurrentUserOptions extends React.Component{
       <div className="current-user-options">
         <h1>Hello, {this.props.username}</h1>
         <img src={this.props.profileUrl} alt="Profile Photo not Found" />
-        <button onClick={this.props.logout}>Logout</button>
+        <button onClick={this.props.openUserForm}>Settings</button>
       </div>
     );
   }
