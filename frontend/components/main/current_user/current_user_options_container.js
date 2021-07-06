@@ -5,7 +5,9 @@ import { logout } from './../../../actions/session_actions';
 
 const mapStateToProps = store => ({
   username: store.session.username,
-  profileUrl: store.session.profile_url
+  profileUrl: store.session.profile_url 
+    ? store.session.profile_url 
+    : window.defaultProfilePic
 });
 
 const mapDispatchToProps = dispatch => ({

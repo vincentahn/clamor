@@ -1,10 +1,12 @@
+include ActionView::Helpers::AssetUrlHelper
+
 class User < ApplicationRecord
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   attr_reader :password
-  after_initialize :ensure_session_token, :ensure_profile_photo
+  after_initialize :ensure_session_token
 
   has_one_attached :profile_photo
 
@@ -47,16 +49,5 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= generate_session_token
-  end
-
-  def ensure_profile_photo
-    unless self.profile_photo.attached?
-      image_path = __dir__ + "/../assets/images/default_profile_pic.jpg"
-
-      self.profile_photo.attach(
-        io: File.open(image_path), 
-        filename: "default_profile_pic.jpg"
-      )
-    end
   end
 end
