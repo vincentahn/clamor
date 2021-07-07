@@ -3,7 +3,9 @@ import React from 'react';
 class ServerIndex extends React.Component{
   render(){
     return(
-      <h1>Hello</h1>
+      <div className="server-index">
+
+      </div>
     );
   }
 }
