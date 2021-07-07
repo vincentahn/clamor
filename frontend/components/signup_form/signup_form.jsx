@@ -54,61 +54,61 @@ class SignupForm extends React.Component{
   render(){
     return(
       <div className="session-page">
-        <div className="session-form">
-          <div className="form-side">
-            <form onSubmit = {this.handleSubmit}>
-              <h1>Create an account</h1>
-              
-              <h3>Email</h3>
-              <input 
-                type="text" 
-                value={this.state.email}
-                onChange={this.update('email')}/>
+        <div className="signup-form">
+          <form onSubmit = {this.handleSubmit}>
+            <h1>Create an account</h1>
+            
+            <h3>Email</h3>
+            <input 
+              type="text" 
+              value={this.state.email}
+              onChange={this.update('email')}/>
 
-              <h3>Username</h3>
-              <input 
-                type="text" 
-                value={this.state.username}
-                onChange={this.update('username')}/>
+            <h3>Username</h3>
+            <input 
+              type="text" 
+              value={this.state.username}
+              onChange={this.update('username')}/>
 
-              <h3>Password</h3>
-              <input 
-                type="password" 
-                value={this.state.password}
-                onChange={this.update('password')}/>
+            <h3>Password</h3>
+            <input 
+              type="password" 
+              value={this.state.password}
+              onChange={this.update('password')}/>
 
-              <h3>Date of Birth</h3>
-              <select onChange={this.update('month')}>
-                <option disabled selected value>Select</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <select onChange={this.update('day')}>
-                <option disabled selected value>Select</option>
-                {this.daysOptions()}
-              </select>
-              <select onChange={this.update('year')}>
-                <option disabled selected value>Select</option>
-                {this.yearsOptions()}
-              </select>
+            <h3>Date of Birth</h3>
+            <select onChange={this.update('month')}>
+              <option disabled selected value>Select</option>
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+            <select onChange={this.update('day')}>
+              <option disabled selected value>Select</option>
+              {this.daysOptions()}
+            </select>
+            <select onChange={this.update('year')}>
+              <option disabled selected value>Select</option>
+              {this.yearsOptions()}
+            </select>
 
-              <button type="submit">Signup</button>
-            </form>
-
-            <label>Already have an account?
-              <Link to="/login">Login</Link>
-            </label>
-          </div>
+            <button 
+              className="session-button"
+              type="submit">
+              Signup
+            </button>
+          </form>
+          
+          <h2><Link to="/login">Already have an account?</Link></h2>
         </div>
         
         <div className="attribution">
