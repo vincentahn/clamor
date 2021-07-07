@@ -47,14 +47,24 @@ class LoginForm extends React.Component{
                 value={this.state.password}
                 onChange={this.update('password')}/>
 
-              <button type="submit">Login</button>
+              <br/>
+
+              <button className="session-button" type="submit">Login</button>
             </form>
             
             <h2>Need an account? <Link to="/signup">Register</Link></h2>
           </div>
           <div className="demo-side">
-            Don't want to create an account?
-            <button onClick= {this.handleDemoLogin}>Demo User Login</button>
+            <div>
+              <h3>
+                Don't want to create an account?
+              </h3>
+              <button 
+                className="demo-button"
+                onClick= {this.handleDemoLogin}>
+                Demo User Login
+              </button>
+            </div>
           </div>
         </div>
 
