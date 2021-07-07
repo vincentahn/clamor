@@ -30,7 +30,7 @@ export const login = user => dispatch => (
 
 export const update = (formData, currentUserId) => dispatch => (
   SessionApiUtil.update(formData, currentUserId)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUserId)))
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
 );
 
 export const logout = () => dispatch => (
