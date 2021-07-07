@@ -7,27 +7,29 @@ class Splash extends React.Component{
       <div className="splash">  
         <div className="background">
           <header>
-            <h1>CLAMOR</h1>
-            <nav>
-              <div className="nav-link">
-                <a href="https://github.com/vincentahn">
-                  Github
-                </a>
-              </div>
-              <div className="nav-link">
-                <a href="">DeadLink2</a>
-              </div>
-              <div className="nav-link">
-                <a href="">DeadLink3</a>
-              </div>
-              <div className="nav-link">
-                <a href="">DeadLink4</a>
-              </div>
-            </nav>
-            {this.props.loggedIn 
-              ? <Link to="/channels/@me" className="link-button">Open Clamor</Link>
-              : <Link to="/login" className="link-button">Log In</Link>
-            }
+            <div className="logo-container">
+              <h1>CLAMOR</h1>
+            </div>
+            <div>
+              <nav>
+                <div className="nav-link">
+                  <a href="https://github.com/vincentahn">
+                    Github
+                  </a>
+                </div>
+                <div className="nav-link">
+                  <a href="https://www.linkedin.com/in/junminvincentahn/">
+                    LinkedIn
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <div className="link-button-container">
+              {this.props.loggedIn 
+                ? <Link to="/channels/@me" className="link-button">Open Clamor</Link>
+                : <Link to="/login" className="link-button">Log In</Link>
+              }
+            </div>
           </header>
           <div className="intro-header main-block">
             <div className="intro-header-filler">
@@ -50,7 +52,7 @@ class Splash extends React.Component{
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis varius quam quisque id diam vel quam.</p>
           </div>
         </div>
-        <div className="main-block">
+        <div className="main-block splash-main-2">
           <div className="splash-main-2-info">
             <h2>Lorem Ipsum</h2>
             <p>Quam nulla porttitor massa id neque aliquam. Ultrices gravida dictum fusce ut placerat orci nulla. Justo laoreet sit amet cursus sit amet dictum.</p>
@@ -58,41 +60,18 @@ class Splash extends React.Component{
           <div className="splash-main-2-image"></div>
         </div>
         <footer>
-          <div className="footer-heading">
-            <h3>Imagine a place</h3>
-          </div>
-          <div className="footer-list">
-            <ul>List
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-              <li>Item 4</li>
-            </ul>
-          </div>
-          <div className="footer-list">
-            <ul>List
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-              <li>Item 4</li>
-            </ul>
-          </div>
-          <div className="footer-list">
-            <ul>List
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-              <li>Item 4</li>
-            </ul>
-          </div>
-          <div className="footer-list">
-            <ul>List
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-              <li>Item 4</li>
-            </ul>
-          </div>
+          <nav>
+            <div className="nav-link">
+              <a href="https://github.com/vincentahn">
+                Github
+              </a>
+            </div>
+            <div className="nav-link">
+              <a href="https://www.linkedin.com/in/junminvincentahn/">
+                LinkedIn
+              </a>
+            </div>
+          </nav>
         </footer>
       </div>
     )
