@@ -52,6 +52,18 @@ class SignupForm extends React.Component{
   }
 
   render(){
+    const errors = word => {
+      return(
+        this.props.errors.map(error => {
+          if(error.toLowerCase().includes(word)){
+            return(
+              <h3 style={{color: "red"}}>{error}</h3>
+            );
+          }else return null;
+        })
+      )
+    };
+
     return(
       <div className="session-page">
         <div className="signup-form">
@@ -59,24 +71,28 @@ class SignupForm extends React.Component{
             <h1>Create an account</h1>
             
             <h3>Email</h3>
+            {errors('email')}
             <input 
               type="text" 
               value={this.state.email}
               onChange={this.update('email')}/>
 
             <h3>Username</h3>
+            {errors('username')}
             <input 
               type="text" 
               value={this.state.username}
               onChange={this.update('username')}/>
 
             <h3>Password</h3>
+            {errors('password')}
             <input 
               type="password" 
               value={this.state.password}
               onChange={this.update('password')}/>
 
             <h3>Date of Birth</h3>
+            {errors}
             <select onChange={this.update('month')}>
               <option disabled selected value>Select</option>
               <option value="01">January</option>

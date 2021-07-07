@@ -27,6 +27,12 @@ class LoginForm extends React.Component{
   }
 
   render(){
+    const errors = (
+      this.props.errors.map(error => (
+        <h3 style={{color: "red"}}>{error}</h3>
+      ))
+    )
+
     return(
       <div className="session-page">
         <div className="session-form">
@@ -36,12 +42,14 @@ class LoginForm extends React.Component{
               <h2>We're so excited to see you again!</h2>
               
               <h3>Email</h3>
+              {errors}
               <input 
                 type="text" 
                 value={this.state.email}
                 onChange={this.update('email')}/>
 
               <h3>Password</h3>
+              {errors}
               <input 
                 type="password" 
                 value={this.state.password}

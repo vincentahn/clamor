@@ -18,9 +18,7 @@ const errorReducer = (oldState = _default, action) => {
       return newState;
 
     case RECEIVE_LOGIN_ERROR:      
-      console.log(newState.loginErrors);
       newState.loginErrors = action.errors;
-      console.log(newState.loginErrors);
       return newState;
 
     default:
