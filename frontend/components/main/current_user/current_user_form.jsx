@@ -50,13 +50,19 @@ class CurrentUserForm extends React.Component{
   render(){
     return(
       <div className="current-user-form">
-        <div className="column-1">
-          <nav>
-            <a>My Account</a>
-            <a onClick={this.props.logout} className="logout-link">Logout</a>
+        <div className="current-user-form-column-1">
+          <nav className="current-user-form-options">
+            <ul>
+              <li className="current-user-form-link">
+                <a>My Account</a>
+              </li>
+              <li className="current-user-form-link">
+                <a onClick={this.props.logout} className="logout-link">Logout</a>
+              </li>
+            </ul>
           </nav>
         </div>
-        <div className="column-2">
+        <div className="current-user-form-column-2">
           <form onSubmit={this.handleSubmit}>
               <h1>My Account</h1>
 
@@ -94,13 +100,20 @@ class CurrentUserForm extends React.Component{
                 value={this.state.password}
                 onChange={this.update('newPassword')}/>
 
-              <button>Edit Profile</button>
+              <br/>
+
+              <button className="current-user-edit-button">
+                Edit Profile
+              </button>
           </form>
         </div>
         <div>
-          <button onClick={this.props.closeModal}>X</button>
+          <a 
+            className="current-user-form-close-button"
+            onClick={this.props.closeModal}>
+            X
+          </a>
         </div>
-        
       </div>
     );
   }
