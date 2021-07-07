@@ -1,5 +1,3 @@
-include ActionView::Helpers::AssetUrlHelper
-
 class User < ApplicationRecord
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :username, :email, uniqueness: true
@@ -7,6 +5,14 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token
+
+  has_many :server_memberships,
+    foreign_key: :user_id,
+    class_name: 'ServerMembership'
+
+  has_many :servers,
+    through: :server_memberships,
+    source: :servers
 
   has_one_attached :profile_photo
 

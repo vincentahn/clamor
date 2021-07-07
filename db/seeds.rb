@@ -12,3 +12,13 @@ demo = User.create!(
   email: 'totallylegit@kappa.com',
   birthday: '2021-07-02'
 )
+
+og = Server.create!(
+  name: "OG",
+  founder_id: demo.id
+)
+
+ServerMembership.create!(
+  user_id: demo.id,
+  server_id: og.id
+)

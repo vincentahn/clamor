@@ -1,5 +1,8 @@
 class Api::UsersController < ApplicationController
+  before_action :ensure_logged_in?, only: [:update]
+
   def index
+    # Eventually will start getting 10 users sorted alphabetically but for now get all
     @users = User.all
     render "api/users/index"
   end
@@ -18,7 +21,7 @@ class Api::UsersController < ApplicationController
   def update
     # render json: ["Cannot update demo login"], status: 401 if params[:id].to_i === 1
 
-    if current_user && current_user.id === params[:id].to_i && current_user.is_password?(params[:user][:currentPassword])
+    if current_user.id === params[:id].to_i && current_user.is_password?(params[:user][:currentPassword])
       update_params = {
         username: params[:user][:username],
         email: params[:user][:email]
@@ -38,7 +41,7 @@ class Api::UsersController < ApplicationController
         render json: current_user.errors.full_messages, status: 422
       end
     else
-      render json: ["IMPOSTER!"], status: 401
+      render json: { errors: ["IMPOSTER!"] }, status: 401
     end
   end
 
