@@ -7,7 +7,7 @@ class Splash extends React.Component{
       <div className="splash">  
         <div className="background">
           <header>
-            <h1>Clamor</h1>
+            <h1>CLAMOR</h1>
             <nav>
               <div className="nav-link">
                 <a href="https://github.com/vincentahn">
@@ -58,12 +58,35 @@ class Splash extends React.Component{
           <div className="splash-main-2-image"></div>
         </div>
         <footer>
-          <div>
+          <div className="footer-heading">
             <h3>Imagine a place</h3>
           </div>
-          <div>
-            <ul>
-              <li>List</li>
+          <div className="footer-list">
+            <ul>List
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+            </ul>
+          </div>
+          <div className="footer-list">
+            <ul>List
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+            </ul>
+          </div>
+          <div className="footer-list">
+            <ul>List
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+            </ul>
+          </div>
+          <div className="footer-list">
+            <ul>List
               <li>Item 1</li>
               <li>Item 2</li>
               <li>Item 3</li>
