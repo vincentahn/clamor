@@ -11,13 +11,14 @@ class Api::ServersController < ApplicationController
   end
 
   def create
-    puts server_params
-
     if current_user.id === params[:currentUserId].to_i
-      server_params = { name: params[:server][:name] }
+      server_params = { 
+        name: params[:server][:name],
+        founder_id: current_user.id
+      }
 
-      if params[:user][:server_photo]
-        server_params[:server_photo] = params[:user][:server_photo]
+      if params[:server][:server_photo]
+        server_params[:server_photo] = params[:server][:server_photo]
       end
 
       @server = Server.new(server_params)

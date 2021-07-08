@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CurrentUserFormContainer from './main/current_user/current_user_form_container';
+import ServerCreateForm from './main/server/server_create_form';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -9,11 +10,18 @@ function Modal({modal, closeModal}) {
   }
 
   let component;
-  switch(modal){
+  switch(modal.component){
     case 'openUserForm':
       component = <CurrentUserFormContainer />
       break;
     
+    case 'openServerCreateForm':
+      component = <ServerCreateForm />
+      break;
+
+    case 'openServerEditForm':
+      break;
+
     default:
       return null;
   }

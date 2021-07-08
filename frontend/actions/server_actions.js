@@ -1,5 +1,7 @@
 import * as ServerApiUtil from './../util/server_api_utils';
 
+import { receiveServerError } from './error_actions';
+
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 
@@ -14,8 +16,11 @@ const receiveServer = server => ({
 })
 
 export const createServer = (formData, currentUserId) => dispatch => {
-  ServerApiUtil.createServer(formData, currentUserId)
+  formData.append('currentUserId', currentUserId);
+
+  ServerApiUtil.createServer(formData)
     .then(
-      newServer => dispatch(receiveServer(newServer))
+      newServer => dispatch(receiveServer(newServer)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
     )
 };

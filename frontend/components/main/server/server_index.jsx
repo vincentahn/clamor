@@ -5,6 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 class ServerIndex extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleServerCreate = this.handleServerCreate.bind(this);
+  }
+
+  handleServerCreate(e){
+    e.preventDefault();
+    this.props.openServerCreateForm();
+  }
+
   render(){
     const serverLinks = this.props.servers.map(server => (
       <div key={server.id} className="server-index-item" title={server.name}>
@@ -27,7 +37,7 @@ class ServerIndex extends React.Component{
         </div>
         {serverLinks}
         <div className="server-index-item" title="Add a Server">
-          <a>
+          <a onClick={this.handleServerCreate}>
             <FontAwesomeIcon icon={faPlus} className="add-server-icon" />
           </a>
         </div>

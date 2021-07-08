@@ -19,8 +19,21 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // Add this when you've added serverForm to modal.jsx
-  // openUserForm: () => dispatch(openModal('serverForm'))
+  openServerCreateForm: () => {
+    let modal = {
+      component: 'openServerCreateForm'
+    };
+
+    return dispatch(openModal(modal));
+  },
+  openServerEditForm: (formData) => {
+    let modal = {
+      component: 'openServerEditForm',
+      data: formData
+    };
+
+    return dispatch(openModal(modal));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerIndex);

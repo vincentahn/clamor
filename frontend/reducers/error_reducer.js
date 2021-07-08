@@ -1,11 +1,13 @@
 import {
   RECEIVE_SIGNUP_ERROR,
-  RECEIVE_LOGIN_ERROR
+  RECEIVE_LOGIN_ERROR,
+  RECEIVE_SERVER_ERROR
 } from "./../actions/error_actions";
 
 const _default = {
   signupErrors: [],
-  loginErrors: []
+  loginErrors: [],
+  serverErrors: []
 }
 
 const errorReducer = (oldState = _default, action) => {
@@ -19,6 +21,10 @@ const errorReducer = (oldState = _default, action) => {
 
     case RECEIVE_LOGIN_ERROR:      
       newState.loginErrors = action.errors;
+      return newState;
+
+    case RECEIVE_SERVER_ERROR:
+      newState.serverErrors = action.errors;
       return newState;
 
     default:

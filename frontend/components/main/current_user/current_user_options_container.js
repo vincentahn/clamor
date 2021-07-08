@@ -11,7 +11,13 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openUserForm: () => dispatch(openModal('openUserForm'))
+  openUserForm: () => {
+    let modal = {
+      component: 'openUserForm'
+    }
+
+    return dispatch(openModal(modal));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentUserOptions);

@@ -1,7 +1,9 @@
-export const createServer = (formData, currentUserId) => (
+export const createServer = formData => (
   $.ajax({
     method: 'POST',
     url: 'api/servers',
-    data: Object.assign(formData, { currentUserId })
+    data: formData,
+    contentType: false,
+    processData: false
   })
 );
