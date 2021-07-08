@@ -61,5 +61,20 @@
     background-color: rgba(0, 200, 150, 1);
     color: white;
   }
+
+  .server-context-menu{
+    background-color: black;
+    color: white;
+    position: absolute;
+
+    li{
+      padding: 5px 10px;
+    }
+
+    li:hover{
+      background-color: rgba(90, 100, 240, 1);
+      cursor: pointer;
+    }
+  }
 }
 
