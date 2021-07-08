@@ -17,3 +17,11 @@ export const updateServer = (formData, serverId) => (
     processData: false
   })
 );
+
+export const unsubscribeServer = (currentUserId, serverId) => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/server_memberships/${serverId}`,
+    data: { currentUserId }
+  })
+)

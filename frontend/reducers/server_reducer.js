@@ -1,6 +1,7 @@
 import {
   RECEIVE_SERVERS,
-  RECEIVE_SERVER
+  RECEIVE_SERVER,
+  REMOVE_SERVER
 } from './../actions/server_actions';
 
 import {
@@ -18,6 +19,10 @@ const serverReducer = (oldState = {}, action) => {
 
     case RECEIVE_SERVER:
       newState[action.server.id] = action.server;
+      return newState;
+
+    case REMOVE_SERVER:
+      delete newState[action.serverId]
       return newState;
 
     case LOGOUT_CURRENT_USER:

@@ -19,6 +19,7 @@ class ServerIndex extends React.Component{
     this.closeContextMenu = this.closeContextMenu.bind(this);
     this.handleServerCreate = this.handleServerCreate.bind(this);
     this.handleServerEdit = this.handleServerEdit.bind(this);
+    this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
   }
 
   openContextMenu(id){
@@ -58,9 +59,17 @@ class ServerIndex extends React.Component{
     e.preventDefault();
     
     if(this.state.dropdown.id !== 0){
-      console.log(this.state);
-      console.log("Opening edit form")
       this.props.openServerEditForm(this.state.dropdown.id);
+    }
+
+    this.closeContextMenu(e);
+  }
+
+  handleUnsubscribe(e){
+    e.preventDefault();
+
+    if(this.state.dropdown.id !== 0){
+      this.props.unsubscribeServer(this.props.currentUserId, this.state.dropdown.id);
     }
 
     this.closeContextMenu(e);
@@ -108,7 +117,7 @@ class ServerIndex extends React.Component{
                 <a onClick={this.handleServerEdit}>
                   <li>Edit Server</li>
                 </a>
-                <a>
+                <a onClick={this.handleUnsubscribe}>
                   <li>Leave Server</li>
                 </a>
                 <a>

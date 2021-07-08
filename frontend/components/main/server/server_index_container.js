@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import ServerIndex from "./server_index";
 
 import { openModal } from "../../../actions/modal_actions";
+import { unsubscribeServer } from "../../../actions/server_actions";
 
 const mapStateToProps = store => ({
   currentUserPhoto: store.session.profile_url 
@@ -15,7 +16,8 @@ const mapStateToProps = store => ({
         ? server.profile_url
         : window.defaultProfilePic
     }
-  })
+  }),
+  currentUserId: store.session.currentUserId
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -33,7 +35,8 @@ const mapDispatchToProps = dispatch => ({
     };
 
     return dispatch(openModal(modal));
-  }
+  },
+  unsubscribeServer: (currentUserId, serverId) => dispatch(unsubscribeServer(currentUserId, serverId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerIndex);

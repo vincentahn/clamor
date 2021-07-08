@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :servers,
     through: :server_memberships,
-    source: :servers
+    source: :server
 
   has_one_attached :profile_photo
 
