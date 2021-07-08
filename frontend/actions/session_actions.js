@@ -36,7 +36,6 @@ export const login = user => dispatch => (
   SessionApiUtil.login(user)
     .then(
       data => {
-        console.log(data);
         dispatch(receiveServers(data.servers));
         return dispatch(receiveCurrentUser(data.session));
       },
@@ -46,7 +45,10 @@ export const login = user => dispatch => (
 
 export const update = (formData, currentUserId) => dispatch => (
   SessionApiUtil.update(formData, currentUserId)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
+    .then(data => {
+      dispatch(receiveServers(data.servers));
+      return dispatch(receiveCurrentUser(data.session))
+    })
 );
 
 export const logout = () => dispatch => (
