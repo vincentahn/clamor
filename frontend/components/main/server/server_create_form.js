@@ -13,8 +13,6 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   action: (server, currentUserId) => {
-    console.log(server);
-    console.log(currentUserId);
     dispatch(createServer(server, currentUserId));
     return dispatch(closeModal());
   },
