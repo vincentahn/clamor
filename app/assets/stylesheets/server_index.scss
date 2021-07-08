@@ -1,4 +1,50 @@
 .server-index{
   background-color: rgba(32, 34, 37, 1);
+  text-align: center;
   width: 80px;
+
+  img{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  .server-index-item{
+    position: relative;
+  }
+
+  .server-index-item:before{
+    background-color: black;
+    border-radius: 10%;
+    color: white;
+    content: attr(title);
+    display: none;
+    padding: 5px 10px 5px 20px;
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60px;
+  }
+
+  .server-index-item:after{
+    content: "";
+    display: none;
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: -5px;
+
+    border-top: 13px solid transparent;
+    border-left: 0;
+    border-bottom: 13px solid transparent;
+    border-right: 13px solid black;
+  }
+
+  .server-index-item:hover:before,
+  .server-index-item:hover:after {
+    display: block;
+  }
 }
+
