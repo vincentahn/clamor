@@ -24,7 +24,7 @@ class Api::ServersController < ApplicationController
 
       if @server.save
         ser_mem_params = {
-          user_id: current_user.id
+          user_id: current_user.id,
           server_id: @server.id
         }
 
@@ -34,6 +34,7 @@ class Api::ServersController < ApplicationController
           render "api/servers/post"
         else
           render json: { errors: ["Server created but not added by user"] }, status: 422
+        end
       else
         render json: @server.errors.full_messages, status: 422
       end
