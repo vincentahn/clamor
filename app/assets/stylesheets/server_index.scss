@@ -46,5 +46,19 @@
   .server-index-item:hover:after {
     display: block;
   }
+
+  .add-server-icon{
+    border-radius: 50%;
+    background-color: rgba(100, 100, 100, 1);
+    color: rgba(80, 200, 120, 1);
+    height: 20px;
+    padding: 15px;
+    width: 20px;
+  }
+
+  .add-server-icon:hover{
+    background-color: rgba(0, 200, 150, 1);
+    color: white;
+  }
 }
 

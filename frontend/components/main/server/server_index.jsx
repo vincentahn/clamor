@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 class ServerIndex extends React.Component{
   render(){
     const serverLinks = this.props.servers.map(server => (
@@ -25,7 +28,7 @@ class ServerIndex extends React.Component{
         {serverLinks}
         <div className="server-index-item" title="Add a Server">
           <a>
-            +
+            <FontAwesomeIcon icon={faPlus} className="add-server-icon" />
           </a>
         </div>
       </div>
