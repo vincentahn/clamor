@@ -51,7 +51,7 @@ class ServerForm extends React.Component{
   render(){
     return(
       <div className="server-form">
-        <div>
+        <div className="close-form">
           <a
             onClick={this.props.closeModal}>
             <FontAwesomeIcon icon={faTimes} />
@@ -59,28 +59,33 @@ class ServerForm extends React.Component{
         </div>
 
         <form onSubmit={this.handleSubmit}>
-          <h1>Customize your server</h1>
+          <div className="field-inputs">
+            <h1>Customize your server</h1>
 
-          <div
-            style={{backgroundImage: `url(${this.state.profileUrl})`}}>
-            
-            <input 
-              className="profile-input"
-              type="file" 
-              onChange={this.handleFileSubmit}/>
+            <div
+              className="server-photo-container"
+              style={{backgroundImage: `url(${this.state.profileUrl})`}}>
+              
+              <input 
+                className="photo-input"
+                type="file" 
+                onChange={this.handleFileSubmit}/>
+            </div>
+
+            <div className="name-input">
+              <h3>Server Name</h3>
+              <input 
+                type="text" 
+                value={this.state.name}
+                onChange={this.update('name')}/>
+            </div>
           </div>
 
-          <h3>Server Name</h3>
-          <input 
-            type="text" 
-            value={this.state.name}
-            onChange={this.update('name')}/>
-
-          <br/>
-
-          <button className="current-user-edit-button">
-            {this.props.type}
-          </button>
+          <div className="server-form-footer">
+            <button className="submit-button">
+              {this.props.type}
+            </button>
+          </div>
         </form>
       </div>
     );

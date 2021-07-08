@@ -14,10 +14,4 @@
  *= require_self
  *= require_reset
  *= require_root
- *= require_splash
- *= require_session_form
- *= require_main
- *= require_server_index
- *= require_current_user_options
- *= require_current_user_form
  */
