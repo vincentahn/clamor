@@ -24,3 +24,13 @@ export const createServer = (formData, currentUserId) => dispatch => {
       errors => dispatch(receiveServerError(errors.responseJSON))
     )
 };
+
+export const updateServer = (formData, currentUserId, serverId) => dispatch => {
+  formData.append('currentUserId', currentUserId);
+
+  ServerApiUtil.updateServer(formData, serverId)
+    .then(
+      newServer => dispatch(receiveServer(newServer)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
+    )
+}

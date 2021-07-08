@@ -1,5 +1,5 @@
 class Api::ServersController < ApplicationController
-  before_action :ensure_logged_in?, only: [:create]
+  before_action :ensure_logged_in?
 
   def index
     # Eventually will start getting 10 servers sorted by created_at but for now get all
@@ -45,6 +45,29 @@ class Api::ServersController < ApplicationController
   end
 
   def update
+    if current_user.id === params[:currentUserId].to_i
+      update_params = { 
+        name: params[:server][:name]
+      }
+
+      if params[:server][:server_photo]
+        update_params[:server_photo] = params[:server][:server_photo]
+      end
+
+      @server = Server.find_by(id: params[:id])
+
+      if @server
+        if @server.update(update_params)
+          render "api/servers/post"
+        else
+          render json: @server.errors.full_messages, status: 422
+        end
+      else
+        render json: { errors: ["Couldn't find server"] }, status: 422
+      end
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
   end
 
   def destroy

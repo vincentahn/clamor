@@ -18,6 +18,7 @@ class ServerIndex extends React.Component{
     this.openContextMenu = this.openContextMenu.bind(this);
     this.closeContextMenu = this.closeContextMenu.bind(this);
     this.handleServerCreate = this.handleServerCreate.bind(this);
+    this.handleServerEdit = this.handleServerEdit.bind(this);
   }
 
   openContextMenu(id){
@@ -53,14 +54,25 @@ class ServerIndex extends React.Component{
     this.props.openServerCreateForm();
   }
 
+  handleServerEdit(e){
+    e.preventDefault();
+    
+    if(this.state.dropdown.id !== 0){
+      console.log(this.state);
+      console.log("Opening edit form")
+      this.props.openServerEditForm(this.state.dropdown.id);
+    }
+
+    this.closeContextMenu(e);
+  }
+
   render(){
     const serverLinks = this.props.servers.map(server => (
       <div 
         key={server.id} 
         className="server-index-item" 
         title={server.name}
-        onContextMenu={this.openContextMenu(server.id)}
-        onBlur={this.closeContextMenu}>
+        onContextMenu={this.openContextMenu(server.id)}>
 
         <Link to={`/channels/${server.id}`}>
           <img 
@@ -90,9 +102,10 @@ class ServerIndex extends React.Component{
           ? (
             <div 
               className="server-context-menu"
-              style={{ left: this.state.dropdown.left, top: this.state.dropdown.top }}>
+              style={{ left: this.state.dropdown.left, top: this.state.dropdown.top }}
+              onMouseLeave={this.closeContextMenu}>
               <ul>
-                <a>
+                <a onClick={this.handleServerEdit}>
                   <li>Edit Server</li>
                 </a>
                 <a>

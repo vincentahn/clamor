@@ -7,3 +7,13 @@ export const createServer = formData => (
     processData: false
   })
 );
+
+export const updateServer = (formData, serverId) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/servers/${serverId}`,
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+);

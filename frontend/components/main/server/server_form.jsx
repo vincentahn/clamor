@@ -28,7 +28,11 @@ class ServerForm extends React.Component{
       formData.append('server[server_photo]', this.state.photoFile);
     }
 
-    this.props.action(formData, this.props.currentUserId);
+    if(this.props.action.type === 'Create'){
+      this.props.action(formData, this.props.currentUserId);
+    }else{
+      this.props.action(formData, this.props.currentUserId, this.props.serverId);
+    }
   }
 
   handleFileSubmit(e){

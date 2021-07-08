@@ -26,10 +26,10 @@ const mapDispatchToProps = dispatch => ({
 
     return dispatch(openModal(modal));
   },
-  openServerEditForm: (formData) => {
+  openServerEditForm: (id) => {
     let modal = {
       component: 'openServerEditForm',
-      data: formData
+      data: { id }
     };
 
     return dispatch(openModal(modal));
