@@ -22,15 +22,11 @@ class ServerForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
-    console.log(formData);
     formData.append('server[name]', this.state.name);
 
     if(this.state.photoFile){
       formData.append('server[server_photo]', this.state.photoFile);
     }
-
-    console.log(this.state);
-    console.log(formData);
 
     this.props.action(formData, this.props.currentUserId);
   }
