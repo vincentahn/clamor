@@ -14,10 +14,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => {
-      dispatch(logout());
-      dispatch(closeModal());
-    },
+  logout: () => dispatch(logout()),
   closeModal: () => dispatch(closeModal()),
   update: (user, currentUserId) => dispatch(update(user, currentUserId))
 });

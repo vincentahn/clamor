@@ -3,6 +3,10 @@ import {
   RECEIVE_SERVER
 } from './../actions/server_actions';
 
+import {
+  LOGOUT_CURRENT_USER
+} from './../actions/session_actions';
+
 const serverReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
@@ -15,6 +19,9 @@ const serverReducer = (oldState = {}, action) => {
     case RECEIVE_SERVER:
       newState[action.server.id] = action.server;
       return newState;
+
+    case LOGOUT_CURRENT_USER:
+      return {};
 
     default:
       return oldState;
