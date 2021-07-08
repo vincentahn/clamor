@@ -1,6 +1,9 @@
 .current-user-options{
   background-color: rgba(41, 43, 47, 1);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   height: 50px;
   margin: 0;
 
@@ -8,5 +11,18 @@
     border-radius: 50%;
     width: 32px;
     height: 32px;
+  }
+
+  .settings-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 32px;
+    width: 32px;
+  }
+
+  .settings-icon:hover{
+    background-color: rgba(100, 100, 100, 1);
   }
 }
