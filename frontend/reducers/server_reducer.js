@@ -9,6 +9,7 @@ const serverReducer = (oldState = {}, action) => {
 
   switch(action.type){
     case RECEIVE_SERVERS:
+      if(action.servers === undefined) return oldState;
       return action.servers;
 
     case RECEIVE_SERVER:

@@ -53,12 +53,16 @@ class CurrentUserForm extends React.Component{
         <div className="current-user-form-column-1">
           <nav className="current-user-form-options">
             <ul>
-              <li className="current-user-form-link">
-                <a>My Account</a>
-              </li>
-              <li className="current-user-form-link">
-                <a onClick={this.props.logout} className="logout-link">Logout</a>
-              </li>
+              <a>
+                <li className="current-user-form-link">
+                  My Account
+                </li>
+              </a>
+              <a onClick={this.props.logout} className="logout-link">
+                <li className="current-user-form-link">
+                  Logout
+                </li>
+              </a>
             </ul>
           </nav>
         </div>

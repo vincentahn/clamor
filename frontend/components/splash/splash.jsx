@@ -36,13 +36,13 @@ class Splash extends React.Component{
               <h1>IMAGINE AN APP...</h1>
               <p>...that is worse than an existing app in every possible way and is not particularly user friendly. Where it's very clear that the app is not profitable. An app that only exists on your browser.</p>
             </div>
-            <div className="attribution">
+            {/* <div className="attribution">
               <h4>
                 <a href="https://unsplash.com/@korpa">
                   Header by Jr Korpa
                 </a>
               </h4>
-            </div>
+            </div> */}
           </div>
         </div>  
         <div className="main-block">

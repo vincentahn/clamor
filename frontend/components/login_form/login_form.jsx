@@ -76,13 +76,13 @@ class LoginForm extends React.Component{
           </div>
         </div>
 
-        <div className="attribution">
+        {/* <div className="attribution">
           <h4>
             <a href="https://unsplash.com/@korpa">
               Header by Jr Korpa
             </a>
           </h4>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -127,13 +127,13 @@ class SignupForm extends React.Component{
           <h2><Link to="/login">Already have an account?</Link></h2>
         </div>
         
-        <div className="attribution">
-            <h4>
-              <a href="https://unsplash.com/@korpa">
-                Header by Jr Korpa
-              </a>
-            </h4>
-          </div>
+        {/* <div className="attribution">
+          <h4>
+            <a href="https://unsplash.com/@korpa">
+              Header by Jr Korpa
+            </a>
+          </h4>
+        </div> */}
       </div>
     );
   }
