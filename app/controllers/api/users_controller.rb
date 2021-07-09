@@ -3,8 +3,13 @@ class Api::UsersController < ApplicationController
 
   def index
     # Eventually will start getting 10 users sorted alphabetically but for now get all
-    @users = User.all
-    render "api/users/index"
+    if current_user.id === params[:currentUserId].to_i
+      @users = User.where.not(id: params[:currentUserId].to_i)
+      render "api/users/index"
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
+
   end
 
   def create
