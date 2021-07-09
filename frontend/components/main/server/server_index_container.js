@@ -4,21 +4,25 @@ import ServerIndex from "./server_index";
 import { openModal } from "../../../actions/modal_actions";
 import { unsubscribeServer} from "../../../actions/server_actions";
 
-const mapStateToProps = store => ({
-  currentUserPhoto: store.session.profile_url 
-    ? store.session.profile_url 
-    : window.defaultProfilePic,
-  servers: Object.values(store.entities.servers).map((server, idx) => {
+const mapStateToProps = store => {
+  const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
+
+  const servers = store.session.subscribedServers.map(id => {
+    const server = store.entities.servers[id];
+
     return {
       id: server.id,
       name: server.name,
-      profileUrl: server.profile_url
-        ? server.profile_url
-        : window.defaultProfilePic
-    }
-  }),
-  currentUserId: store.session.currentUserId
-})
+      profileUrl: checkPhoto(server.profile_url)
+    };
+  })
+  
+  return({
+    currentUserPhoto: checkPhoto(store.session.profile_url),
+    servers,
+    currentUserId: store.session.currentUserId
+  })
+}
 
 const mapDispatchToProps = dispatch => ({
   openServerCreateForm: () => {

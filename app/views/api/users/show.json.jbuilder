@@ -6,6 +6,10 @@ json.session do
   if current_user.profile_photo.attached?
     json.profile_url url_for(current_user.profile_photo)
   end
+
+  json.subscribedServers do
+    json.array! current_user.servers.pluck(:id)
+  end
 end
 
 json.servers do

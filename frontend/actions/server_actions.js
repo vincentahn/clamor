@@ -56,3 +56,11 @@ export const deleteServer = (currentUserId, serverId) => dispatch => {
       errors => dispatch(receiveServerError(errors.responseJSON))
     )
 }
+
+export const fetchServers = (currentUserId) => dispatch => {
+  ServerApiUtil.fetchServers(currentUserId)
+    .then(
+      servers => dispatch(receiveServers(servers)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
+    )
+}

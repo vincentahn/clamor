@@ -33,3 +33,11 @@ export const deleteServer = (currentUserId, serverId) => (
     data: { currentUserId }
   })
 )
+
+export const fetchServers = currentUserId => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/servers',
+    data: { currentUserId }
+  })
+)

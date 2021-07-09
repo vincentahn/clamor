@@ -3,8 +3,12 @@ class Api::ServersController < ApplicationController
 
   def index
     # Eventually will start getting 10 servers sorted by created_at but for now get all
-    @servers = Server.all
-    render "api/servers/index"
+    if current_user.id === params[:currentUserId].to_i
+      @servers = Server.all
+      render "api/servers/index"
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
   end
 
   def show

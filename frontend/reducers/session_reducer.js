@@ -3,6 +3,11 @@ import {
   LOGOUT_CURRENT_USER
 } from "./../actions/session_actions";
 
+import {
+  RECEIVE_SERVER,
+  REMOVE_SERVER
+} from './../actions/server_actions';
+
 const sessionReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
@@ -14,6 +19,15 @@ const sessionReducer = (oldState = {}, action) => {
     
     case LOGOUT_CURRENT_USER:
       return {};
+
+    case RECEIVE_SERVER:
+      newState.subscribedServers.push(action.server.id);
+      return newState;
+
+    case REMOVE_SERVER:
+      const index = newState.subscribedServers.indexOf(action.serverId);
+      if(index > -1) newState.subscribedServers.splice(index, 1);
+      return newState;
 
     default:
       return oldState;

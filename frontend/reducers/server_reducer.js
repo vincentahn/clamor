@@ -22,7 +22,7 @@ const serverReducer = (oldState = {}, action) => {
       return newState;
 
     case REMOVE_SERVER:
-      delete newState[action.serverId]
+      delete newState[action.serverId];
       return newState;
 
     case LOGOUT_CURRENT_USER:
