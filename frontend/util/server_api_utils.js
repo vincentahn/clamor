@@ -25,3 +25,11 @@ export const unsubscribeServer = (currentUserId, serverId) => (
     data: { currentUserId }
   })
 )
+
+export const deleteServer = (currentUserId, serverId) => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/servers/${serverId}`,
+    data: { currentUserId }
+  })
+)

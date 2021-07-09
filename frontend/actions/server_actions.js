@@ -48,3 +48,11 @@ export const unsubscribeServer = (currentUserId, serverId) => dispatch => {
       errors => dispatch(receiveServerError(errors.responseJSON))
     )
 }
+
+export const deleteServer = (currentUserId, serverId) => dispatch => {
+  ServerApiUtil.deleteServer(currentUserId, serverId)
+    .then(
+      () => dispatch(removeServer(serverId)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
+    )
+}

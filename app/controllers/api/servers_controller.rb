@@ -71,5 +71,20 @@ class Api::ServersController < ApplicationController
   end
 
   def destroy
+    if current_user.id === params[:currentUserId].to_i
+      @server = Server.find_by(id: params[:id])
+
+      if @server && @server.founder_id === current_user.id
+        if @server.destroy
+          render "api/servers/post"
+        else
+          render json: @server.errors.full_messages, status: 422
+        end
+      else
+        render json: { errors: ["Only founder can delete server"] }, status: 422
+      end
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
   end
 end
