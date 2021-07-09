@@ -5,7 +5,7 @@ import { closeModal } from './../actions/modal_actions';
 
 import CurrentUserFormContainer from './main/current_user/current_user_form_container';
 import ServerCreateForm from './main/server/server_create_form';
-import ServerEditForm from './main/server/server_edit_form';
+import ServerEditFormContainer from './main/server/server_edit_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -22,9 +22,8 @@ function Modal({modal, closeModal}) {
       break;
 
     case 'openServerEditForm':
-      component = <ServerEditForm id={modal.data.id} />
-      break;
-
+      return(<ServerEditFormContainer id={modal.data.id} />);
+      
     default:
       return null;
   }
