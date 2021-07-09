@@ -1,6 +1,8 @@
 import * as ServerApiUtil from './../util/server_api_utils';
 
 import { receiveServerError } from './error_actions';
+import { receiveUsers } from './user_actions';
+import { receiveTextChannels } from './text_channel_actions';
 
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
@@ -61,6 +63,19 @@ export const fetchServers = (currentUserId) => dispatch => {
   ServerApiUtil.fetchServers(currentUserId)
     .then(
       servers => dispatch(receiveServers(servers)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
+    )
+}
+
+export const fetchServer = (currentUserId, serverId) => dispatch => {
+  ServerApiUtil.fetchServer(currentUserId, serverId)
+    .then(
+      data => {
+        console.log(data);
+        dispatch(receiveTextChannels(data.text_channels));
+        dispatch(receiveServer(data.server));
+        return dispatch(receiveUsers);
+      },
       errors => dispatch(receiveServerError(errors.responseJSON))
     )
 }

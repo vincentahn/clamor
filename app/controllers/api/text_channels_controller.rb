@@ -1,0 +1,2 @@
+class TextChannelsController < ApplicationController
+end

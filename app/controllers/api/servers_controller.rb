@@ -12,6 +12,17 @@ class Api::ServersController < ApplicationController
   end
 
   def show
+    if current_user.id === params[:currentUserId].to_i
+      @server = Server.find_by(id: params[:id])
+
+      if @server
+        render "api/servers/show"
+      else
+        render json: { errors: ["Could not find server"] }, status: 422
+      end
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
   end
 
   def create

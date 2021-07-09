@@ -41,3 +41,11 @@ export const fetchServers = currentUserId => (
     data: { currentUserId }
   })
 )
+
+export const fetchServer = (currentUserId, serverId) => (
+  $.ajax({
+    method: 'GET',
+    url: `api/servers/${serverId}`,
+    data: { currentUserId }
+  })
+)
