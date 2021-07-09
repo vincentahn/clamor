@@ -20,7 +20,6 @@ class ServerIndex extends React.Component{
     this.handleServerCreate = this.handleServerCreate.bind(this);
     this.handleServerEdit = this.handleServerEdit.bind(this);
     this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   openContextMenu(id){
@@ -76,16 +75,6 @@ class ServerIndex extends React.Component{
     this.closeContextMenu(e);
   }
 
-  handleDelete(e){
-    e.preventDefault();
-
-    if(this.state.dropdown.id !== 0){
-      this.props.deleteServer(this.props.currentUserId, this.state.dropdown.id);
-    }
-
-    this.closeContextMenu(e);
-  }
-
   render(){
     const serverLinks = this.props.servers.map(server => (
       <div 
@@ -130,9 +119,6 @@ class ServerIndex extends React.Component{
                 </a>
                 <a onClick={this.handleUnsubscribe}>
                   <li>Leave Server</li>
-                </a>
-                <a onClick={this.handleDelete}>
-                  <li>Delete Server</li>
                 </a>
               </ul>
             </div>

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ServerEditForm from './server_edit_form';
 
-import { updateServer } from '../../../actions/server_actions';
+import { updateServer, deleteServer } from '../../../actions/server_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = (store, ownProps) => {
@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateServer(server, currentUserId, serverId));
     return dispatch(closeModal());
   },
+  delete: (currentUserId, serverId) => dispatch(deleteServer(currentUserId, serverId)),
   closeModal: () => dispatch(closeModal())
 })
 

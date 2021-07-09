@@ -15,6 +15,7 @@ class ServerEditForm extends React.Component{
     this.handleFileSubmit = this.handleFileSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.changed = this.changed.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   update(type){
@@ -73,6 +74,12 @@ class ServerEditForm extends React.Component{
     })
   }
 
+  handleDelete(e){
+    e.preventDefault();
+    this.props.delete(this.props.currentUserId, this.props.serverId);
+    this.props.closeModal();
+  }
+
   changed(){
     console.log(this.state);
 
@@ -92,7 +99,9 @@ class ServerEditForm extends React.Component{
                   Overview
                 </li>
               </a>
-              <a className="logout-link">
+              <a 
+                className="logout-link"
+                onClick={this.handleDelete}>
                 <li className="current-user-form-link">
                   Delete Server
                 </li>
