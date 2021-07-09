@@ -71,7 +71,6 @@ export const fetchServer = (currentUserId, serverId) => dispatch => {
   ServerApiUtil.fetchServer(currentUserId, serverId)
     .then(
       data => {
-        console.log(data);
         dispatch(receiveTextChannels(data.text_channels));
         dispatch(receiveServer(data.server));
         return dispatch(receiveUsers);

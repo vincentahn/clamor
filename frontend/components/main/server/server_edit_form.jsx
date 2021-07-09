@@ -81,8 +81,6 @@ class ServerEditForm extends React.Component{
   }
 
   changed(){
-    console.log(this.state);
-
     return (this.state.prevUrl !== this.state.profileUrl) || 
     (this.state.prevFile !== this.state.photoFile) ||
     (this.state.prevName !== this.state.name);
