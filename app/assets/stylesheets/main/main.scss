@@ -1,5 +1,6 @@
 @import 
   'server/server_index',
+  'main_index/main_index',
   'current_user/current_user_form',
   'current_user/current_user_options';
 
@@ -15,12 +16,7 @@
   .column-2{
     background-color: rgba(47, 49, 54, 1);
     width: 250px;
-  }
-
-  .row-1{
-    height: calc(100% - 50px);
-    margin: 0;
-  }
+  }  
 
   .column-3{
     background-color: rgba(54, 57, 63, 1);
