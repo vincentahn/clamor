@@ -27,7 +27,7 @@ class Splash extends React.Component{
             <div className="link-button-container">
               {this.props.loggedIn 
                 ? <Link to="/channels/@me" className="link-button">Open Clamor</Link>
-                : <Link to="/login" className="link-button">Log In</Link>
+                : <Link to="/login" className="link-button">Login</Link>
               }
             </div>
           </header>
