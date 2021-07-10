@@ -31,7 +31,7 @@ class Splash extends React.Component{
               }
             </div>
           </header>
-          <div className="intro-header main-block">
+          <div className="intro-header">
             <div className="intro-header-filler">
               <h1>IMAGINE AN APP...</h1>
               <p>...that is worse than an existing app in every possible way and is not particularly user friendly. Where it's very clear that the app is not profitable. An app that only exists on your browser.</p>
@@ -48,30 +48,44 @@ class Splash extends React.Component{
         <div className="main-block">
           <div className="splash-main-1-image"></div>
           <div className="splash-main-1-info">
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis varius quam quisque id diam vel quam.</p>
+            <h2>Create a place where anyone can join</h2>
+            <p>Clamor servers are designed to be anarchical. Anyone can collaborate, share, and just talk about their day.</p>
           </div>
         </div>
         <div className="main-block splash-main-2">
           <div className="splash-main-2-info">
-            <h2>Lorem Ipsum</h2>
-            <p>Quam nulla porttitor massa id neque aliquam. Ultrices gravida dictum fusce ut placerat orci nulla. Justo laoreet sit amet cursus sit amet dictum.</p>
+            <h2>Where hanging out is impossible</h2>
+            <p>There are no voice channels so you can't really tell if anyone is on because being online simply indicates that someone has the website open in their browser.</p>
           </div>
           <div className="splash-main-2-image"></div>
         </div>
         <footer>
-          <nav>
-            <div className="nav-link">
-              <a href="https://github.com/vincentahn">
-                Github
-              </a>
+          <div className="footer-nav">
+            <nav>
+              <div className="nav-link">
+                <a href="https://github.com/vincentahn">
+                  Github
+                </a>
+              </div>
+              <div className="nav-link">
+                <a href="https://www.linkedin.com/in/junminvincentahn/">
+                  LinkedIn
+                </a>
+              </div>
+            </nav>
+          </div>
+          <div className="footer-logo-login">
+            <div className="logo-container">
+              <h1>CLAMOR</h1>
             </div>
-            <div className="nav-link">
-              <a href="https://www.linkedin.com/in/junminvincentahn/">
-                LinkedIn
-              </a>
+            <div></div>
+            <div className="link-button-container">
+              {this.props.loggedIn 
+                ? <Link to="/channels/@me" className="footer-link-button">Open Clamor</Link>
+                : <Link to="/signup" className="footer-link-button">Sign up</Link>
+              }
             </div>
-          </nav>
+          </div>
         </footer>
       </div>
     )
