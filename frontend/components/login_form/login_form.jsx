@@ -12,6 +12,10 @@ class LoginForm extends React.Component{
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.wipeErrors();
+  }
+
   update(type){
     return e => this.setState({ [type]: e.currentTarget.value })
   }
