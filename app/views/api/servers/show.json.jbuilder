@@ -7,7 +7,7 @@ json.text_channels do
 end
 
 json.server do
-  json.extract! @server, :id
+  json.partial! '/api/servers/server', server: @server
 
   json.channel_ids do
     json.array! @server.text_channels.pluck(:id)

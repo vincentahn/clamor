@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 
 class TextChannelIndex extends React.Component{
   constructor(props){
@@ -11,8 +12,10 @@ class TextChannelIndex extends React.Component{
 
   render(){
     return(
-      <div className="main-index">
-        <h1>{this.props.server.name}</h1>
+      <div className="text-channel-index">
+        <div className="server-name-header">
+          <h1>{this.props.server.name}</h1>
+        </div>
       </div>
     );
   }

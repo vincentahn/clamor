@@ -1,7 +1,7 @@
 class Server < ApplicationRecord
   validates :name, :founder_id, presence: true
 
-  after_save :add_default_text_channel
+  after_create :add_default_text_channel
 
   belongs_to :founder,
     foreign_key: :founder_id,
