@@ -5,14 +5,20 @@ class MainIndex extends React.Component{
   render(){
     return(
       <div className="main-index">
-        <div className="main-index-item">
-          <Link to="/channels/@me/users">
-            <h1>Users</h1>
-          </Link>
+        <div className="potential-search-bar">
+
         </div>
-        <div className="main-index-item">
+        <div className="main-index-list">
+          <Link to="/channels/@me/users">
+            <div className="main-index-item">
+              <h1>Users</h1>
+            </div>
+          </Link>
+
           <Link to="/channels/@me/servers">
-            <h1>Servers</h1>
+            <div className="main-index-item">
+              <h1>Servers</h1>
+            </div>
           </Link>
         </div>
       </div>

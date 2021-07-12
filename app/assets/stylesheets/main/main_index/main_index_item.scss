@@ -1,9 +1,12 @@
 .main-index-item{
-  color: gray;
+  color: rgba(150, 150, 150, 1);
   display: block;
   padding: 20px;
+  margin: 5px 0;
+  text-decoration: none;
 }
 
 .main-index-item:hover{
-  color: white;
+  background-color: rgba(60, 60, 60, 1);
+  color: rgba(200, 200, 200, 1);
 }
