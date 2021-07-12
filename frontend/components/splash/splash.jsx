@@ -74,6 +74,9 @@ class Splash extends React.Component{
               </div>
             </nav>
           </div>
+          <div className="footer-break-container">
+            <hr className="footer-line-break"/>
+          </div>
           <div className="footer-logo-login">
             <div className="logo-container">
               <h1>CLAMOR</h1>

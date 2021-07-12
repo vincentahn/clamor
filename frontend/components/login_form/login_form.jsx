@@ -27,64 +27,143 @@ class LoginForm extends React.Component{
   }
 
   render(){
-    const errors = (
-      this.props.errors.map(error => (
-        <h3 style={{color: "red"}}>{error}</h3>
-      ))
-    )
-
     return(
       <div className="session-page">
-        <div className="session-form">
+        <div className="session-form login-form">
           <div className="form-side">
             <form onSubmit = {this.handleSubmit}>
-              <h1>Welcome back!</h1>
-              <h2>We're so excited to see you again!</h2>
+              <div>
+                <h1>Welcome back!</h1>
+              </div>
+              <div className="form-side-subheading">
+                <h2>We're so excited to see you again!</h2>
+              </div>
+
+              {this.props.errors.length === 0 
+                ?
+                  <div>
+                    <div className="field">
+                      <div className="label">
+                        <h3>EMAIL</h3> 
+                      </div>
+                      <input 
+                        type="text" 
+                        value={this.state.email}
+                        onChange={this.update('email')}/>
+                    </div>
+
+                    <div className="field">
+                      <div className="label">
+                        <h3>PASSWORD</h3> 
+                      </div>
+                      <input 
+                        type="password" 
+                        value={this.state.password}
+                        onChange={this.update('password')}/>
+                    </div>
+                  </div>
+                : 
+                <div className="error">
+                    <div className="field">
+                      <div className="label">
+                        <h3>EMAIL - <i>{this.props.errors}</i></h3> 
+                      </div>
+                      <input 
+                        type="text" 
+                        value={this.state.email}
+                        onChange={this.update('email')}/>
+                    </div>
+
+                    <div className="field">
+                      <div className="label">
+                        <h3>PASSWORD - <i>{this.props.errors}</i></h3> 
+                      </div>
+                      <input 
+                        type="password" 
+                        value={this.state.password}
+                        onChange={this.update('password')}/>
+                    </div>
+                  </div>
+              }
               
-              <h3>Email</h3>
-              {errors}
-              <input 
-                type="text" 
-                value={this.state.email}
-                onChange={this.update('email')}/>
+              <div className="button-container">
+                <button type="submit">Login</button>
+              </div>
 
-              <h3>Password</h3>
-              {errors}
-              <input 
-                type="password" 
-                value={this.state.password}
-                onChange={this.update('password')}/>
-
-              <br/>
-
-              <button className="session-button" type="submit">Login</button>
+              <div className="redirect-link-container">
+                <h2>Need an account? <Link to="/signup">Register</Link></h2>
+              </div>
             </form>
-            
-            <h2>Need an account? <Link to="/signup">Register</Link></h2>
           </div>
           <div className="demo-side">
-            <div>
-              <h3>
-                Don't want to create an account?
-              </h3>
+            <div className="demo-button-container">
               <button 
                 className="demo-button"
                 onClick= {this.handleDemoLogin}>
-                Demo User Login
+                Demo User
               </button>
+            </div>
+
+            <div className="demo-heading-container">
+              <h1>Log in as Demo</h1>
             </div>
           </div>
         </div>
-
-        {/* <div className="attribution">
-          <h4>
-            <a href="https://unsplash.com/@korpa">
-              Header by Jr Korpa
-            </a>
-          </h4>
-        </div> */}
       </div>
     );
+
+    // return(
+    //   <div className="session-page">
+    //     <div className="session-form">
+    //       <div className="form-side">
+    //         <form onSubmit = {this.handleSubmit}>
+    //           <h1>Welcome back!</h1>
+    //           <h2>We're so excited to see you again!</h2>
+              
+    //           <h3>Email</h3>
+    //           {errors}
+    //           <input 
+    //             type="text" 
+    //             value={this.state.email}
+    //             onChange={this.update('email')}/>
+
+    //           <h3>Password</h3>
+    //           {errors}
+    //           <input 
+    //             type="password" 
+    //             value={this.state.password}
+    //             onChange={this.update('password')}/>
+
+    //           <br/>
+
+    //           <button className="session-button" type="submit">Login</button>
+    //         </form>
+            
+    //         <h2>Need an account? <Link to="/signup">Register</Link></h2>
+    //       </div>
+    //       <div className="demo-side">
+    //         <div>
+    //           <h3>
+    //             Don't want to create an account?
+    //           </h3>
+    //           <button 
+    //             className="demo-button"
+    //             onClick= {this.handleDemoLogin}>
+    //             Demo User Login
+    //           </button>
+    //         </div>
+    //       </div>
+    //     </div>
+
+    //     {/* <div className="attribution">
+    //       <h4>
+    //         <a href="https://unsplash.com/@korpa">
+    //           Header by Jr Korpa
+    //         </a>
+    //       </h4>
+    //     </div> */}
+    //   </div>
+    // );
   }
 }
 

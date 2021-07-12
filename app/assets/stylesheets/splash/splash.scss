@@ -73,7 +73,7 @@
 
   .link-button:hover{
     color:rgba(90, 100, 240, 1);
-    box-shadow: 0 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px rgba(0, 0, 0, 0.1);
     text-decoration: none;
   }
 
@@ -136,9 +136,10 @@
       font-weight: 900;
       padding: 0 0 40px;
     }
-
+    
     p{
       color: gray;
+      line-height: 2.0;
       font-family: 'Lato', sans-serif;
       font-size: 20px;
     }
@@ -167,9 +168,10 @@
       font-weight: 900;
       padding: 0 0 40px;
     }
-
+    
     p{
       color: gray;
+      line-height: 2.0;
       font-family: 'Lato', sans-serif;
       font-size: 20px;
     }
@@ -180,13 +182,11 @@
   }
 
   .footer-break-container{
-    left: 50%;
-    transform: translateX(-50%);
-    position: relative;
-    width: 70%;
+    margin-left: 12%;
+    width: 73%;
   }
 
-  hr.footer-break{
+  hr.footer-line-break{
     border: 1px solid rgba(90, 100, 240, 1);
     margin: 0;
   }

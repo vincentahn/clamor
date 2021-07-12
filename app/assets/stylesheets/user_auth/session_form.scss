@@ -1,26 +1,15 @@
 .session-page{
+  // Both Login and Signup
   background: asset_url("session_form_background.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   position: relative;
-  font-family: 'Catamara', sans-serif;
-
-  a{
-    text-decoration: none;
-  }
-
-  a:hover{
-    text-decoration: underline;
-  }
 
   .session-form{
-    background-color: rgba(50, 50, 50, 0.85);
+    background-color: rgba(55, 55, 55, 1);
+    border-radius: 5px;
     color: rgba(185, 187, 190, 1);
-    display: flex;
-    height: 300px;
-    padding: 30px;
-    width: 500px;
 
     // Positioning in middle of screen
     position: fixed;
@@ -28,112 +17,326 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    a{
-      color: rgba(0, 170, 240, 1);
+    h1{
+      color: white;
+      font-family: 'Catamaran', sans-serif;
+      font-size: 30px;
+      font-weight: 550;
     }
 
-    input{
-      margin: 10px 0;
-    }
-  }
-
-  .signup-form{
-    background-color: rgba(50, 50, 50, 0.85);
-    color: rgba(185, 187, 190, 1);
-    height: 400px;
-    padding: 30px;
-    width: 400px;
-
-    // Positioning in middle of screen
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    a{
-      color: rgba(0, 170, 240, 1);
-    }
-
-    input{
-      margin: 10px 0;
+    input[type=text]{
+      background-color: rgba(45, 45, 45, 1);
+      border: 1px solid black;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: rgba(185, 187, 190, 1);
+      font-size: 15px;
+      padding: 10px;
+      outline: none;
       width: 100%;
     }
 
-    select{
-      margin: 0 0 20px;
+    input[type=text]:focus{
+      border: 1px solid rgba(0, 170, 240, 1);
     }
 
-    h1, button {
-      text-align: center;
+    input[type=password]{
+      background-color: rgba(45, 45, 45, 1);
+      border: 1px solid black;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: rgba(185, 187, 190, 1);
+      font-size: 15px;
+      padding: 10px;
+      outline: none;
+      width: 100%;
     }
+
+    input[type=password]:focus{
+      border: 1px solid rgba(0, 170, 240, 1);
+    }
+
+    button{
+      background-color: rgba(88, 101, 242, 1);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-family: 'Catamaran', sans-serif;
+      font-size: 15px;
+      height: 40px;
+      width: 100%;
+    }
+  
+    button:hover{
+      background-color: rgba(71, 82, 197, 1);
+    }
+  }
+
+  .field{
+    padding: 10px 0;
+  }
+  
+  .label{
+    padding: 5px 0;
+
+    h3{
+      font-family: 'Catamaran', sans-serif;
+      font-size: 15px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .error{
+    h3{
+      color: rgba(235, 80, 80, 1);
+
+      i{
+        font-style: italic;
+      }
+    }
+
+    input[type=text]{
+      border: 1px solid rgba(235, 80, 80, 1);
+    }
+
+    input[type=text]:focus{
+      border: 1px solid rgba(235, 80, 80, 1);
+    }
+
+    input[type=password]{
+      border: 1px solid rgba(235, 80, 80, 1);
+    }
+
+    input[type=password]:focus{
+      border: 1px solid rgba(235, 80, 80, 1);
+    }
+  }
+  
+  .button-container{
+    padding: 10px 0;
+  }
+
+  .redirect-link-container{
+    h2{
+      color: rgba(100, 100, 100, 1);
+      font-size: 14px;
+    }
+
+    a{
+      color: rgba(0, 170, 240, 1);
+      text-decoration: none;
+    }
+
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+
+  // Login Specific
+  .login-form{
+    display: flex;
   }
 
   .form-side{
-    width: 80%;
+    padding: 30px;
+    width: 350px;
   }
 
-  h1{
-    color: white;
-    font-size: 20px;
-    font-weight: bolder;
-    margin: 10px 0
-  }
-
-  h2{
-    font-size: 12px;
-    margin: 10px 0
-  }
-
-  h3{
-    font-size: 12px;
-    margin: 10px 0 0;
-  }
-
-  .session-button{
-    background-color: rgba(88, 101, 242, 1);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    line-height: 30px;
-    width: 100%;
-  }
-
-  .session-button:hover{
-    background-color: rgba(71, 82, 197, 1);
+  .form-side-subheading{
+    padding: 10px 0;
   }
 
   .demo-side{
-    align-items: center;
-    display: flex;
     height: 100%;
-    justify-content: center;
-    padding: 0 0 0 20px;
+    padding: 7.5% 20px;
     text-align: center;
     width: 300px;
   }
 
-  .demo-button{
-    background-color: rgba(88, 101, 242, 1);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    line-height: 50px;
-    margin: 30px 0 0;
-    width: 80%;
-  }
+  .demo-button-container{
+    padding: 20px;
 
-  .demo-button:hover{
-    background-color: rgba(71, 82, 197, 1);
-  }
-
-  .attribution{
-    color: white;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-
-    a {
-      color: inherit;
+    button{
+      font-size: 25px;
+      height: 150px;
+      width: 150px;
     }
   }
+
+  .demo-heading-container{
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+  }
+
+  // Signup Specific
+  .signup-form{
+    padding: 30px;
+    width: 400px;
+
+    h1{
+      text-align: center;
+    }
+  }
+
+  .custom-selects-container{
+    display: flex;
+  }
+
+  .custom-select{
+    width: 30%;
+
+    select{
+      width: 100%;
+    }
+  }
+
+  .middle-select{
+    padding: 0 15px;
+  }
 }
+
+
+// .session-page{
+//   background: asset_url("session_form_background.png");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100vh;
+//   position: relative;
+//   font-family: 'Catamara', sans-serif;
+
+//   a{
+//     text-decoration: none;
+//   }
+
+//   a:hover{
+//     text-decoration: underline;
+//   }
+
+//   .session-form{
+//     background-color: rgba(50, 50, 50, 1);
+//     border-radius: 5px;
+//     color: rgba(185, 187, 190, 1);
+//     display: flex;
+//     height: 300px;
+//     padding: 30px;
+//     width: 500px;
+
+//     // Positioning in middle of screen
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+
+//     a{
+//       color: rgba(0, 170, 240, 1);
+//     }
+
+//     input{
+//       margin: 10px 0;
+//       width: 100%;
+//     }
+//   }
+
+//   .signup-form{
+//     background-color: rgba(50, 50, 50, 1);
+//     border-radius: 5px;
+//     color: rgba(185, 187, 190, 1);
+//     height: 400px;
+//     padding: 30px;
+//     width: 400px;
+
+//     // Positioning in middle of screen
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+
+//     a{
+//       color: rgba(0, 170, 240, 1);
+//     }
+
+//     input{
+//       margin: 10px 0;
+//       width: 100%;
+//     }
+
+//     select{
+//       margin: 0 0 20px;
+//     }
+
+//     h1, button {
+//       text-align: center;
+//     }
+//   }
+
+//   .form-side{
+//     width: 80%;
+//   }
+
+//   h1{
+//     color: white;
+//     font-size: 20px;
+//     font-weight: bolder;
+//     margin: 10px 0
+//   }
+
+//   h2{
+//     font-size: 12px;
+//     margin: 10px 0
+//   }
+
+//   h3{
+//     font-size: 12px;
+//     margin: 10px 0 0;
+//   }
+
+//   .session-button{
+//     background-color: rgba(88, 101, 242, 1);
+//     border: none;
+//     border-radius: 5px;
+//     color: white;
+//     line-height: 30px;
+//     width: 100%;
+//   }
+
+//   .session-button:hover{
+//     background-color: rgba(71, 82, 197, 1);
+//   }
+
+//   .demo-side{
+//     align-items: center;
+//     display: flex;
+//     height: 100%;
+//     justify-content: center;
+//     padding: 0 0 0 20px;
+//     text-align: center;
+//     width: 300px;
+//   }
+
+//   .demo-button{
+//     background-color: rgba(88, 101, 242, 1);
+//     border: none;
+//     border-radius: 5px;
+//     color: white;
+//     line-height: 50px;
+//     margin: 30px 0 0;
+//     width: 80%;
+//   }
+
+//   .demo-button:hover{
+//     background-color: rgba(71, 82, 197, 1);
+//   }
+
+//   .attribution{
+//     color: white;
+//     position: absolute;
+//     bottom: 0;
+//     right: 0;
+
+//     a {
+//       color: inherit;
+//     }
+//   }
+// }
