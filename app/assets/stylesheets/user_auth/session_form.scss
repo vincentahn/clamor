@@ -3,6 +3,7 @@
   background: asset_url("session_form_background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Catmaran', sans-serif;
   height: 100vh;
   position: relative;
 
@@ -62,7 +63,6 @@
       border-radius: 5px;
       cursor: pointer;
       color: white;
-      font-family: 'Catamaran', sans-serif;
       font-size: 15px;
       height: 40px;
       width: 100%;
@@ -81,8 +81,7 @@
     padding: 5px 0;
 
     h3{
-      font-family: 'Catamaran', sans-serif;
-      font-size: 15px;
+      font-size: 12px;
       padding-bottom: 10px;
     }
   }
