@@ -80,31 +80,42 @@ class ServerIndex extends React.Component{
       <div 
         key={server.id} 
         className="server-index-item" 
-        title={server.name}
         onContextMenu={this.openContextMenu(server.id)}>
 
+        <div className="before">
+          <p>{server.name}</p>
+        </div>
         <Link to={`/channels/${server.id}`}>
           <img 
             src={server.profileUrl} 
             alt="" />
         </Link>
+        <div className="after"></div>
       </div>
     ))
 
     return(
       <div className="server-index">
-        <div className="server-index-item" title="Home">
+        <div className="server-index-item">
+          <div className="before">
+            <p>Home</p>
+          </div>
           <Link to="/channels/@me">
             <img 
               src={this.props.currentUserPhoto} 
               alt="Profile Photo not Found" />
           </Link>
+          <div className="after"></div>
         </div>
         {serverLinks}
-        <div className="server-index-item" title="Add a Server">
+        <div className="server-index-item">
+          <div className="before">
+            <p>Add a Server</p>
+          </div>
           <a onClick={this.handleServerCreate}>
             <FontAwesomeIcon icon={faPlus} className="add-server-icon" />
           </a>
+          <div className="after"></div>
         </div>
 
         { this.state.dropdown.open && this.state.dropdown.id

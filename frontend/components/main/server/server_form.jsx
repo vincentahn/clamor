@@ -73,7 +73,7 @@ class ServerForm extends React.Component{
             </div>
 
             <div className="name-input">
-              <h3>Server Name</h3>
+              <h3>SERVER NAME</h3>
               <input 
                 type="text" 
                 value={this.state.name}

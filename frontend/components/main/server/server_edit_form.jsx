@@ -25,7 +25,7 @@ class ServerEditForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
-    formData.append('server[name]', this.state.username);
+    formData.append('server[name]', this.state.name);
 
     if(this.state.photoFile){
       formData.append('server[server_photo]', this.state.photoFile);
@@ -88,62 +88,84 @@ class ServerEditForm extends React.Component{
 
   render(){
     return(
-      <div className="current-user-form">
-        <div className="current-user-form-column-1">
-          <nav className="current-user-form-options">
-            <ul>
-              <a>
-                <li className="current-user-form-link">
-                  Overview
-                </li>
-              </a>
-              <a 
-                className="logout-link"
-                onClick={this.handleDelete}>
-                <li className="current-user-form-link">
-                  Delete Server
-                </li>
-              </a>
-            </ul>
-          </nav>
+      <div className="full-page-form">
+        <div className="full-page-form-column-1">
+          <div className="full-page-form-options-list">
+            <div className="full-page-option-set">
+              <div className="full-page-form-options-heading">
+                <h1>{this.props.name.toUpperCase()}</h1>
+              </div>
+              <div className="full-page-form-option option-selected">
+                <a>
+                  <h1>Overview</h1>
+                </a>
+              </div>
+            </div>
+
+            <div className="full-page-special-option-set">
+              <div className="full-page-form-option special-option">
+                <a onClick={this.handleDelete}>
+                  <h1>Delete Server</h1>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="current-user-form-column-2">
-          <form>
+        <div className="full-page-form-column-2">
+          <div className="server-overview">
+            <div className="server-overview-heading">
               <h1>Server Overview</h1>
+            </div>
 
-              <div 
-                className="profile-photo-container"
-                style={{backgroundImage: `url(${this.state.profileUrl})`}}>
+            <div className="edit-server-inputs">
+              <div className="image-input">
+                <div 
+                  className="profile-photo-container"
+                  style={{backgroundImage: `url(${this.state.profileUrl})`}}>
 
-                <input 
-                  className="profile-input"
-                  type="file" 
-                  onChange={this.handleFileSubmit}/>
+                  <input 
+                    className="profile-input"
+                    type="file" 
+                    onChange={this.handleFileSubmit}/>
+                </div>
               </div>
 
-              <h3>Name</h3>
-              <input 
-                type="text" 
-                value={this.state.name}
-                onChange={this.update('name')}/>
+              <div className="name-input">
+                <div className="label">
+                  <h3>SERVER NAME</h3>
+                </div>
 
-          </form>
-
-          {this.changed() ? (
-            <div>
-              <button
-                onClick={this.handleReset}>
-                Reset
-              </button>
-              <button 
-                className="current-user-edit-button"
-                onClick={this.handleSubmit}>
-                Edit Profile
-              </button>
+                <input 
+                  type="text" 
+                  value={this.state.name}
+                  onChange={this.update('name')}/>
+              </div>
             </div>
-          ) : null}
+
+            {this.changed() ? (
+              <div className="changed-pop-up">
+                <div>
+                  <h3>Careful - you have unsaved changes!</h3>
+                </div>
+
+                <div className="changed-buttons">
+                  <button
+                    className="reset-button"
+                    onClick={this.handleReset}>
+                    Reset
+                  </button>
+
+                  <button 
+                    className="edit-button"
+                    onClick={this.handleSubmit}>
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
-        <div>
+        <div className="full-page-form-column-3">
           <a 
             className="current-user-form-close-button"
             onClick={this.props.closeModal}>

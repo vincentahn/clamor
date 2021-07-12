@@ -1,0 +1,109 @@
+.server-overview{
+  padding: 10px;
+
+  .server-overview-heading{
+    font-size: 20px;
+  }
+
+  .edit-server-inputs{
+    display: flex;
+    padding: 10px;
+  }
+
+  .image-input{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .profile-photo-container{
+    border-radius: 50%;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center
+  }
+  
+  .profile-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .name-input{
+    width: 50%;
+  }
+
+  .label{
+    padding: 10px 0;
+  }
+
+  input[type=text]{
+    background-color: rgba(45, 45, 45, 1);
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: rgba(185, 187, 190, 1);
+    font-size: 15px;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+  }
+
+  input[type=text]:focus{
+    border: 1px solid rgba(0, 170, 240, 1);
+  }
+
+  .changed-pop-up{
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    position: fixed;
+    left: calc(30vw + 40px);
+    bottom: 20px;
+    width: calc(49vw - 80px - 20px);
+    padding: 10px 20px;
+
+    > div{
+      width: 50%;
+    }
+  }
+
+  .changed-buttons{
+    text-align: right;
+
+    button{
+      padding: 10px 20px;
+    }
+  }
+
+  .reset-button{
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+
+  .reset-button:hover{
+    text-decoration: underline;
+  }
+
+  .edit-button{
+    background-color: rgba(50, 200, 50, 1);
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .edit-button:hover{
+    background-color: darkgreen;
+  }
+}
+

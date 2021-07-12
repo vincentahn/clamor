@@ -8,7 +8,7 @@ const mapStateToProps = store => ({
   currentUserId: store.session.currentUserId,
   name: '',
   type: 'Create',
-  profileUrl: window.defaultProfilePic
+  profileUrl: window.addServerPic
 })
 
 const mapDispatchToProps = dispatch => ({

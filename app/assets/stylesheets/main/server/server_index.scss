@@ -12,42 +12,51 @@
     width: 50px;
   }
 
-  .server-index-item{
-    position: relative;
+  img:hover{
+    border-radius: 30%;
   }
 
-  .server-index-item:before{
+  .server-index-item{
+    position: relative;
+    margin: 5px;
+  }
+
+  .server-index-item  > .before{
     background-color: black;
     border-radius: 10%;
     color: white;
-    content: attr(title);
     display: none;
-    padding: 5px 10px 5px 20px;
+    padding: 5px 10px;
     position: absolute;
+    width: fit-content;
 
     top: 50%;
     transform: translateY(-50%);
     left: 60px;
+
+    p{
+      width: 100%;
+    }
   }
 
-  .server-index-item:after{
+  .server-index-item > .after{
     content: "";
     display: none;
     position: absolute;
 
     top: 50%;
     transform: translateY(-50%);
-    right: -5px;
+    right: -15px;
 
     border-top: 13px solid transparent;
     border-left: 0;
     border-bottom: 13px solid transparent;
-    border-right: 13px solid black;
+    border-right: 8px solid black;
   }
 
-  .server-index-item:hover:before,
-  .server-index-item:hover:after {
-    display: block;
+  .server-index-item:hover > .before,
+  .server-index-item:hover > .after {
+    display: inline-block;
   }
 
   .add-server-icon{
