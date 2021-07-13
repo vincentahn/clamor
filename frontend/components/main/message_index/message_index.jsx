@@ -11,16 +11,42 @@ class MessageIndex extends React.Component{
     this.update = this.update.bind(this);
   }
 
+  componentDidMount(){
+    App.cable.subscriptions.create(
+      // Triggers subscribed method
+      { 
+        channel: 'TextStreamChannel',
+        id: this.props.channelId
+      },
+
+      // Action methods
+      {
+        received: data => {
+          console.log(data)
+        },
+        sendMessage: function(data){
+          return this.perform("sendTextMessage", data)
+        }
+      }
+    );
+  }
+
   handleCreate(e){
     e.preventDefault();
 
-    let message = {
-      body: this.state.body,
-      author_id: this.props.currentUserId,
-      typeable_id: this.props.channelId
+    let data = {
+      message: {
+        body: this.state.body,
+        author_id: this.props.currentUserId,
+        typeable_id: this.props.channelId,
+        typeable_type: 'TextChannel'
+      },
+
+      id: this.props.channelId
     }
 
-    this.props.create(message, this.props.currentUserId);
+    App.cable.subscriptions.subscriptions[0].sendMessage(data);
+    this.setState({ body: "" });
   }
 
   handleDelete(messageId){
