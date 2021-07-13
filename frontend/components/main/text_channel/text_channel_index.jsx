@@ -12,14 +12,17 @@ class TextChannelIndex extends React.Component{
   }
 
   fetchServer(location){
-    this.setState({ fetched: false });
-
-    debugger;
-
+    
+    // debugger;
+    
     if(location){
       let numbers = location.pathname.match(regex);
-
-      if(parseInt(numbers[0]) !== this.props.server.id) this.props.fetchServer(this.props.currentUserId, numbers[0], this.received);
+      let serverId = parseInt(numbers[0]);
+      
+      if(serverId !== this.props.server.id){
+        this.setState({ fetched: false });
+        this.props.fetchServer(this.props.currentUserId, serverId, this.received);
+      }
     }else{
       this.props.fetchServer(this.props.currentUserId, this.props.server.id, this.received);
     }
