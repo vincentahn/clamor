@@ -13,6 +13,13 @@ demo = User.create!(
   birthday: '2021-07-02'
 )
 
+founder = User.create!(
+  username: 'founder',
+  password: 'legendoflegend',
+  email: 'waitforit@dary.com',
+  birthday: '2021-07-13'
+)
+
 og = Server.create!(
   name: "OG",
   founder_id: demo.id
@@ -21,4 +28,26 @@ og = Server.create!(
 ServerMembership.create!(
   user_id: demo.id,
   server_id: og.id
+)
+
+ServerMembership.create!(
+  user_id: founder.id,
+  server_id: og.id
+)
+
+TextChannel.create!(
+  name: 'memes',
+  server_id: og.id
+)
+
+TextChannel.create!(
+  name: 'announcements',
+  server_id: og.id
+)
+
+Message.create!(
+  body: "Getting copyright striked...", 
+  author_id: 1, 
+  typeable_id: 1, 
+  typeable_type: "TextChannel"
 )

@@ -13,7 +13,8 @@ class Api::ServersController < ApplicationController
 
   def show
     if current_user.id === params[:currentUserId].to_i
-      @server = Server.find_by(id: params[:id])
+      servers = Server.all.includes(:members, :text_channels => [:messages])
+      @server = servers.find_by(id: params[:id])
 
       if @server
         render "api/servers/show"

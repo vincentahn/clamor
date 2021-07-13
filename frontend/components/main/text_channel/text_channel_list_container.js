@@ -6,6 +6,7 @@ const mapStateToProps = (store, ownProps) => {
   const textChannels = server.channel_ids.map(id => store.entities.textChannels[id]);
 
   return({
+    history: ownProps.history,
     server,
     textChannels
   });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_204000) do
+ActiveRecord::Schema.define(version: 2021_07_13_124107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2021_07_09_204000) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "author_id", null: false
+    t.string "typeable_type", null: false
+    t.bigint "typeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "typeable_id", "typeable_type"], name: "index_messages_on_author_id_and_typeable_id_and_typeable_type"
+    t.index ["typeable_type", "typeable_id"], name: "index_messages_on_typeable_type_and_typeable_id"
   end
 
   create_table "server_memberships", force: :cascade do |t|

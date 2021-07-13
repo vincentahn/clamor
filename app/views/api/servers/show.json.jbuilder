@@ -2,6 +2,10 @@ json.text_channels do
   @server.text_channels.each do |text_channel|
     json.set! text_channel.id do
       json.extract! text_channel, :id, :name
+
+      json.message_ids do
+        json.array! text_channel.messages.pluck(:id)
+      end
     end
   end
 end
@@ -21,4 +25,13 @@ end
 json.users do
   json.partial! '/api/users/users', users: @server.members
 end
-  
+
+json.messages do
+  @server.text_channels.each do |text_channel|
+    text_channel.messages.each do |message|
+      json.set! message.id do
+        json.extract! message, :id, :body, :author_id, :created_at, :updated_at
+      end
+    end
+  end
+end

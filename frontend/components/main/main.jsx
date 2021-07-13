@@ -11,6 +11,7 @@ import TextChannelIndexContainer from './text_channel/text_channel_index_contain
 import CurrentUserOptionsContainer from './current_user/current_user_options_container';
 import UserIndexContainer from './user_index/user_index_container';
 import ServerMainIndexContainer from './server/server_main_index_container';
+import TextMessageIndexContainer from './message_index/text_message_index_container';
 
 const Main = () => (
   <div className="main">
@@ -29,7 +30,7 @@ const Main = () => (
       <Switch>
         <Route exact path="/channels/@me/users" component={UserIndexContainer}/>
         <Route exact path="/channels/@me/servers" component={ServerMainIndexContainer} />
-        {/* <Route exact path="/channels/:serverId/:channelId" component={TextMessageIndexContainer} /> */}
+        <Route exact path="/channels/:serverId/:channelId" component={TextMessageIndexContainer} />
       </Switch>
     </div>
   </div>

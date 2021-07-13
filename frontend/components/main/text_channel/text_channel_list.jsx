@@ -4,6 +4,11 @@ class TextChannelList extends React.Component{
   constructor(props){
     super(props);
   }
+  
+  componentDidMount(){
+    console.log(this.props);
+    this.props.history.push(`/channels/${this.props.server.id}/${this.props.textChannels[0].id}`);
+  }
 
   render(){
     const textChannels = this.props.textChannels.map(channel => (
