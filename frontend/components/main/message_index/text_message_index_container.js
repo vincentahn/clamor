@@ -10,8 +10,6 @@ const mapStateToProps = (store, ownProps) => {
   let messages = [];
   if(channelIds) messages = channelIds.map(id => store.entities.messages[id]);
 
-  // debugger;
-
   return({
     channelId,
     currentUserId: store.session.currentUserId,

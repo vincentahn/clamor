@@ -11,10 +11,7 @@ class TextChannelIndex extends React.Component{
     this.received = this.received.bind(this);
   }
 
-  fetchServer(location){
-    
-    // debugger;
-    
+  fetchServer(location){    
     if(location){
       let numbers = location.pathname.match(regex);
       let serverId = parseInt(numbers[0]);

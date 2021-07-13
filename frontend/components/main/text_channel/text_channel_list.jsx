@@ -6,7 +6,6 @@ class TextChannelList extends React.Component{
   }
   
   componentDidMount(){
-    console.log(this.props);
     this.props.history.push(`/channels/${this.props.server.id}/${this.props.textChannels[0].id}`);
   }
 
