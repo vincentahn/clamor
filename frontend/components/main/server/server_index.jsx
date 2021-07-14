@@ -78,7 +78,7 @@ class ServerIndex extends React.Component{
   render(){
     const serverLinks = this.props.servers.map(server => (
       <div 
-        key={server.id} 
+        key={`subscribed-server-${server.id}`} 
         className="server-index-item" 
         onContextMenu={this.openContextMenu(server.id)}>
 
