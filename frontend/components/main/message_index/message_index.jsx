@@ -57,7 +57,7 @@ class MessageIndex extends React.Component{
   }
 
   render(){
-    const messages = this.props.message 
+    const messages = this.props.messages 
       ? this.props.messages.map(message => (
         <div 
           key={`message-${message.id}`}
