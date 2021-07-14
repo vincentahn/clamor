@@ -9,7 +9,8 @@ class Server < ApplicationRecord
 
   has_many :server_memberships,
     foreign_key: :server_id,
-    class_name: 'ServerMembership'
+    class_name: 'ServerMembership',
+    dependent: :destroy
   
   has_many :members,
     through: :server_memberships,
@@ -17,7 +18,8 @@ class Server < ApplicationRecord
 
   has_many :text_channels,
     foreign_key: :server_id,
-    class_name: 'TextChannel'
+    class_name: 'TextChannel',
+    dependent: :destroy
 
   has_one_attached :server_photo
 

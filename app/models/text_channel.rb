@@ -6,5 +6,6 @@ class TextChannel < ApplicationRecord
     class_name: 'Server'
 
   has_many :messages,
-    as: :typeable
+    as: :typeable,
+    dependent: :destroy
 end

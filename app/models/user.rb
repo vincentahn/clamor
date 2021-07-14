@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   has_many :server_memberships,
     foreign_key: :user_id,
-    class_name: 'ServerMembership'
+    class_name: 'ServerMembership',
+    dependent: :destroy
 
   has_many :servers,
     through: :server_memberships,
