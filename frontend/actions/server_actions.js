@@ -77,7 +77,7 @@ export const fetchServers = (currentUserId) => dispatch => {
 }
 
 export const fetchServer = (currentUserId, serverId, callback) => dispatch => {
-  ServerApiUtil.fetchServer(currentUserId, serverId)
+  return ServerApiUtil.fetchServer(currentUserId, serverId)
     .then(
       data => {
         dispatch(receiveTextChannels(data.text_channels));
@@ -85,9 +85,7 @@ export const fetchServer = (currentUserId, serverId, callback) => dispatch => {
 
         if(data.messages) dispatch(receiveMessages(data.messages));
         
-        if(callback) callback();
-
-        return dispatch(receiveUsers);
+        dispatch(receiveUsers(data.users));
       },
       errors => dispatch(receiveServerError(errors.responseJSON))
     )

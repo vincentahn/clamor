@@ -17,7 +17,7 @@ const Main = () => (
   <div className="main">
     <Modal />
     
-    <ServerIndexContainer />
+    <Route path="/channels" component={ServerIndexContainer} />
     <div className="column-2">
       <Switch>
         <Route path="/channels/@me" component={MainIndex}/>

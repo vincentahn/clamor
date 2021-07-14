@@ -21,7 +21,7 @@ const sessionReducer = (oldState = {}, action) => {
       return {};
 
     case RECEIVE_SERVER:
-      newState.subscribedServers.push(action.server.id);
+      if(!newState.subscribedServers.includes(action.server.id)) newState.subscribedServers.push(action.server.id);
       return newState;
 
     case REMOVE_SERVER:

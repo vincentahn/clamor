@@ -57,18 +57,19 @@ class MessageIndex extends React.Component{
   }
 
   render(){
-    const messages = this.props.messages.map(message => (
-      <div 
-        key={`message-${message.id}`}
-        className="message-box">
-        <div>
-          <p>{message.body}</p>
+    const messages = this.props.message 
+      ? this.props.messages.map(message => (
+        <div 
+          key={`message-${message.id}`}
+          className="message-box">
+          <div>
+            <p>{message.body}</p>
+          </div>
+          <div>
+            <button onClick={this.handleDelete(message.id)}>Delete</button>
+          </div>
         </div>
-        <div>
-          <button onClick={this.handleDelete(message.id)}>Delete</button>
-        </div>
-      </div>
-    ));
+      )) : null;
 
     return(
       <div>

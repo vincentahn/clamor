@@ -8,7 +8,6 @@ const mapStateToProps = (store, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchServer: (currentUserId, serverId, callback) => dispatch(fetchServer(currentUserId, serverId, callback))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextChannelIndex);

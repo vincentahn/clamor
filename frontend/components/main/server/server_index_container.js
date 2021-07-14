@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import ServerIndex from "./server_index";
 
 import { openModal } from "../../../actions/modal_actions";
-import { unsubscribeServer} from "../../../actions/server_actions";
+import { fetchServer, unsubscribeServer} from "../../../actions/server_actions";
 
 const mapStateToProps = store => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
@@ -25,6 +25,7 @@ const mapStateToProps = store => {
 }
 
 const mapDispatchToProps = dispatch => ({
+  fetchServer: (currentUserId, serverId, callback) => dispatch(fetchServer(currentUserId, serverId, callback)),
   openServerCreateForm: () => {
     let modal = {
       component: 'openServerCreateForm'

@@ -15,11 +15,13 @@ class ServerIndex extends React.Component{
         right: 0
       }
     }
+
     this.openContextMenu = this.openContextMenu.bind(this);
     this.closeContextMenu = this.closeContextMenu.bind(this);
     this.handleServerCreate = this.handleServerCreate.bind(this);
     this.handleServerEdit = this.handleServerEdit.bind(this);
     this.handleUnsubscribe = this.handleUnsubscribe.bind(this);
+    this.handleOpenServer = this.handleOpenServer.bind(this);
   }
 
   openContextMenu(id){
@@ -75,6 +77,18 @@ class ServerIndex extends React.Component{
     this.closeContextMenu(e);
   }
 
+  handleOpenServer(serverId){
+    let that = this;
+
+    return e => {
+      const openLink = () => that.props.history.push(`/channels/${serverId}`);
+
+      this.props.fetchServer(this.props.currentUserId, serverId).then(() => openLink())
+    }
+
+    // {`/channels/${server.id}`}
+  }
+
   render(){
     const serverLinks = this.props.servers.map(server => (
       <div 
@@ -85,11 +99,11 @@ class ServerIndex extends React.Component{
         <div className="before">
           <p>{server.name}</p>
         </div>
-        <Link to={`/channels/${server.id}`}>
+        <a onClick={this.handleOpenServer(server.id)}>
           <img 
             src={server.profileUrl} 
             alt="" />
-        </Link>
+        </a>
         <div className="after"></div>
       </div>
     ))
