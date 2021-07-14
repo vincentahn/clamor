@@ -6,11 +6,7 @@ class TextStreamChannel < ApplicationCable::Channel
 
   def sendTextMessage(data)
     text_channel = TextChannel.find(data['id'])
-    puts data['message']
-
     message = Message.new(data['message'])
-    puts "-------------sendTextMessage--------------"
-    puts message
     
     if text_channel && message.save
       socket = { 

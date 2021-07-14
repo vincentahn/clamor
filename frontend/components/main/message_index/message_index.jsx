@@ -22,7 +22,6 @@ class MessageIndex extends React.Component{
       // Action methods
       {
         received: data => {
-          // console.log(data);
           this.props.receiveMessage(data);
         },
         sendMessage: function(data){
