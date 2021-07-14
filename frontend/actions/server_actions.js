@@ -44,6 +44,14 @@ export const updateServer = (formData, currentUserId, serverId) => dispatch => {
     )
 }
 
+export const subscribeServer = (currentUserId, serverId) => dispatch => {
+  ServerApiUtil.subscribeServer(currentUserId, serverId)
+    .then(
+      newServer => dispatch(receiveServer(newServer)),
+      errors => dispatch(receiveServerError(errors.responseJSON))
+    )
+}
+
 export const unsubscribeServer = (currentUserId, serverId) => dispatch => {
   ServerApiUtil.unsubscribeServer(currentUserId, serverId)
     .then(

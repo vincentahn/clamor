@@ -10,13 +10,34 @@ class UserIndex extends React.Component{
   }
 
   render(){
-    const userIndexItems = this.props.users.map(user => (
-      <h1 key={user.id} style={{color: "white"}}>{user.username}</h1>
-    ))
+    const userIndexItems = this.props.users.map(user => {
+      const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
+      
+      return(
+        <div key={`user-${user.id}`} className="user-index-item">
+          <div className="user-image-container">
+            <img src={checkPhoto(user.profileUrl)} />
+          </div>
+          <div className="user-name-container">
+            <h1>{user.username}</h1>
+          </div>
+        </div>
+      );
+    })
 
     return(
-      <div>
-        {userIndexItems}
+      <div className="user-index">
+        <div className="user-index-header">
+          <h1>Users</h1>
+        </div>
+        <div className="user-index-body">
+          <div className="user-index-list">
+            {userIndexItems}
+          </div>
+          <div className="user-index-side">
+
+          </div>
+        </div>
       </div>
     );
   }

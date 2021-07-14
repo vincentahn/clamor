@@ -2,6 +2,22 @@ class Api::ServerMembershipsController < ApplicationController
   before_action :ensure_logged_in?
 
   def create
+    if current_user.id == params[:currentUserId].to_i
+      server_membership = ServerMembership.new(
+        user_id: current_user.id,
+        server_id: params[:serverId].to_i
+      )
+
+      if server_membership.save
+        @server = server_membership.server
+
+        render "api/servers/post"
+      else
+        render json: server_membership.errors.full_messages, status: 422
+      end
+    else
+      render json: { errors: ["IMPOSTER!"] }, status: 401
+    end
   end
 
   def destroy

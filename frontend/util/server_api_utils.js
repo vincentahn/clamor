@@ -18,6 +18,17 @@ export const updateServer = (formData, serverId) => (
   })
 );
 
+export const subscribeServer = (currentUserId, serverId) => (
+  $.ajax({
+    method: 'POST',
+    url: `api/server_memberships/`,
+    data: {
+      currentUserId,
+      serverId
+    }
+  })
+)
+
 export const unsubscribeServer = (currentUserId, serverId) => (
   $.ajax({
     method: 'DELETE',

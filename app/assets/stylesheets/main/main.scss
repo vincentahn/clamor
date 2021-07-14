@@ -1,8 +1,10 @@
 @import 
   'server/server_index',
+  'server/server_main_index',
   'main_index/main_index',
   'current_user/current_user_form',
-  'current_user/current_user_options';
+  'current_user/current_user_options',
+  'user_index/user_index';
 
 .main{
   position: absolute;

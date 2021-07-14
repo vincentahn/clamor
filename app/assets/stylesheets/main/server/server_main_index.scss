@@ -1,0 +1,51 @@
+.server-main-index{
+  color: white;
+
+  .server-index-header{
+    padding: 10px;
+    border-bottom: 2px solid rgba(100, 100, 100, 1);
+  }
+
+  .server-index-body{
+    display: flex;
+    height: 100%;
+  }
+
+  .server-index-list{
+    width: 65vw;
+    border-right: 5px solid rgba(100, 100, 100, 1);
+  }
+
+  .server-index-item{
+    display: flex;
+  }
+
+  .server-index-item:hover{
+    background: rgba(75, 75, 75, 1);
+  }
+
+  .server-image-container{
+    padding: 10px;
+
+    img{
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .server-name-container{
+    align-items: center;
+    display: flex;
+    padding: 10px;;
+    height: 30px;
+    width: 80%;
+  }
+
+  .server-options{
+    align-items: center;
+    display: flex;
+    float: right;
+    height: 50px;
+  }
+}
