@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :servers, only: [:index, :show, :create, :update, :destroy]
     resources :server_memberships, only: [:create, :destroy]
     resources :messages, only: [:create, :update, :destroy]
+    resources :text_channels, only: [:create, :update, :destroy]
   end
 
   mount ActionCable.server => '/cable'

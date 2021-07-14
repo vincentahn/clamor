@@ -1,3 +1,4 @@
+import { RECEIVE_TEXT_CHANNEL } from '../actions/text_channel_actions';
 import {
   RECEIVE_SERVERS,
   RECEIVE_SERVER,
@@ -23,6 +24,10 @@ const serverReducer = (oldState = {}, action) => {
 
     case REMOVE_SERVER:
       delete newState[action.serverId];
+      return newState;
+
+    case RECEIVE_TEXT_CHANNEL:
+      newState[action.channel.server_id].channel_ids.push(action.channel.id);
       return newState;
 
     case LOGOUT_CURRENT_USER:

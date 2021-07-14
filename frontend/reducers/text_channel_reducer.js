@@ -1,4 +1,5 @@
 import{
+  RECEIVE_TEXT_CHANNEL,
   RECEIVE_TEXT_CHANNELS
 } from './../actions/text_channel_actions';
 
@@ -13,6 +14,14 @@ const textChannelReducer = (oldState = {}, action) => {
   switch(action.type){
     case RECEIVE_TEXT_CHANNELS:
       return action.channels;
+
+    case RECEIVE_TEXT_CHANNEL:
+      newState[action.channel.id] = {
+        id: action.channel.id,
+        name: action.channel.name,
+        message_ids: []
+      };
+      return newState;
 
     case RECEIVE_MESSAGE:
       const receivedChannelId = action.message.typeable_id;

@@ -85,8 +85,6 @@ class ServerIndex extends React.Component{
 
       this.props.fetchServer(this.props.currentUserId, serverId).then(() => openLink())
     }
-
-    // {`/channels/${server.id}`}
   }
 
   render(){

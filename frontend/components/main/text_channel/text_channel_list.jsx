@@ -4,6 +4,7 @@ class TextChannelList extends React.Component{
   constructor(props){
     super(props);
     this.state = {};
+    this.handleOpenChannelCreate = this.handleOpenChannelCreate.bind(this);
     this.handleChangeChannel = this.handleChangeChannel.bind(this);
   }
 
@@ -36,6 +37,11 @@ class TextChannelList extends React.Component{
     }
   }
 
+  handleOpenChannelCreate(e){
+    e.preventDefault();
+    this.props.openChannelCreate(this.props.server.id);
+  }
+
   handleChangeChannel(textChannelId){
     return e => {
       this.props.history.push(`/channels/${this.props.server.id}/${textChannelId}`);
@@ -66,7 +72,7 @@ class TextChannelList extends React.Component{
             <h2>TEXT CHANNELS</h2>
           </div>
           <div>
-            <button>+</button>
+            <button onClick={this.handleOpenChannelCreate}>+</button>
           </div>
         </div>
         

@@ -6,6 +6,7 @@ import { closeModal } from './../actions/modal_actions';
 import CurrentUserFormContainer from './main/current_user/current_user_form_container';
 import ServerCreateForm from './main/server/server_create_form';
 import ServerEditFormContainer from './main/server/server_edit_form_container';
+import TextChannelCreateContainer from './main/text_channel/create/text_channel_create_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -23,6 +24,10 @@ function Modal({modal, closeModal}) {
 
     case 'openServerEditForm':
       return(<ServerEditFormContainer id={modal.data.id} />);
+
+    case 'openTextChannelCreateForm':
+      component = <TextChannelCreateContainer serverId={modal.data.serverId} />
+      break;
       
     default:
       return null;
