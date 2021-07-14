@@ -10,7 +10,7 @@ export const receiveMessages = messages => ({
   messages
 })
 
-const receiveMessage = message => ({
+export const receiveMessage = message => ({
   type: RECEIVE_MESSAGE,
   message
 })
@@ -21,11 +21,7 @@ const removeMessage = message => ({
 })
 
 export const createMessage = (message, currentUserId) => dispatch => {
-  MessageApiUtil.createMessage(message, currentUserId)
-    .then(
-      newMessage => dispatch(receiveMessage(newMessage)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
-    )
+  MessageApiUtil.createMessage(message, currentUserId);
 }
 
 export const deleteMessage = (messageId, currentUserId) => dispatch => {

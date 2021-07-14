@@ -14,7 +14,12 @@ class TextStreamChannel < ApplicationCable::Channel
     
     if text_channel && message.save
       socket = { 
-        message: message.body 
+        id: message.id,
+        body: message.body,
+        author_id: message.author_id,
+        typeable_id: message.typeable_id,
+        created_at: message.created_at,
+        updated_at: message.updated_at
       }
       TextStreamChannel.broadcast_to(text_channel, socket)
     else

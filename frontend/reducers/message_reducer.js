@@ -13,7 +13,13 @@ const messageReducer = (oldState = {}, action) => {
       return action.messages;
 
     case RECEIVE_MESSAGE:
-      newState[action.message.id] = action.message;
+      newState[action.message.id] = {
+        id: action.message.id,
+        body: action.message.body,
+        author_id: action.message.author_id,
+        created_at: action.message.created_at,
+        updated_at: action.message.updated_at
+      };
       return newState;
 
     case REMOVE_MESSAGE:

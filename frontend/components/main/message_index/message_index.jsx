@@ -22,7 +22,8 @@ class MessageIndex extends React.Component{
       // Action methods
       {
         received: data => {
-          console.log(data)
+          // console.log(data);
+          this.props.receiveMessage(data);
         },
         sendMessage: function(data){
           return this.perform("sendTextMessage", data)
@@ -34,18 +35,14 @@ class MessageIndex extends React.Component{
   handleCreate(e){
     e.preventDefault();
 
-    let data = {
-      message: {
-        body: this.state.body,
-        author_id: this.props.currentUserId,
-        typeable_id: this.props.channelId,
-        typeable_type: 'TextChannel'
-      },
+    let message = {
+      body: this.state.body,
+      author_id: this.props.currentUserId,
+      typeable_id: this.props.channelId,
+      typeable_type: this.props.type
+    };
 
-      id: this.props.channelId
-    }
-
-    App.cable.subscriptions.subscriptions[0].sendMessage(data);
+    this.props.create(message, this.props.channelId);
     this.setState({ body: "" });
   }
 

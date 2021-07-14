@@ -1,19 +1,19 @@
 class Api::MessagesController < ApplicationController
   before_action :ensure_logged_in?
 
-  def create
-    if current_user.id === params[:currentUserId].to_i
-      @message = Message.new(message_params)
+  # def create
+  #   if current_user.id === params[:currentUserId].to_i
+  #     @message = Message.new(message_params)
 
-      if @message.save
-        render "api/messages/post"
-      else
-        render json: @message.errors.full_messages, status: 422
-      end
-    else
-      render json: { errors: ["IMPOSTER!"] }, status: 401
-    end
-  end
+  #     if @message.save
+  #       render "api/messages/post"
+  #     else
+  #       render json: @message.errors.full_messages, status: 422
+  #     end
+  #   else
+  #     render json: { errors: ["IMPOSTER!"] }, status: 401
+  #   end
+  # end
 
   def update
   end

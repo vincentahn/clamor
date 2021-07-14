@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import MessageIndex from "./message_index";
 
-import { createMessage, deleteMessage } from "./../../../actions/message_actions";
+import { createMessage, deleteMessage, receiveMessage } from "./../../../actions/message_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const channelId = ownProps.match.params.channelId
@@ -9,20 +9,18 @@ const mapStateToProps = (store, ownProps) => {
 
   let messages = [];
   if(channelIds) messages = channelIds.map(id => store.entities.messages[id]);
-
+  
   return({
     channelId,
     currentUserId: store.session.currentUserId,
-    messages
+    messages,
+    type: 'TextChannel'
   })
 };
 
 const mapDispatchToProps = dispatch => ({
-  create: (message, currentUserId) => {
-    message.typeable_type = 'TextChannel';
-
-    return dispatch(createMessage(message, currentUserId));
-  },
+  create: (message, currentUserId) => dispatch(createMessage(message, currentUserId)),
+  receiveMessage: message => dispatch(receiveMessage(message)),
   delete: (messageId, currentUserId) => dispatch(deleteMessage(messageId, currentUserId))
 })
 
