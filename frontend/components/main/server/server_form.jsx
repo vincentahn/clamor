@@ -20,18 +20,20 @@ class ServerForm extends React.Component{
   }
 
   handleSubmit(e){
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('server[name]', this.state.name);
+    if(this.state.name !== ''){
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('server[name]', this.state.name);
 
-    if(this.state.photoFile){
-      formData.append('server[server_photo]', this.state.photoFile);
-    }
+      if(this.state.photoFile){
+        formData.append('server[server_photo]', this.state.photoFile);
+      }
 
-    if(this.props.action.type === 'Create'){
-      this.props.action(formData, this.props.currentUserId);
-    }else{
-      this.props.action(formData, this.props.currentUserId, this.props.serverId);
+      if(this.props.action.type === 'Create'){
+        this.props.action(formData, this.props.currentUserId);
+      }else{
+        this.props.action(formData, this.props.currentUserId, this.props.serverId);
+      }
     }
   }
 
@@ -60,7 +62,13 @@ class ServerForm extends React.Component{
 
         <form onSubmit={this.handleSubmit}>
           <div className="field-inputs">
-            <h1>Customize your server</h1>
+            <div>
+              <h1>Customize your server</h1>
+            </div>
+
+            <div>
+              <h2>Give your new server a personality with a name and an icon. You can always change it later.</h2>
+            </div>
 
             <div
               className="server-photo-container"
@@ -82,7 +90,9 @@ class ServerForm extends React.Component{
           </div>
 
           <div className="server-form-footer">
-            <button className="submit-button">
+            <button 
+              className={`submit-button 
+              ${this.state.name === '' ? "empty" : ""}`}>
               {this.props.type}
             </button>
           </div>

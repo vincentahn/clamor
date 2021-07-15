@@ -5,11 +5,11 @@ import { createServer } from '../../../actions/server_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = store => ({
-  currentUserId: store.session.currentUserId,
-  name: '',
-  type: 'Create',
-  profileUrl: window.addServerPic
-})
+    currentUserId: store.session.currentUserId,
+    name: `${store.session.username}'s server`,
+    type: 'Create',
+    profileUrl: window.addServerPic
+});
 
 const mapDispatchToProps = dispatch => ({
   action: (server, currentUserId) => {
