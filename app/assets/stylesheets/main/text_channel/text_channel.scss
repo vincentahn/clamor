@@ -13,16 +13,18 @@
 
   .text-channel-header{
     display: flex;
-    font-size: 12px;
     padding: 10px;
   }
   
   .text-channel-header-heading{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
     width: 90%;
   }
 
   .text-channel-header-heading:hover{
-    color: white;
+    color: rgba(200, 200, 200, 1);
   }
 
   .add-text-channel-button{
@@ -30,7 +32,7 @@
   }
 
   .add-text-channel-button:hover{
-    color: white;
+    color: rgba(200, 200, 200, 1);
   }
 
   .text-channel-item{
@@ -40,7 +42,7 @@
 
   .text-channel-item:hover{
     background-color: rgba(60, 60, 60, 1);
-    color: white;
+    color: rgba(200, 200, 200, 1);
     cursor: pointer;
   }
 

@@ -12,6 +12,20 @@
 
   .message-index-body{
     width: 100%;
+
+    ::-webkit-scrollbar{
+      width: 10px;
+    }
+  
+    ::-webkit-scrollbar-track{
+      background: rgba(100, 100, 100, 1);
+      border-radius: 5px;
+    }
+  
+    ::-webkit-scrollbar-thumb{
+      background: rgba(50, 50, 50, 1);
+      border-radius: 5px;
+    }
   }
 
   .message-box{
@@ -51,6 +65,7 @@
   .message-list{
     height: calc(100vh - 98px);
     overflow: auto;
+
   }
 
   .message-options{
@@ -86,8 +101,13 @@
       background-color: rgba(75, 75, 75, 1);
       border: none;
       box-sizing: border-box;
+      color: white;
       padding: 10px;
       width: 100%;
+    }
+    
+    input:hover{
+      border: none
     }
   }
 }

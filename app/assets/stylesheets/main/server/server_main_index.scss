@@ -4,7 +4,7 @@
 
   .server-index-header{
     padding: 10px;
-    border-bottom: 2px solid rgba(100, 100, 100, 1);
+    border-bottom: 2px solid black;
   }
 
   .server-index-body{
@@ -14,7 +14,7 @@
 
   .server-index-list{
     width: 65vw;
-    border-right: 5px solid rgba(100, 100, 100, 1);
+    border-right: 1px solid rgba(100, 100, 100, 1);
   }
 
   .server-index-item{
@@ -23,7 +23,6 @@
 
   .server-index-item:hover{
     background: rgba(75, 75, 75, 1);
-    cursor: pointer;
   }
 
   .server-image-container{
@@ -57,5 +56,6 @@
 
   .add-server-button:hover{
     color: white;
+    cursor: pointer;
   }
 }
