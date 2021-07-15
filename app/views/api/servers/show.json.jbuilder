@@ -30,7 +30,15 @@ json.messages do
   @server.text_channels.each do |text_channel|
     text_channel.messages.each do |message|
       json.set! message.id do
-        json.extract! message, :id, :body, :author_id, :created_at, :updated_at
+        json.extract! message, :id, :body, :author_id
+
+        if ((Time.current - message.created_at) / 1.day).round < 1
+          json.created_at message.created_at.strftime("Today at %l:%M%p")
+        elsif ((Time.current - message.created_at) / 1.day).round < 2
+          json.created_at message.created_at.strftime("Yesterday at %l:%M%p")
+        else
+          json.created_at message.created_at.strftime("%m/%d/%Y")
+        end
       end
     end
   end

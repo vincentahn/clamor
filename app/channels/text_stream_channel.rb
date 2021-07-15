@@ -16,8 +16,7 @@ class TextStreamChannel < ApplicationCable::Channel
           body: message.body,
           author_id: message.author_id,
           typeable_id: message.typeable_id,
-          created_at: message.created_at,
-          updated_at: message.updated_at
+          created_at: message.created_at.strftime("Today at %l:%M%p")
         }
       }
 

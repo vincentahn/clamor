@@ -16,7 +16,7 @@ class TextChannelList extends React.Component{
       this.props.history.push(`/channels/${this.props.server.id}/${this.props.textChannels[0].id}`);
 
       this.setState({ 
-        textChannelId: this.props.textChannels[0],
+        textChannelId: this.props.textChannels[0].id,
         serverId: this.props.server.id
       });
     }
@@ -34,7 +34,7 @@ class TextChannelList extends React.Component{
       this.props.history.push(`/channels/${this.props.server.id}/${this.props.textChannels[0].id}`);
 
       this.setState({ 
-        textChannelId: this.props.textChannels[0],
+        textChannelId: this.props.textChannels[0].id,
         serverId: this.props.server.id
       });
     }
@@ -62,11 +62,14 @@ class TextChannelList extends React.Component{
           <a 
             onClick={this.handleChangeChannel(channel.id)}
             key={`text-channel-${channel.id}`}>
-            <div className="text-channel-item">
+
+            <div 
+              className={`text-channel-item 
+                ${channel.id === this.state.textChannelId ? "selected" : ""}`}>
                 <div className="hash-icon">
                   <FontAwesomeIcon icon={faHashtag} />
                 </div>
-                <div>
+                <div className="text-channel-name">
                   <h3>{channel.name}</h3>
                 </div>
             </div>

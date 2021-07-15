@@ -41,9 +41,28 @@
   }
 
   .text-channel-item:hover{
-    background-color: rgba(60, 60, 60, 1);
-    color: rgba(200, 200, 200, 1);
+    background-color: rgba(55, 55, 55, 1);
     cursor: pointer;
+    
+    .text-channel-name{
+      color: rgba(200, 200, 200, 1);
+    }
+  }
+
+  .selected{
+    background-color: rgba(60, 60, 60, 1);
+
+    .text-channel-name{
+      color: white;
+    }
+  }
+
+  .selected:hover{
+    background-color: rgba(60, 60, 60, 1);
+    
+    .text-channel-name{
+      color: white;
+    }
   }
 
   .hash-icon{
