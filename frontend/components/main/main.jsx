@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 import Modal from './../modal'
@@ -22,6 +23,7 @@ const Main = () => (
       <Switch>
         <Route path="/channels/@me" component={MainIndex}/>
         <Route path="/channels/:serverId" component={TextChannelIndexContainer} />
+        <Redirect to="/channels/@me" />
       </Switch>
 
       <CurrentUserOptionsContainer />
