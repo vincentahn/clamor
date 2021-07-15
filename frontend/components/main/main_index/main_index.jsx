@@ -10,8 +10,6 @@ class MainIndex extends React.Component{
   }
   
   render(){
-    // debugger
-
     return(
       <div className="main-index">
         <div className="potential-search-bar">
