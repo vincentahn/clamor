@@ -1,8 +1,8 @@
 import { connect } from "react-redux"
 import TextChannelCreateForm from "./text_channel_create_form";
 
-import { createTextChannel } from "../../../../actions/text_channel_actions"
-import { closeModal } from './../../../../actions/modal_actions'
+import { createTextChannel } from "../../../../actions/text_channel_actions";
+import { closeModal } from './../../../../actions/modal_actions';
 
 const mapStateToProps = (store, ownProps) => ({
   currentUserId: store.session.currentUserId,

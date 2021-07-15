@@ -46,6 +46,7 @@
   .option-selected{
     background-color: rgba(55, 55, 55, 1);;
     color: lightgray;
+    cursor: pointer;
   }
   
   .full-page-special-option-set{
@@ -66,30 +67,83 @@
     top: 0;
     bottom: 0;
     padding: 30px;
-    width: 49vw;
+    width: 40vw;
+  }
+
+  .full-page-form-heading{
+    font-size: 20px;
+  }  
+
+  .image-input{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .profile-photo-container{
+    border-radius: 50%;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center
+  }
+  
+  .profile-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
   }
   
   .full-page-form-column-3{
     background-color: rgba(54, 57, 63, 1);
-    width: 21vw;
+    text-align: center;
+    width: 30vw;
     padding: 40px 0;
+
+    h1{
+      color: rgba(100, 100, 100, 1);
+      font-size: 15px;
+      padding-top: 5px;
+    }
+  }
+
+  .form-close-container{
+    text-align: center;
+    width: 30px;
+  }
+
+  .current-heading{
+    text-align: center;
+    width: 34px;
   }
   
-  .current-user-form-close-button{
-    height: 20px;
-    width: 20px;
-  
-    display: flex;
-    justify-content: center;
+  .full-page-form-close-button{
     align-items: center;
-  
+    display: flex;
     background-color: transparent;
-    color: white;
-    border: 2px solid white;
+    border: 2px solid gray;
     border-radius: 50%;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+
+    svg{
+      color: rgba(200, 200, 200, 1);
+      height: 15px;
+      width: 15px;
+    }
   }
   
-  .current-user-form-close-button:hover{
+  .full-page-form-close-button:hover{
     background-color: rgba(100, 100, 100, 1);
+    cursor: pointer;
   }
 }

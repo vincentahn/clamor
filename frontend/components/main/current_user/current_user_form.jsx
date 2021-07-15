@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 class CurrentUserForm extends React.Component{
   constructor(props){
     super(props);
@@ -49,74 +52,102 @@ class CurrentUserForm extends React.Component{
 
   render(){
     return(
-      <div className="current-user-form">
-        <div className="current-user-form-column-1">
-          <nav className="current-user-form-options">
-            <ul>
-              <a>
-                <li className="current-user-form-link">
-                  My Account
-                </li>
-              </a>
-              <a onClick={this.props.logout} className="logout-link">
-                <li className="current-user-form-link">
-                  Logout
-                </li>
-              </a>
-            </ul>
-          </nav>
-        </div>
-        <div className="current-user-form-column-2">
-          <form onSubmit={this.handleSubmit}>
-              <h1>My Account</h1>
-
-              <div 
-                className="profile-photo-container"
-                style={{backgroundImage: `url(${this.state.profileUrl})`}}>
-
-                <input 
-                  className="profile-input"
-                  type="file" 
-                  onChange={this.handleFileSubmit}/>
+      <div className="full-page-form current-user-page-form">
+        <div className="full-page-form-column-1">
+          <div className="full-page-form-options-list">
+            <div className="full-page-option-set">
+              <div className="full-page-form-options-heading">
+                <h1>USER SETTINGS</h1>
               </div>
+              <div className="full-page-form-option option-selected">
+                <a>
+                  <h1>My Account</h1>
+                </a>
+              </div>
+            </div>
 
-              <h3>Username</h3>
-              <input 
-                type="text" 
-                value={this.state.username}
-                onChange={this.update('username')}/>
-              
-              <h3>Email</h3>
-              <input 
-                type="text" 
-                value={this.state.email}
-                onChange={this.update('email')}/>
-
-              <h3>Current Password</h3>
-              <input 
-                type="password" 
-                value={this.state.password}
-                onChange={this.update('currentPassword')}/>
-
-              <h3>New Password</h3>
-              <input 
-                type="password" 
-                value={this.state.password}
-                onChange={this.update('newPassword')}/>
-
-              <br/>
-
-              <button className="current-user-edit-button">
-                Edit Profile
-              </button>
-          </form>
+            <div className="full-page-special-option-set">
+              <div className="full-page-form-option special-option">
+                <a onClick={this.props.logout}>
+                  <h1>Logout</h1>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <a 
-            className="current-user-form-close-button"
-            onClick={this.props.closeModal}>
-            X
-          </a>
+        <div className="full-page-form-column-2">
+          <div className="my-account-edit">
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <div className="full-page-form-heading">
+                  <h1>My Account</h1>
+                </div>
+                <div className="full-page-form-box">
+                  <div className="full-page-form-box-header">
+                    <div 
+                      className="profile-photo-container"
+                      style={{backgroundImage: `url(${this.state.profileUrl})`}}>
+
+                      <input 
+                        className="profile-input"
+                        type="file" 
+                        onChange={this.handleFileSubmit}/>
+                    </div>
+                    <div className="current-user-username">
+                      <h2>{this.props.username}</h2>
+                    </div>
+                    <div className="button-container">
+                      <button className="current-user-edit-button">
+                        Edit Profile
+                      </button>
+                    </div>
+                  </div>
+                  <div className="full-page-inner-form">
+                    <div className="form-field">
+                      <h3>USERNAME</h3>
+                      <input 
+                        type="text" 
+                        value={this.state.username}
+                        onChange={this.update('username')}/>
+                    </div>
+                    <div className="form-field">
+                      <h3>EMAIL</h3>
+                      <input 
+                        type="text" 
+                        value={this.state.email}
+                        onChange={this.update('email')}/>
+                    </div>
+                    <div className="form-field">
+                      <h3>CURRENT PASSWORD</h3>
+                      <input 
+                        type="password" 
+                        value={this.state.currentPassword}
+                        onChange={this.update('currentPassword')}/>
+                    </div>
+                    <div className="form-field">
+                      <h3>NEW PASSWORD</h3>
+                      <input 
+                        type="password" 
+                        value={this.state.newPassword}
+                        onChange={this.update('newPassword')}/>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="full-page-form-column-3">
+          <div className="form-close-container">
+            <a 
+              className="full-page-form-close-button"
+              onClick={this.props.closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </a>
+            <div className="current-heading">
+              <h1>ESC</h1>
+            </div>
+          </div>
         </div>
       </div>
     );

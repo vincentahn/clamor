@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 class ServerEditForm extends React.Component{
   constructor(props){
     super(props);
@@ -88,7 +91,7 @@ class ServerEditForm extends React.Component{
 
   render(){
     return(
-      <div className="full-page-form">
+      <div className="full-page-form edit-server-page-form">
         <div className="full-page-form-column-1">
           <div className="full-page-form-options-list">
             <div className="full-page-option-set">
@@ -113,7 +116,7 @@ class ServerEditForm extends React.Component{
         </div>
         <div className="full-page-form-column-2">
           <div className="server-overview">
-            <div className="server-overview-heading">
+            <div className="full-page-form-heading">
               <h1>Server Overview</h1>
             </div>
 
@@ -166,11 +169,16 @@ class ServerEditForm extends React.Component{
           </div>
         </div>
         <div className="full-page-form-column-3">
-          <a 
-            className="current-user-form-close-button"
-            onClick={this.props.closeModal}>
-            X
-          </a>
+          <div className="form-close-container">
+            <a 
+              className="full-page-form-close-button"
+              onClick={this.props.closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </a>
+            <div className="current-heading">
+              <h1>ESC</h1>
+            </div>
+          </div>
         </div>
       </div>
     );
