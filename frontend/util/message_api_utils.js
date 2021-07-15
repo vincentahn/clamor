@@ -1,14 +1,13 @@
-export const createMessage = (message, currentUserId) => {
+export const createMessage = (message, channelId) => {
   App.cable.subscriptions.subscriptions[0].sendMessage({
-    id: currentUserId,
+    channelId,
     message
   });
 }
 
 export const deleteMessage = (messageId, currentUserId) => (
-  $.ajax({
-    method: 'DELETE',
-    url: `/api/messages/${messageId}`,
-    data: { currentUserId }
+  App.cable.subscriptions.subscriptions[0].deleteMessage({
+    currentUserId,
+    messageId
   })
 )

@@ -1,10 +1,47 @@
 import React from 'react';
 
+// Triggers subscribed method
+const subscribeProps = channelId => ({ 
+  channel: 'TextStreamChannel',
+  id: channelId
+});
+
+// Action methods
+const actionProps = actions => ({
+  received: data => {
+    // debugger;
+
+    switch(data.type){
+      case 'receiveMessage':
+        actions.receiveMessage(data.message);
+        break;
+
+      case 'removeMessage':
+        actions.removeMessage(data.message);
+        break;
+      
+      case 'error':
+        actions.sendErrors(data.errors);
+        break;
+
+      default:
+        break;
+    }
+  },
+  sendMessage: function(data){
+    return this.perform("sendTextMessage", data)
+  },
+  deleteMessage: function(data){
+    return this.perform("deleteTextMessage", data)
+  }
+});
+
 class MessageIndex extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      body: ''
+      body: '',
+      channelId: this.props.channelId
     }
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -12,23 +49,36 @@ class MessageIndex extends React.Component{
   }
 
   componentDidMount(){
-    App.cable.subscriptions.create(
-      // Triggers subscribed method
-      { 
-        channel: 'TextStreamChannel',
-        id: this.props.channelId
-      },
-
-      // Action methods
-      {
-        received: data => {
-          this.props.receiveMessage(data);
-        },
-        sendMessage: function(data){
-          return this.perform("sendTextMessage", data)
-        }
-      }
+    const textStreamChannel = App.cable.subscriptions.create(
+      subscribeProps(this.props.channelId), 
+      actionProps({
+        receiveMessage: this.props.receiveMessage,
+        removeMessage: this.props.removeMessage,
+        sendErrors: this.props.sendErrors
+      })
     );
+
+    this.props.createChannel(textStreamChannel);
+
+    // debugger;
+  }
+
+  componentDidUpdate(){
+    if(this.props.channelId !== this.state.channelId){
+      const textStreamChannel = App.cable.subscriptions.create(
+        subscribeProps(this.props.channelId), 
+        actionProps({
+          receiveMessage: this.props.receiveMessage,
+          removeMessage: this.props.removeMessage,
+          sendErrors: this.props.sendErrors
+        })
+      );
+
+      this.props.createChannel(textStreamChannel);
+      this.setState({ channelId: this.props.channelId })
+    }
+
+    // debugger;
   }
 
   handleCreate(e){

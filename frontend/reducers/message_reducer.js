@@ -23,7 +23,7 @@ const messageReducer = (oldState = {}, action) => {
       return newState;
 
     case REMOVE_MESSAGE:
-      delete newState[action.messageId];
+      delete newState[action.message.id];
       return newState;
 
     default:

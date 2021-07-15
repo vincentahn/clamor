@@ -24,15 +24,18 @@ const textChannelReducer = (oldState = {}, action) => {
       return newState;
 
     case RECEIVE_MESSAGE:
-      const receivedChannelId = action.message.typeable_id;
-      newState[receivedChannelId].message_ids.push(action.message.id);
+      const receiveChannelId = action.message.typeable_id;
+      let receiveMessageIds = newState[receiveChannelId].message_ids;
+
+      if(!receiveMessageIds.includes(action.message.id)) receiveMessageIds.push(action.message.id);
       return newState;
 
     case REMOVE_MESSAGE:
-      const removedChannelId = action.message.typeable_id;
-      const messageIds = newState[removedChannelId].message_ids;
-      const index = messageIds.indexOf(action.message.id);
-      if(index > -1) newState[removedChannelId].message_ids.splice(index, 1);
+      const removeChannelId = action.message.typeable_id;
+      let removeMessageIds = newState[removeChannelId].message_ids;
+
+      const index = removeMessageIds.indexOf(action.message.id);
+      if(index > -1) removeMessageIds.splice(index, 1);
       return newState;
 
     default:

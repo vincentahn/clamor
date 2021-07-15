@@ -15,19 +15,15 @@ export const receiveMessage = message => ({
   message
 })
 
-const removeMessage = message => ({
+export const removeMessage = message => ({
   type: REMOVE_MESSAGE,
   message
 })
 
-export const createMessage = (message, currentUserId) => dispatch => {
-  MessageApiUtil.createMessage(message, currentUserId);
+export const createMessage = (message, channelId) => dispatch => {
+  MessageApiUtil.createMessage(message, channelId);
 }
 
 export const deleteMessage = (messageId, currentUserId) => dispatch => {
   MessageApiUtil.deleteMessage(messageId, currentUserId)
-    .then(
-      newMessage => dispatch(removeMessage(newMessage)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
-    )
 }
