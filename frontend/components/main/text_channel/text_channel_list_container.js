@@ -5,7 +5,7 @@ import { openModal } from './../../../actions/modal_actions';
 
 const mapStateToProps = (store, ownProps) => {
   const server = store.entities.servers[ownProps.serverId];
-  const textChannels = server.channel_ids.map(id => store.entities.textChannels[id]);
+  const textChannels = server.channel_ids ? server.channel_ids.map(id => store.entities.textChannels[id]) : null;
 
   return({
     history: ownProps.history,

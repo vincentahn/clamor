@@ -57,7 +57,7 @@ class TextChannelList extends React.Component{
   }
 
   render(){
-    const textChannels = this.props.textChannels[0] ? (
+    const textChannels = this.props.textChannels && this.props.textChannels[0] ? (
         this.props.textChannels.map(channel => (
           <a 
             onClick={this.handleChangeChannel(channel.id)}
