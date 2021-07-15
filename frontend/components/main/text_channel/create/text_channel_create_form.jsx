@@ -28,25 +28,27 @@ class TextChannelCreateForm extends React.Component{
   render(){
     return(
       <div className="create-channel-form">
-        <div className="close-form">
-          <a onClick={this.props.closeModal}>
-            <FontAwesomeIcon icon={faTimes} />
-          </a>
-        </div>
-        <div className="form-heading">
-          <h1>Create Text Channel</h1>
-          <p>in Text Channels</p>
-        </div>
-        <div className="field-inputs">
-          <div>
-            <h3>CHANNEL NAME</h3>
+        <div className="server-form-body">
+          <div className="close-form">
+            <a onClick={this.props.closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </a>
           </div>
-          <div>
-            <input 
-              type="text" 
-              value={this.state.name}
-              onChange={this.update('name')}
-              onSubmit={this.handleSubmit}/>
+          <div className="form-heading">
+            <h1>Create Text Channel</h1>
+            <p>in Text Channels</p>
+          </div>
+          <div className="field-inputs">
+            <div>
+              <h3>CHANNEL NAME</h3>
+            </div>
+            <div>
+              <input 
+                type="text" 
+                value={this.state.name}
+                onChange={this.update('name')}
+                onSubmit={this.handleSubmit}/>
+            </div>
           </div>
         </div>
         <div className="server-form-footer">
