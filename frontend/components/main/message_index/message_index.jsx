@@ -9,8 +9,6 @@ const subscribeProps = channelId => ({
 // Action methods
 const actionProps = actions => ({
   received: data => {
-    // debugger;
-
     switch(data.type){
       case 'receiveMessage':
         actions.receiveMessage(data.message);
@@ -59,8 +57,6 @@ class MessageIndex extends React.Component{
     );
 
     this.props.createChannel(textStreamChannel);
-
-    // debugger;
   }
 
   componentDidUpdate(){
@@ -77,8 +73,6 @@ class MessageIndex extends React.Component{
       this.props.createChannel(textStreamChannel);
       this.setState({ channelId: this.props.channelId })
     }
-
-    // debugger;
   }
 
   handleCreate(e){

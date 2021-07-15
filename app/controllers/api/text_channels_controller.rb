@@ -1,8 +1,6 @@
 class Api::TextChannelsController < ApplicationController
   def create
     if current_user.id === params[:currentUserId].to_i
-      puts params
-
       @channel = TextChannel.new(
         name: params[:channelName],
         server_id: params[:serverId].to_i
