@@ -132,12 +132,16 @@ class MessageIndex extends React.Component{
               <p>{message.body}</p>
             </div>
           </div>
-          <div className="message-options">
-            <button 
-              onClick={this.handleDelete(message.id)}>
-              Delete
-            </button>
-          </div>
+          {message.author_id === this.props.currentUserId
+            ? (
+              <div className="message-options">
+                <button 
+                  onClick={this.handleDelete(message.id)}>
+                  Delete
+                </button>
+              </div>
+            ) 
+          : null}
         </div>
       )) : null;
 
