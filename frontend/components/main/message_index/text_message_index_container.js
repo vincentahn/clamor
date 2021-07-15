@@ -6,14 +6,17 @@ import { receiveTextChannelStream } from "../../../actions/stream_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const channelId = ownProps.match.params.channelId;
-  const channelIds = store.entities.textChannels[channelId] ? store.entities.textChannels[channelId].message_ids : null;
+  const channel = store.entities.textChannels[channelId];
+  const channelIds = channel ? channel.message_ids : null;
 
   let messages = [];
   if(channelIds) messages = channelIds.map(id => store.entities.messages[id]);
   
   return({
+    channel,
     channelId,
     currentUserId: store.session.currentUserId,
+    users: store.entities.users,
     messages,
     type: 'TextChannel'
   });

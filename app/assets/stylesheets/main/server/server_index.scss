@@ -21,6 +21,10 @@
     margin: 5px;
   }
 
+  .server-index-item:hover{
+    cursor: pointer;
+  }
+
   .server-index-item  > .before{
     background-color: black;
     border-radius: 10%;

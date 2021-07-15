@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faHashtag } from '@fortawesome/free-solid-svg-icons';
+
 class TextChannelList extends React.Component{
   constructor(props){
     super(props);
@@ -56,23 +59,31 @@ class TextChannelList extends React.Component{
   render(){
     const textChannels = this.props.textChannels[0] ? (
         this.props.textChannels.map(channel => (
-          <div className="text-channel-item" key={`text-channel-${channel.id}`}>
-            <div>
-              <a onClick={this.handleChangeChannel(channel.id)}>
-                <h3>{channel.name}</h3>
-              </a>
+          <a 
+            onClick={this.handleChangeChannel(channel.id)}
+            key={`text-channel-${channel.id}`}>
+            <div className="text-channel-item">
+                <div className="hash-icon">
+                  <FontAwesomeIcon icon={faHashtag} />
+                </div>
+                <div>
+                  <h3>{channel.name}</h3>
+                </div>
             </div>
-          </div>)))
+          </a>)))
       : (<div></div>);
 
     return(
       <div className="text-channel-list">
         <div className="text-channel-header">
-          <div>
+          <div className="text-channel-header-heading">
             <h2>TEXT CHANNELS</h2>
           </div>
-          <div>
-            <button onClick={this.handleOpenChannelCreate}>+</button>
+          <div className="add-text-channel-container">
+            <FontAwesomeIcon
+              className="add-text-channel-button" 
+              icon={faPlus} 
+              onClick={this.handleOpenChannelCreate} />
           </div>
         </div>
         

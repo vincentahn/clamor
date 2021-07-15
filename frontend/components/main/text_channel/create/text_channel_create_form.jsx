@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 class TextChannelCreateForm extends React.Component{
   constructor(props){
     super(props);
@@ -24,15 +27,17 @@ class TextChannelCreateForm extends React.Component{
 
   render(){
     return(
-      <div>
-        <div>
-          <button onClick={this.props.closeModal}>X</button>
+      <div className="create-channel-form">
+        <div className="close-form">
+          <a onClick={this.props.closeModal}>
+            <FontAwesomeIcon icon={faTimes} />
+          </a>
         </div>
-        <div>
+        <div className="form-heading">
           <h1>Create Text Channel</h1>
           <p>in Text Channels</p>
         </div>
-        <div>
+        <div className="field-inputs">
           <div>
             <h3>CHANNEL NAME</h3>
           </div>
@@ -44,10 +49,18 @@ class TextChannelCreateForm extends React.Component{
               onSubmit={this.handleSubmit}/>
           </div>
         </div>
-        <div>
-          <div>
-            <button onClick={this.props.closeModal}>Cancel</button>
-            <button onClick={this.handleSubmit}>Create Channel</button>
+        <div className="server-form-footer">
+          <div className="button-container">
+            <button 
+              onClick={this.props.closeModal}
+              className="cancel-button">
+              Cancel
+            </button>
+            <button 
+              onClick={this.handleSubmit}
+              className="submit-button">
+              Create Channel
+            </button>
           </div>
         </div>
       </div>

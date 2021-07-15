@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 class ServerMainIndex extends React.Component{
   constructor(props){
     super(props);
@@ -19,8 +22,10 @@ class ServerMainIndex extends React.Component{
 
       if(!this.props.subscribedServers.includes(serverId)){
         return(
-          <div>
-            <button onClick={addServer(serverId)}>+</button>
+          <div className="add-server-button">
+            <FontAwesomeIcon 
+              icon={faPlus}
+              onClick={addServer(serverId)}/>
           </div>
         )
       }else return null;      

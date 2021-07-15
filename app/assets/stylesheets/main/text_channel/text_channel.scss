@@ -1,0 +1,50 @@
+.text-channel-index{
+  color: white;
+  height: calc(100% - 50px);
+  margin: 0;
+
+  .server-name-header{
+    padding: 10px;
+  }
+
+  .text-channel-list{
+    color: gray;
+  }
+
+  .text-channel-header{
+    display: flex;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .text-channel-header-heading{
+    width: 90%;
+  }
+
+  .text-channel-header-heading:hover{
+    color: white;
+  }
+
+  .add-text-channel-button{
+    cursor: pointer;
+  }
+
+  .add-text-channel-button:hover{
+    color: white;
+  }
+
+  .text-channel-item{
+    display: flex;
+    padding: 10px;
+  }
+
+  .text-channel-item:hover{
+    background-color: rgba(60, 60, 60, 1);
+    color: white;
+    cursor: pointer;
+  }
+
+  .hash-icon{
+    padding-right: 10px;
+  }
+}

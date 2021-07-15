@@ -23,6 +23,7 @@
 
   .server-index-item:hover{
     background: rgba(75, 75, 75, 1);
+    cursor: pointer;
   }
 
   .server-image-container{
@@ -48,5 +49,13 @@
     display: flex;
     float: right;
     height: 50px;
+  }
+
+  .add-server-button{
+    color: gray;
+  }
+
+  .add-server-button:hover{
+    color: white;
   }
 }

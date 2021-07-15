@@ -1,0 +1,93 @@
+.message-index{
+  color: white;
+
+  .message-index-heading{
+    display: flex;
+    padding: 10px;
+  }
+
+  .hashtag-icon{
+    padding-right: 10px;
+  }
+
+  .message-index-body{
+    width: 100%;
+  }
+
+  .message-box{
+    display: flex;
+  }
+
+  .profile-pic{
+    padding: 10px;
+
+    img{
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .message-info{
+    width: 90%;
+  }
+
+  .message-header{
+    display: flex;
+  }
+
+  .message-author-username{
+    padding: 5px;
+  }
+
+  .message-time{
+    padding: 5px;
+  }
+
+  .message-body{
+    padding: 5px;
+  }
+
+  .message-list{
+    height: calc(100vh - 98px);
+    overflow: auto;
+  }
+
+  .message-options{
+    align-items: center;
+    display: flex;
+    padding: 5px;
+
+    button{
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      color: red;
+      padding: 5px;
+    }
+
+    button:hover{
+      background-color: red;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .message-input{
+    bottom: 0;
+    padding: 10px;
+    right: 0;
+
+    form{
+      right: 0;
+    }
+
+    input{
+      background-color: rgba(75, 75, 75, 1);
+      border: none;
+      box-sizing: border-box;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+}

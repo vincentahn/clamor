@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+
 // Triggers subscribed method
 const subscribeProps = channelId => ({ 
   channel: 'TextStreamChannel',
@@ -101,33 +104,64 @@ class MessageIndex extends React.Component{
   }
 
   render(){
+    const retrieveProfile = authorId => {
+      return this.props.users[authorId].profile_url
+        ? this.props.users[authorId].profile_url
+        : window.defaultProfilePic;
+    }
+
     const messages = this.props.messages 
       ? this.props.messages.map(message => (
         <div 
           key={`message-${message.id}`}
           className="message-box">
-          <div>
-            <p>{message.body}</p>
+          <div className="profile-pic">
+            <img 
+              src={retrieveProfile(message.author_id)}/>
           </div>
-          <div>
-            <button onClick={this.handleDelete(message.id)}>Delete</button>
+          <div className="message-info">
+            <div className="message-header">
+              <div className="message-author-username">
+                <h2>{this.props.users[message.author_id].username}</h2>
+              </div>
+              <div className="message-time">
+                <h4>{message.created_at}</h4>
+              </div>
+            </div>
+            <div className="message-body">
+              <p>{message.body}</p>
+            </div>
+          </div>
+          <div className="message-options">
+            <button 
+              onClick={this.handleDelete(message.id)}>
+              Delete
+            </button>
           </div>
         </div>
       )) : null;
 
     return(
-      <div>
-        <div></div>
-        <div>
-          <div>
-            {messages}
+      <div className="message-index">
+        <div className="message-index-heading">
+          <div className="hashtag-icon">
+            <FontAwesomeIcon icon={faHashtag} />
           </div>
           <div>
+            <h1>{this.props.channel ? this.props.channel.name : null}</h1>
+          </div>
+        </div>
+        <div className="message-index-body">
+          <div className="message-list">
+            {messages}
+          </div>
+          <div className="message-input">
             <form onSubmit={this.handleCreate}>
               <input 
                 type="text" 
                 value={this.state.body}
-                onChange={this.update}/>
+                onChange={this.update}
+                placeholder={`Message #${this.props.channel ? this.props.channel.name : null}`}/>
             </form>
           </div>
         </div>
