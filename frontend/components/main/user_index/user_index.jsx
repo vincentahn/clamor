@@ -10,8 +10,10 @@ class UserIndex extends React.Component{
   }
 
   render(){
-    const userIndexItems = this.props.users.map(user => {
+    const userIndexItems = this.props.users ? this.props.users.map(user => {
       const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
+
+      if(user.id === this.props.currentUserId) return null;
       
       return(
         <div key={`user-${user.id}`} className="user-index-item">
@@ -23,7 +25,7 @@ class UserIndex extends React.Component{
           </div>
         </div>
       );
-    })
+    }) : null;
 
     return(
       <div className="user-index">
