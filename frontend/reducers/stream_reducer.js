@@ -15,11 +15,14 @@ const streamReducer = (oldState = {}, action) => {
       return newState;
 
     case REMOVE_TEXT_CHANNEL_STREAM:
-      newState.textChannelStream.unsubscribe();
-      delete newState.textChannelStream;
+      if(newState.textChannelStream){
+        newState.textChannelStream.unsubscribe();
+        delete newState.textChannelStream;
+      }
       return newState;
 
     case LOGOUT_CURRENT_USER:
+      if(newState.textChannelStream) newState.textChannelStream.unsubscribe();
       return {};
 
     default:

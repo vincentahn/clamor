@@ -40,7 +40,7 @@ class SignupForm extends React.Component{
     // The first map creates a range from 1 to 31
     // The second map returns the map of days input choices
     return [...Array(31).keys()].map(i => i + 1).map(idx => (
-      <option value={idx}>{idx}</option>
+      <option key={`day-option-${idx}`} value={idx}>{idx}</option>
     ))
   }
 
@@ -51,17 +51,15 @@ class SignupForm extends React.Component{
     // I noticed Discord ranges years from 52 years ago to 3 years ago.
     // This is probably to have a range of around 50 years
     return [...Array(50).keys()].map(i => i + earliestYear).map(idx => (
-      <option value={idx}>{idx}</option>
+      <option key={`year-option-${idx}`} value={idx}>{idx}</option>
     ))
   }
 
   render(){
     const errors = word => {
       return(
-        this.props.errors.map(error => {
-          return error.toLowerCase().includes(word)
-            ? error
-            : null;
+        this.props.errors.filter(error => {
+          return error.toLowerCase().includes(word);
         })
       )
     };
@@ -156,47 +154,95 @@ class SignupForm extends React.Component{
                   </div>
               }
 
-              <div className="field">
-                <div className="label">
-                  <h3>DATE OF BIRTH</h3>
-                </div>
-                <div className="custom-selects-container">
-                  <div className="custom-select">
-                    <select 
-                      onChange={this.update('month')}>
-                      <option disabled selected value>Select</option>
-                      <option value="01">January</option>
-                      <option value="02">February</option>
-                      <option value="03">March</option>
-                      <option value="04">April</option>
-                      <option value="05">May</option>
-                      <option value="06">June</option>
-                      <option value="07">July</option>
-                      <option value="08">August</option>
-                      <option value="09">September</option>
-                      <option value="10">October</option>
-                      <option value="11">November</option>
-                      <option value="12">December</option>
-                    </select>
-                  </div>
+              {errors('birthday').length !== 0
+                ?
+                  <div className="error">
+                    <div className="field">
+                      <div className="label">
+                        <h3>DATE OF BIRTH - <i>{errors('birthday')}</i></h3>
+                      </div>
+                      <div className="custom-selects-container">
+                        <div className="custom-select">
+                          <select 
+                            onChange={this.update('month')}>
+                            <option disabled selected value>Select</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                          </select>
+                        </div>
 
-                  <div className="custom-select middle-select">
-                    <select 
-                      onChange={this.update('day')}>
-                      <option disabled selected value>Select</option>
-                      {this.daysOptions()}
-                    </select>
-                  </div>
+                        <div className="custom-select middle-select">
+                          <select 
+                            onChange={this.update('day')}>
+                            <option disabled selected value>Select</option>
+                            {this.daysOptions()}
+                          </select>
+                        </div>
 
-                  <div className="custom-select">
-                    <select 
-                      onChange={this.update('year')}>
-                      <option disabled selected value>Select</option>
-                      {this.yearsOptions()}
-                    </select>
+                        <div className="custom-select">
+                          <select 
+                            onChange={this.update('year')}>
+                            <option disabled selected value>Select</option>
+                            {this.yearsOptions()}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                :
+                  <div className="field">
+                    <div className="label">
+                      <h3>DATE OF BIRTH</h3>
+                    </div>
+                    <div className="custom-selects-container">
+                      <div className="custom-select">
+                        <select 
+                          onChange={this.update('month')}>
+                          <option disabled selected value>Select</option>
+                          <option value="01">January</option>
+                          <option value="02">February</option>
+                          <option value="03">March</option>
+                          <option value="04">April</option>
+                          <option value="05">May</option>
+                          <option value="06">June</option>
+                          <option value="07">July</option>
+                          <option value="08">August</option>
+                          <option value="09">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                      </div>
+
+                      <div className="custom-select middle-select">
+                        <select 
+                          onChange={this.update('day')}>
+                          <option disabled selected value>Select</option>
+                          {this.daysOptions()}
+                        </select>
+                      </div>
+
+                      <div className="custom-select">
+                        <select 
+                          onChange={this.update('year')}>
+                          <option disabled selected value>Select</option>
+                          {this.yearsOptions()}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+              }
+
               
               <div className="button-container">
                 <button type="submit">Continue</button>

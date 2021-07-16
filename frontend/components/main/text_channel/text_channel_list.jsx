@@ -30,7 +30,7 @@ class TextChannelList extends React.Component{
       })
     }
 
-    if(this.props.textChannels[0] && !this.state.textChannelId){
+    if(this.props.textChannels && this.props.textChannels[0] && !this.state.textChannelId){
       this.props.history.push(`/channels/${this.props.server.id}/${this.props.textChannels[0].id}`);
 
       this.setState({ 
