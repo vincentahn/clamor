@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import MessageIndex from "./message_index";
 
 import { createMessage, deleteMessage, receiveMessage, removeMessage } from "./../../../actions/message_actions";
-import { receiveTextChannelStream } from "../../../actions/stream_actions";
+import { receiveTextChannelStream, removeTextChannelStream } from "../../../actions/stream_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const channelId = ownProps.match.params.channelId;
@@ -27,7 +27,8 @@ const mapDispatchToProps = dispatch => ({
   delete: (messageId, currentUserId) => dispatch(deleteMessage(messageId, currentUserId)),
   receiveMessage: message => dispatch(receiveMessage(message)),
   removeMessage: message => dispatch(removeMessage(message)),
-  createChannel: stream => dispatch(receiveTextChannelStream(stream))
+  createChannel: stream => dispatch(receiveTextChannelStream(stream)),
+  removeChannel: () => dispatch(removeTextChannelStream())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageIndex);

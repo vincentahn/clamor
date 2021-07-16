@@ -7,7 +7,7 @@ import { fetchServer, unsubscribeServer} from "../../../actions/server_actions";
 const mapStateToProps = store => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
 
-  const servers = store.session.subscribedServers.map(id => {
+  const servers = store.session.subscribedServers ? store.session.subscribedServers.map(id => {
     const server = store.entities.servers[id];
 
     return {
@@ -15,7 +15,7 @@ const mapStateToProps = store => {
       name: server.name,
       profileUrl: checkPhoto(server.profile_url)
     };
-  })
+  }) : null;
   
   return({
     currentUserPhoto: checkPhoto(store.session.profile_url),

@@ -6,6 +6,7 @@ import{
 import{ 
   RECEIVE_MESSAGE, REMOVE_MESSAGE
 } from '../actions/message_actions';
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const textChannelReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -37,6 +38,9 @@ const textChannelReducer = (oldState = {}, action) => {
       const index = removeMessageIds.indexOf(action.message.id);
       if(index > -1) removeMessageIds.splice(index, 1);
       return newState;
+
+    case LOGOUT_CURRENT_USER:
+      return {};
 
     default:
       return oldState;

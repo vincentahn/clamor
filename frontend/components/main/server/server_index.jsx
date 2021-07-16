@@ -88,7 +88,7 @@ class ServerIndex extends React.Component{
   }
 
   render(){
-    const serverLinks = this.props.servers.map(server => (
+    const serverLinks = this.props.servers ? this.props.servers.map(server => (
       <div 
         key={`subscribed-server-${server.id}`} 
         className="server-index-item" 
@@ -104,7 +104,7 @@ class ServerIndex extends React.Component{
         </a>
         <div className="after"></div>
       </div>
-    ))
+    )) : null;
 
     return(
       <div className="server-index">

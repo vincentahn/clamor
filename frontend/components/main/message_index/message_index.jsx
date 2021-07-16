@@ -78,6 +78,10 @@ class MessageIndex extends React.Component{
     }
   }
 
+  componentWillUnmount(){
+    this.props.removeChannel();
+  }
+
   handleCreate(e){
     e.preventDefault();
 
