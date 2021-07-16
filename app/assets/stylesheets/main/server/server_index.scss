@@ -37,7 +37,7 @@
 
     top: 50%;
     transform: translateY(-50%);
-    left: 60px;
+    left: 70px;
 
     p{
       width: 100%;
@@ -51,12 +51,12 @@
 
     top: 50%;
     transform: translateY(-50%);
-    right: -15px;
+    left: 60px;
 
     border-top: 13px solid transparent;
     border-left: 0;
     border-bottom: 13px solid transparent;
-    border-right: 8px solid black;
+    border-right: 15px solid black;
   }
 
   .server-index-item:hover > .before,

@@ -16,7 +16,7 @@ class UserIndex extends React.Component{
       return(
         <div key={`user-${user.id}`} className="user-index-item">
           <div className="user-image-container">
-            <img src={checkPhoto(user.profileUrl)} />
+            <img src={checkPhoto(user.profile_url)} />
           </div>
           <div className="user-name-container">
             <h1>{user.username}</h1>
