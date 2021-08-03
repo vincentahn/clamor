@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
@@ -40,13 +40,19 @@ const actionProps = actions => ({
 class MessageIndex extends React.Component{
   constructor(props){
     super(props);
+
     this.state = {
       body: '',
       channelId: this.props.channelId
     }
+
     this.handleCreate = this.handleCreate.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.update = this.update.bind(this);
+  }
+
+  scrollToBottom(){
+    this.listRef.scrollIntoView(false);
   }
 
   componentDidMount(){
@@ -60,6 +66,11 @@ class MessageIndex extends React.Component{
     );
 
     this.props.createChannel(textStreamChannel);
+
+    this.listRef = document.getElementById('scroll-id');
+    if(this.listRef){
+      this.listRef.scrollIntoView(false);
+    }
   }
 
   componentDidUpdate(){
@@ -75,6 +86,10 @@ class MessageIndex extends React.Component{
 
       this.props.createChannel(textStreamChannel);
       this.setState({ channelId: this.props.channelId })
+    }
+
+    if(this.listRef){
+      this.listRef.scrollIntoView(false);
     }
   }
 
@@ -162,6 +177,7 @@ class MessageIndex extends React.Component{
         <div className="message-index-body">
           <div className="message-list">
             {messages}
+            <div id="scroll-id"></div>
           </div>
           <div className="message-input">
             <form onSubmit={this.handleCreate}>
