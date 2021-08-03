@@ -13,13 +13,18 @@ class Splash extends React.Component{
             <div>
               <nav>
                 <div className="nav-link">
-                  <a href="https://github.com/vincentahn">
+                  <a href="https://github.com/vincentahn/clamor">
                     Github
                   </a>
                 </div>
                 <div className="nav-link">
                   <a href="https://www.linkedin.com/in/junminvincentahn/">
                     LinkedIn
+                  </a>
+                </div>
+                <div className="nav-link">
+                  <a href="https://angel.co/u/jun-min-vincent-ahn">
+                    AngelList
                   </a>
                 </div>
               </nav>
@@ -63,13 +68,18 @@ class Splash extends React.Component{
           <div className="footer-nav">
             <nav>
               <div className="nav-link">
-                <a href="https://github.com/vincentahn">
+                <a href="https://github.com/vincentahn/clamor">
                   Github
                 </a>
               </div>
               <div className="nav-link">
                 <a href="https://www.linkedin.com/in/junminvincentahn/">
                   LinkedIn
+                </a>
+              </div>
+              <div className="nav-link">
+                <a href="https://angel.co/u/jun-min-vincent-ahn">
+                  AngelList
                 </a>
               </div>
             </nav>
