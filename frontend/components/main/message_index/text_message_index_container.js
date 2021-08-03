@@ -3,6 +3,7 @@ import MessageIndex from "./message_index";
 
 import { createMessage, deleteMessage, receiveMessage, removeMessage } from "./../../../actions/message_actions";
 import { receiveTextChannelStream, removeTextChannelStream } from "../../../actions/stream_actions";
+import { receiveServerError } from "../../../actions/error_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const channelId = ownProps.match.params.channelId;
@@ -28,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
   receiveMessage: message => dispatch(receiveMessage(message)),
   removeMessage: message => dispatch(removeMessage(message)),
   createChannel: stream => dispatch(receiveTextChannelStream(stream)),
+  sendErrors: errors => dispatch(receiveServerError(errors)),
   removeChannel: () => dispatch(removeTextChannelStream())
 })
 
