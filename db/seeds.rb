@@ -6,6 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.delete_all
+User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
+
+Server.delete_all
+Server.connection.execute('ALTER SEQUENCE servers_id_seq RESTART WITH 1')
+
+ServerMembership.delete_all
+ServerMembership.connection.execute('ALTER SEQUENCE server_memberships_id_seq RESTART WITH 1')
+
+TextChannel.delete_all
+TextChannel.connection.execute('ALTER SEQUENCE text_channels_id_seq RESTART WITH 1')
+
+Message.delete_all
+Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
+
 demo = User.create!(
   username: 'demo',
   password: 'gooddemoman',
@@ -50,4 +65,24 @@ Message.create!(
   author_id: 1, 
   typeable_id: 1, 
   typeable_type: "TextChannel"
+)
+
+Server.create!(
+  name: "Valorant",
+  founder_id: founder.id
+)
+
+Server.create!(
+  name: "Anime",
+  founder_id: founder.id
+)
+
+Server.create!(
+  name: "AppAcademy",
+  founder_id: founder.id
+)
+
+Server.create!(
+  name: "Software Engineers",
+  founder_id: founder.id
 )
