@@ -5,7 +5,7 @@ class PrivateChannel < ApplicationRecord
     foreign_key: :channel_id,
     class_name: 'PrivateMembership'
 
-  has_many :users
+  has_many :users,
     through: :private_memberships,
     source: :user
 

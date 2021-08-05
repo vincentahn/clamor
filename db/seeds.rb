@@ -86,3 +86,17 @@ Server.create!(
   name: "Software Engineers",
   founder_id: founder.id
 )
+
+sc = PrivateChannel.create!(
+  name: 'Secret Chat'
+)
+
+PrivateMembership.create!(
+  user_id: demo.id,
+  channel_id: sc.id
+)
+
+PrivateMembership.create!(
+  user_id: founder.id,
+  channel_id: sc.id
+)
