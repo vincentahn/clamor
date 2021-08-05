@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     resources :server_memberships, only: [:create, :destroy]
     resources :messages, only: [:create, :update, :destroy]
     resources :text_channels, only: [:create, :update, :destroy]
+    resources :private_channels, only: [:index, :show]
   end
+
+  get 'api/private_channels/user/:user_id', :to => 'api/private_channels#show_by_user', defaults: {format: :json}
 
   mount ActionCable.server => '/cable'
 end

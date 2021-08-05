@@ -15,6 +15,18 @@ class User < ApplicationRecord
     through: :server_memberships,
     source: :server
 
+  has_many :private_memberships,
+    foreign_key: :user_id,
+    class_name: 'PrivateMembership'
+  
+  has_many :private_channels,
+    through: :private_memberships,
+    source: :channel
+
+  has_many :messages,
+    foreign_key: :author_id,
+    class_name: 'Message'
+
   has_one_attached :profile_photo
 
   def self.find_by_credentials(email, password)
