@@ -6,3 +6,10 @@ export const fetchChannels = (currentUserId = 1) => {
       console.log(data);
     });
 }
+
+export const fetchChannelByUser = (currentUserId = 1, otherUserId = 2) => {
+  PrivateChannelApiUtil.fetchPrivateChannelByUser(currentUserId, otherUserId)
+    .then(data => {
+      console.log(data);
+    });
+}

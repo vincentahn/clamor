@@ -12,6 +12,12 @@ class Api::PrivateChannelsController < ApplicationController
   end
 
   def show
+    
+  end
 
+  def show_by_user
+    @channel = PrivateChannel.getPrivateChannelByUser(current_user, params[:user_id])
+
+    render "api/private_channels/show"
   end
 end

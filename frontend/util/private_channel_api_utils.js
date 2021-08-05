@@ -7,3 +7,13 @@ export const fetchPrivateChannels = (currentUserId) => (
     }
   })
 );
+
+export const fetchPrivateChannelByUser = (currentUserId, otherUserId) => (
+  $.ajax({
+    method: 'GET',
+    url: `api/private_channels/user/${otherUserId}`,
+    data: {
+      currentUserId
+    }
+  })
+)

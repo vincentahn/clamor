@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :private_channels, only: [:index, :show]
   end
 
+  get 'api/private_channels/user/:user_id', :to => 'api/private_channels#show_by_user', defaults: {format: :json}
+
   mount ActionCable.server => '/cable'
 end

@@ -12,4 +12,16 @@ class PrivateChannel < ApplicationRecord
   has_many :messages,
     as: :typeable,
     dependent: :destroy
+
+  def self.getPrivateChannelByUser(current_user, otherUserId)
+    channel = current_user.private_channels
+      .joins(:users)
+      .find_by("users.id = ?", otherUserId)
+
+    if(channel)
+      channel
+    else
+      puts "No Channel Found"
+    end
+  end
 end
