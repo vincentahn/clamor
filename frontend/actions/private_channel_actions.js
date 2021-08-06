@@ -36,13 +36,14 @@ export const fetchChannelById = (currentUserId, channelId) => dispatch => {
     )
 }
 
-export const fetchChannelByUser = (currentUserId, otherUserId) => {
+export const fetchChannelByUser = (currentUserId, otherUserId, history) => dispatch => {
   PrivateChannelApiUtil.fetchPrivateChannelByUser(currentUserId, otherUserId)
     .then(
       data => {
         dispatch(receiveUsers(data.users));
         dispatch(receiveMessages(data.messages));
         dispatch(receivePrivateChannel(data.channel));
+        history.push(`/channels/@me/${data.channel.id}`)
       },
       errors => dispatch(receiveServerError(errors))
     );

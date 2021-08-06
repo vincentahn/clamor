@@ -16,7 +16,10 @@ class UserIndex extends React.Component{
       if(user.id === this.props.currentUserId) return null;
       
       return(
-        <div key={`user-${user.id}`} className="user-index-item">
+        <div 
+          key={`user-${user.id}`} 
+          className="user-index-item"
+          onClick={() => this.props.fetchChannel(this.props.currentUserId, user.id, this.props.history)}>
           <div className="user-image-container">
             <img src={checkPhoto(user.profile_url)} />
           </div>
