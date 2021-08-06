@@ -15,9 +15,13 @@ class MainIndex extends React.Component{
   
   render(){
     const privateChannels = this.props.channels.map(channel => (
-      <Link>
+      <Link
+        key={`private-channel-${channel.id}`}
+        to={`/channels/@me/${channel.id}`}
+        onClick={e => this.setState({ selected: channel.id })}>
         <div
-          className="main-index-item">
+          className={`main-index-item
+          ${this.state.selected === channel.id ? "selected" : ""}`}>
           <h1>{channel.name}</h1>
         </div>
       </Link>

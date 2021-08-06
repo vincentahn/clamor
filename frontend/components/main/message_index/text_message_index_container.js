@@ -13,14 +13,15 @@ const mapStateToProps = (store, ownProps) => {
   let messages = [];
   if(channelIds) messages = channelIds.map(id => store.entities.messages[id]);
   
-  return({
+  return {
     channel,
     channelId,
     currentUserId: store.session.currentUserId,
     users: store.entities.users,
     messages,
-    type: 'TextChannel'
-  });
+    type: 'TextChannel',
+    streamType: 'TextStreamChannel'
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -30,7 +31,8 @@ const mapDispatchToProps = dispatch => ({
   removeMessage: message => dispatch(removeMessage(message)),
   createChannel: stream => dispatch(receiveTextChannelStream(stream)),
   sendErrors: errors => dispatch(receiveServerError(errors)),
-  removeChannel: () => dispatch(removeTextChannelStream())
+  removeChannel: () => dispatch(removeTextChannelStream()),
+  setup: props => {}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageIndex);

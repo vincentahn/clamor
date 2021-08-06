@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faAt } from '@fortawesome/free-solid-svg-icons';
 
 // Triggers subscribed method
-const subscribeProps = channelId => ({ 
-  channel: 'TextStreamChannel',
+const subscribeProps = (channelId, streamType) => ({ 
+  channel: streamType,
   id: channelId
 });
 
@@ -56,8 +56,10 @@ class MessageIndex extends React.Component{
   }
 
   componentDidMount(){
+    this.props.setup(this.props);
+
     const textStreamChannel = App.cable.subscriptions.create(
-      subscribeProps(this.props.channelId), 
+      subscribeProps(this.props.channelId, this.props.streamType), 
       actionProps({
         receiveMessage: this.props.receiveMessage,
         removeMessage: this.props.removeMessage,
@@ -75,8 +77,10 @@ class MessageIndex extends React.Component{
 
   componentDidUpdate(){
     if(this.props.channelId !== this.state.channelId){
+      this.props.setup(this.props);
+
       const textStreamChannel = App.cable.subscriptions.create(
-        subscribeProps(this.props.channelId), 
+        subscribeProps(this.props.channelId, this.props.streamType), 
         actionProps({
           receiveMessage: this.props.receiveMessage,
           removeMessage: this.props.removeMessage,
@@ -129,6 +133,14 @@ class MessageIndex extends React.Component{
         : window.defaultProfilePic;
     }
 
+    let headingTag = null;
+
+    if(this.props.type === 'TextChannel'){
+      headingTag = (<FontAwesomeIcon icon={faHashtag} />);
+    }else if(this.props.type === 'PrivateChannel'){
+      headingTag = (<FontAwesomeIcon icon={faAt} />);
+    }
+
     const messages = this.props.messages 
       ? this.props.messages.map(message => (
         <div 
@@ -168,7 +180,7 @@ class MessageIndex extends React.Component{
       <div className="message-index">
         <div className="message-index-heading">
           <div className="hashtag-icon">
-            <FontAwesomeIcon icon={faHashtag} />
+            {headingTag}
           </div>
           <div>
             <h1>{this.props.channel ? this.props.channel.name : null}</h1>
