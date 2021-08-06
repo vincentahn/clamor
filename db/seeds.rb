@@ -18,6 +18,12 @@ ServerMembership.connection.execute('ALTER SEQUENCE server_memberships_id_seq RE
 TextChannel.delete_all
 TextChannel.connection.execute('ALTER SEQUENCE text_channels_id_seq RESTART WITH 1')
 
+PrivateChannel.delete_all
+PrivateChannel.connection.execute('ALTER SEQUENCE private_channels_id_seq RESTART WITH 1')
+
+PrivateMembership.delete_all
+PrivateMembership.connection.execute('ALTER SEQUENCE private_memberships_id_seq RESTART WITH 1')
+
 Message.delete_all
 Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
 
