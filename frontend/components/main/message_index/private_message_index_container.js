@@ -6,7 +6,6 @@ import { receivePrivateChannelStream, removePrivateChannelStream } from "../../.
 import MessageIndex from "./message_index";
 
 const mapStateToProps = (store, ownProps) => {
-  debugger;
   const channelId = ownProps.match.params.channelId;
   const channel = store.entities.privateChannels[channelId];
   const channelIds = channel ? channel.message_ids : null;

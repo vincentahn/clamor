@@ -1,14 +1,14 @@
-class TextStreamChannel < ApplicationCable::Channel
+class PrivateStreamChannel < ApplicationCable::Channel
   def subscribed
-    text_channel = TextChannel.find(params[:id])
-    stream_for text_channel
+    private_channel = PrivateChannel.find(params[:id])
+    stream_for private_channel
   end
 
   def sendMessage(data)
-    text_channel = TextChannel.find(data['channelId'])
+    private_channel = PrivateChannel.find(data['channelId'])
     message = Message.new(data['message'])
     
-    if text_channel && message.save
+    if private_channel && message.save
       socket = { 
         type: 'receiveMessage',
         message: {  
@@ -21,20 +21,20 @@ class TextStreamChannel < ApplicationCable::Channel
         }
       }
 
-      TextStreamChannel.broadcast_to(text_channel, socket)
+      PrivateStreamChannel.broadcast_to(private_channel, socket)
     else
       socket = {
         type: 'error',
         errors: message.errors.full_messages
       }
 
-      TextStreamChannel.broadcast_to(text_channel, socket)
+      PrivateStreamChannel.broadcast_to(private_channel, socket)
     end
   end
 
   def deleteMessage(data)
     message = Message.find(data['messageId'])
-    text_channel = TextChannel.find(message.typeable_id)
+    private_channel = PrivateChannel.find(message.typeable_id)
 
     if message && message.destroy
       socket = {
@@ -46,17 +46,14 @@ class TextStreamChannel < ApplicationCable::Channel
         }
       }
 
-      TextStreamChannel.broadcast_to(text_channel, socket)
+      PrivateStreamChannel.broadcast_to(private_channel, socket)
     else
       socket = {
         type: 'error',
         errors: message.errors.full_messages
       }
 
-      TextStreamChannel.broadcast_to(text_channel, socket)
+      PrivateStreamChannel.broadcast_to(private_channel, socket)
     end
-  end
-
-  def unsubscribed
   end
 end

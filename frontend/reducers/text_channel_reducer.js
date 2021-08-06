@@ -25,19 +25,27 @@ const textChannelReducer = (oldState = {}, action) => {
       return newState;
 
     case RECEIVE_MESSAGE:
-      const receiveChannelId = action.message.typeable_id;
-      let receiveMessageIds = newState[receiveChannelId].message_ids;
-
-      if(!receiveMessageIds.includes(action.message.id)) receiveMessageIds.push(action.message.id);
-      return newState;
+      if(action.message.typeable_type === "TextChannel"){
+        const receiveChannelId = action.message.typeable_id;
+        let receiveMessageIds = newState[receiveChannelId].message_ids;
+  
+        if(!receiveMessageIds.includes(action.message.id)) receiveMessageIds.push(action.message.id);
+        return newState;
+      }else{
+        return oldState;
+      }
 
     case REMOVE_MESSAGE:
-      const removeChannelId = action.message.typeable_id;
-      let removeMessageIds = newState[removeChannelId].message_ids;
-
-      const index = removeMessageIds.indexOf(action.message.id);
-      if(index > -1) removeMessageIds.splice(index, 1);
-      return newState;
+      if(action.message.typeable_type === "TextChannel"){
+        const removeChannelId = action.message.typeable_id;
+        let removeMessageIds = newState[removeChannelId].message_ids;
+  
+        const index = removeMessageIds.indexOf(action.message.id);
+        if(index > -1) removeMessageIds.splice(index, 1);
+        return newState;
+      }else{
+        return oldState;
+      }
 
     case LOGOUT_CURRENT_USER:
       return {};

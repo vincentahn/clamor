@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faAt } from '@fortawesome/free-solid-svg-icons';
@@ -30,10 +30,10 @@ const actionProps = actions => ({
     }
   },
   sendMessage: function(data){
-    return this.perform("sendTextMessage", data)
+    return this.perform("sendMessage", data)
   },
   deleteMessage: function(data){
-    return this.perform("deleteTextMessage", data)
+    return this.perform("deleteMessage", data)
   }
 });
 
@@ -58,7 +58,7 @@ class MessageIndex extends React.Component{
   componentDidMount(){
     this.props.setup(this.props);
 
-    const textStreamChannel = App.cable.subscriptions.create(
+    const stream = App.cable.subscriptions.create(
       subscribeProps(this.props.channelId, this.props.streamType), 
       actionProps({
         receiveMessage: this.props.receiveMessage,
@@ -67,7 +67,7 @@ class MessageIndex extends React.Component{
       })
     );
 
-    this.props.createChannel(textStreamChannel);
+    this.props.createChannel(stream);
 
     this.listRef = document.getElementById('scroll-id');
     if(this.listRef){
@@ -79,7 +79,7 @@ class MessageIndex extends React.Component{
     if(this.props.channelId !== this.state.channelId){
       this.props.setup(this.props);
 
-      const textStreamChannel = App.cable.subscriptions.create(
+      const stream = App.cable.subscriptions.create(
         subscribeProps(this.props.channelId, this.props.streamType), 
         actionProps({
           receiveMessage: this.props.receiveMessage,
@@ -88,7 +88,7 @@ class MessageIndex extends React.Component{
         })
       );
 
-      this.props.createChannel(textStreamChannel);
+      this.props.createChannel(stream);
       this.setState({ channelId: this.props.channelId })
     }
 
@@ -143,6 +143,7 @@ class MessageIndex extends React.Component{
 
     const messages = this.props.messages 
       ? this.props.messages.map(message => (
+        message ? 
         <div 
           key={`message-${message.id}`}
           className="message-box">
@@ -174,6 +175,7 @@ class MessageIndex extends React.Component{
             ) 
           : null}
         </div>
+        : null
       )) : null;
 
     return(
