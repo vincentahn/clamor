@@ -8,8 +8,21 @@ class MainIndex extends React.Component{
       selected: ''
     }
   }
+
+  componentDidMount(){
+    this.props.fetchChannels(this.props.currentUserId);
+  }
   
   render(){
+    const privateChannels = this.props.channels.map(channel => (
+      <Link>
+        <div
+          className="main-index-item">
+          <h1>{channel.name}</h1>
+        </div>
+      </Link>
+    ))
+
     return(
       <div className="main-index">
         <div className="potential-search-bar">
@@ -35,6 +48,8 @@ class MainIndex extends React.Component{
               <h1>Servers</h1>
             </div>
           </Link>
+
+          {privateChannels}
         </div>
       </div>
     );

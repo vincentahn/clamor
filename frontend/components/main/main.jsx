@@ -7,7 +7,7 @@ import {
 
 import Modal from './../modal'
 import ServerIndexContainer from './server/server_index_container';
-import MainIndex from './main_index/main_index';
+import MainIndexContainer from './main_index/main_index_container';
 import TextChannelIndexContainer from './text_channel/text_channel_index_container'
 import CurrentUserOptionsContainer from './current_user/current_user_options_container';
 import UserIndexContainer from './user_index/user_index_container';
@@ -21,7 +21,7 @@ const Main = () => (
     <Route path="/channels" component={ServerIndexContainer} />
     <div className="column-2">
       <Switch>
-        <Route path="/channels/@me" component={MainIndex}/>
+        <Route path="/channels/@me" component={MainIndexContainer}/>
         <Route path="/channels/:serverId" component={TextChannelIndexContainer} />
         <Redirect to="/channels/@me" />
       </Switch>
