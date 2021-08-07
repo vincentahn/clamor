@@ -20,9 +20,14 @@ class MainIndex extends React.Component{
         to={`/channels/@me/${channel.id}`}
         onClick={e => this.setState({ selected: channel.id })}>
         <div
-          className={`main-index-item
+          className={`private-channel-item
           ${this.state.selected === channel.id ? "selected" : ""}`}>
-          <h1>{channel.name}</h1>
+          <div className="channel-image-container">
+            <img src={channel.profileUrl} alt="" />
+          </div>
+          <div>
+            <h1>{channel.name}</h1>
+          </div>
         </div>
       </Link>
     ))
@@ -53,6 +58,9 @@ class MainIndex extends React.Component{
             </div>
           </Link>
 
+          <div className="direct-message-header-heading">
+            <h2>DIRECT MESSAGES</h2>
+          </div>
           {privateChannels}
         </div>
       </div>
