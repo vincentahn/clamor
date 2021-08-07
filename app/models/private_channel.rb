@@ -13,6 +13,8 @@ class PrivateChannel < ApplicationRecord
     as: :typeable,
     dependent: :destroy
 
+  has_one_attached :channel_photo
+
   def self.getPrivateChannelByUser(current_user, otherUserId)
     channel = current_user.private_channels
       .joins(:users)
