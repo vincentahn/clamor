@@ -20,10 +20,30 @@ class PrivateChannel < ApplicationRecord
       .joins(:users)
       .find_by("users.id = ?", otherUserId)
 
-    if(channel)
+    if channel
       channel
     else
-      puts "No Channel Found"
+      other_user = User.find(otherUserId)
+
+      if other_user
+        channel = PrivateChannel.create!(
+          name: "#{current_user.username} and #{other_user.username}'s Private Channel"
+        )
+        
+        PrivateMembership.create!(
+          user_id: current_user.id,
+          channel_id: channel.id
+        )
+
+        PrivateMembership.create!(
+          user_id: otherUserId,
+          channel_id: channel.id
+        )
+
+        channel
+      else
+        nil
+      end
     end
   end
 end
