@@ -3,6 +3,7 @@ import { receiveServerError } from "../../../actions/error_actions";
 import { createMessage, deleteMessage, receiveMessage, removeMessage } from "../../../actions/message_actions";
 import { fetchChannelById } from "../../../actions/private_channel_actions";
 import { receivePrivateChannelStream, removePrivateChannelStream } from "../../../actions/stream_actions";
+import { receiveUser } from "../../../actions/user_actions";
 import MessageIndex from "./message_index";
 
 const mapStateToProps = (store, ownProps) => {
@@ -20,7 +21,8 @@ const mapStateToProps = (store, ownProps) => {
     users: store.entities.users,
     messages,
     type: 'PrivateChannel',
-    streamType: 'PrivateStreamChannel'
+    streamType: 'PrivateStreamChannel',
+    currentUser: store.entities.users[store.session.currentUserId]
   };
 };
 
@@ -37,7 +39,8 @@ const mapDispatchToProps = dispatch => {
     createChannel: stream => dispatch(receivePrivateChannelStream(stream)),
     sendErrors: errors => dispatch(receiveServerError(errors)),
     removeChannel: () => dispatch(removePrivateChannelStream()),
-    setup
+    setup,
+    receiveUser: user => dispatch(receiveUser(user))
   }
 };
 

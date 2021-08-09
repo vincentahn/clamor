@@ -1,6 +1,13 @@
 class TextStreamChannel < ApplicationCable::Channel
   def subscribed
     text_channel = TextChannel.find(params[:id])
+
+    socket = {
+      type: 'receiveNewOnlineUser',
+      user: params[:currentUser]
+    }
+
+    TextStreamChannel.broadcast_to(text_channel, socket)
     stream_for text_channel
   end
 

@@ -4,6 +4,7 @@ import MessageIndex from "./message_index";
 import { createMessage, deleteMessage, receiveMessage, removeMessage } from "./../../../actions/message_actions";
 import { receiveTextChannelStream, removeTextChannelStream } from "../../../actions/stream_actions";
 import { receiveServerError } from "../../../actions/error_actions";
+import { receiveUser } from "../../../actions/user_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const channelId = ownProps.match.params.channelId;
@@ -20,7 +21,8 @@ const mapStateToProps = (store, ownProps) => {
     users: store.entities.users,
     messages,
     type: 'TextChannel',
-    streamType: 'TextStreamChannel'
+    streamType: 'TextStreamChannel',
+    currentUser: store.entities.users[store.session.currentUserId]
   };
 };
 
@@ -32,7 +34,8 @@ const mapDispatchToProps = dispatch => ({
   createChannel: stream => dispatch(receiveTextChannelStream(stream)),
   sendErrors: errors => dispatch(receiveServerError(errors)),
   removeChannel: () => dispatch(removeTextChannelStream()),
-  setup: props => {}
+  setup: props => {},
+  receiveUser: user => dispatch(receiveUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageIndex);

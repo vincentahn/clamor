@@ -4,15 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faAt } from '@fortawesome/free-solid-svg-icons';
 
 // Triggers subscribed method
-const subscribeProps = (channelId, streamType) => ({ 
+const subscribeProps = (channelId, streamType, currentUser) => ({ 
   channel: streamType,
-  id: channelId
+  id: channelId,
+  currentUser
 });
 
 // Action methods
 const actionProps = actions => ({
   received: data => {
     switch(data.type){
+      case 'receiveNewOnlineUser':
+        actions.receiveUser(data.user);
+        break;
+
       case 'receiveMessage':
         actions.receiveMessage(data.message);
         break;
@@ -59,11 +64,12 @@ class MessageIndex extends React.Component{
     this.props.setup(this.props);
 
     const stream = App.cable.subscriptions.create(
-      subscribeProps(this.props.channelId, this.props.streamType), 
+      subscribeProps(this.props.channelId, this.props.streamType, this.props.currentUser), 
       actionProps({
         receiveMessage: this.props.receiveMessage,
         removeMessage: this.props.removeMessage,
-        sendErrors: this.props.sendErrors
+        sendErrors: this.props.sendErrors,
+        receiveUser: this.props.receiveUser
       })
     );
 
@@ -84,7 +90,8 @@ class MessageIndex extends React.Component{
         actionProps({
           receiveMessage: this.props.receiveMessage,
           removeMessage: this.props.removeMessage,
-          sendErrors: this.props.sendErrors
+          sendErrors: this.props.sendErrors,
+          receiveUser: this.props.receiveUser
         })
       );
 
