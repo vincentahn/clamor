@@ -5,7 +5,8 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import Modal from './../modal'
+import Error from './error';
+import Modal from './modal';
 import ServerIndexContainer from './server/server_index_container';
 import MainIndexContainer from './main_index/main_index_container';
 import TextChannelIndexContainer from './text_channel/text_channel_index_container'
@@ -17,6 +18,7 @@ import TextMessageIndexContainer from './message_index/text_message_index_contai
 
 const Main = () => (
   <div className="main">
+    <Error />
     <Modal />
     
     <Route path="/channels" component={ServerIndexContainer} />

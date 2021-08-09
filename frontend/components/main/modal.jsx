@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { closeModal } from './../actions/modal_actions';
+import { closeModal } from './../../actions/modal_actions';
 
-import CurrentUserFormContainer from './main/current_user/current_user_form_container';
-import ServerCreateForm from './main/server/server_create_form';
-import ServerEditFormContainer from './main/server/server_edit_form_container';
-import TextChannelCreateContainer from './main/text_channel/create/text_channel_create_container';
+import CurrentUserFormContainer from './current_user/current_user_form_container';
+import ServerCreateForm from './server/server_create_form';
+import ServerEditFormContainer from './server/server_edit_form_container';
+import TextChannelCreateContainer from './text_channel/create/text_channel_create_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {

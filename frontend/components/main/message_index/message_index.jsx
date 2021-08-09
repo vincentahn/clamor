@@ -195,8 +195,8 @@ class MessageIndex extends React.Component{
           </div>
           <div className="message-input">
             <form onSubmit={this.handleCreate}>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={this.state.body}
                 onChange={this.update}
                 placeholder={`Message #${this.props.channel ? this.props.channel.name : null}`}/>

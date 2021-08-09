@@ -1,0 +1,58 @@
+.error-background{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.error-child{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.server-error-container{
+  background-color: rgba(50, 50, 50, 1);
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100px;
+  min-width: 150px;
+  padding: 20px;
+  text-align: center;
+  
+  .server-error-heading{
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .server-error-information{
+    color: rgba(175, 175, 175, 1);
+    padding: 10px 0;
+  }
+
+  .close-button{
+    padding: 10px 0;
+
+    button{
+      background-color: rgba(88, 101, 242, 1);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-size: 15px;
+      height: 40px;
+      padding: 5px 30px;
+    }
+  
+    button:hover{
+      background-color: rgba(71, 82, 197, 1);
+    }
+  }
+}
