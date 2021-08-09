@@ -30,7 +30,7 @@ export const createServer = (formData, currentUserId) => dispatch => {
   ServerApiUtil.createServer(formData)
     .then(
       newServer => dispatch(receiveServer(newServer)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 };
 
@@ -40,7 +40,7 @@ export const updateServer = (formData, currentUserId, serverId) => dispatch => {
   ServerApiUtil.updateServer(formData, serverId)
     .then(
       newServer => dispatch(receiveServer(newServer)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 
@@ -48,7 +48,7 @@ export const subscribeServer = (currentUserId, serverId) => dispatch => {
   ServerApiUtil.subscribeServer(currentUserId, serverId)
     .then(
       newServer => dispatch(receiveServer(newServer)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 
@@ -56,7 +56,7 @@ export const unsubscribeServer = (currentUserId, serverId) => dispatch => {
   ServerApiUtil.unsubscribeServer(currentUserId, serverId)
     .then(
       () => dispatch(removeServer(serverId)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 
@@ -64,7 +64,7 @@ export const deleteServer = (currentUserId, serverId) => dispatch => {
   ServerApiUtil.deleteServer(currentUserId, serverId)
     .then(
       () => dispatch(removeServer(serverId)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 
@@ -72,7 +72,7 @@ export const fetchServers = (currentUserId) => dispatch => {
   ServerApiUtil.fetchServers(currentUserId)
     .then(
       servers => dispatch(receiveServers(servers)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 
@@ -87,6 +87,6 @@ export const fetchServer = (currentUserId, serverId, callback) => dispatch => {
         
         dispatch(receiveUsers(data.users));
       },
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }

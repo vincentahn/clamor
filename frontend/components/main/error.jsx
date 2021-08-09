@@ -22,7 +22,7 @@ class ErrorModal extends React.Component{
 
     return this.props.errors.length !== 0 ?
       <div className="error-background" onClick={this.props.clearErrors}>
-        <div className="error-child" onClick={e => e.stopPropagation}>
+        <div className="error-child" onClick={e => e.stopPropagation()}>
           <div className="server-error-container">
             <div>
               <div className="server-error-heading">

@@ -20,7 +20,7 @@ export const fetchChannels = currentUserId => dispatch => {
   PrivateChannelApiUtil.fetchPrivateChannels(currentUserId)
     .then(
       channels => dispatch(receivePrivateChannels(channels)),
-      errors => dispatch(receiveServerError(errors))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     );
 }
 
@@ -32,7 +32,7 @@ export const fetchChannelById = (currentUserId, channelId) => dispatch => {
         dispatch(receiveMessages(data.messages));
         dispatch(receivePrivateChannel(data.channel));
       },
-      errors => dispatch(receiveServerError(errors))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
 

@@ -29,7 +29,7 @@ export const signup = user => dispatch => (
         dispatch(receiveServers(data.servers));
         return dispatch(receiveCurrentUser(data.session));
       },
-      errors => dispatch(receiveSignupError(errors.responseJSON))
+      errorData => dispatch(receiveSignupError(errorData.responseJSON.errors))
     )
 );
 
@@ -40,7 +40,7 @@ export const login = user => dispatch => (
         dispatch(receiveServers(data.servers));
         return dispatch(receiveCurrentUser(data.session));
       },
-      errors => dispatch(receiveLoginError(errors.responseJSON))
+      errorData => dispatch(receiveLoginError(errorData.responseJSON.errors))
     )
 );
 
@@ -51,7 +51,7 @@ export const update = (formData, currentUserId) => dispatch => (
       dispatch(receiveCurrentUser(data.session));
       return dispatch(closeModal());
     },
-    errors => dispatch(receiveServerError(errors.responseJSON))
+    errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
   )
 );
 
@@ -61,6 +61,6 @@ export const logout = () => dispatch => (
       dispatch(logoutCurrentUser());
       return dispatch(closeModal());
     },
-    errors => dispatch(receiveServerError(errors.responseJSON))
+    errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
   )
 );

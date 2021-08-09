@@ -13,6 +13,6 @@ export const fetchUsers = currentUserId => dispatch => {
   UserApiUtil.fetchUsers(currentUserId)
     .then(
       users => dispatch(receiveUsers(users)),
-      errors => dispatch(receiveServerError(errors.responseJSON))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }

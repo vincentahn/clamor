@@ -18,6 +18,6 @@ export const createTextChannel = (name, serverId, currentUserId) => dispatch => 
   TextChannelApiUtil.createTextChannel(name, serverId, currentUserId)
     .then(
       newChannel => dispatch(receiveTextChannel(newChannel)),
-      errors => dispatch(receiveServerError(errors))
+      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
     )
 }
