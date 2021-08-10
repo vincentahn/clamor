@@ -23,7 +23,7 @@ function Modal({modal, closeModal}) {
       break;
 
     case 'openServerEditForm':
-      return(<ServerEditFormContainer id={modal.data.id} />);
+      return(<ServerEditFormContainer id={modal.data.id} history={modal.data.history} />);
 
     case 'openTextChannelCreateForm':
       component = <TextChannelCreateContainer serverId={modal.data.serverId} />

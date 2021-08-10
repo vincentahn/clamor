@@ -61,7 +61,7 @@ class ServerIndex extends React.Component{
     e.preventDefault();
     
     if(this.state.dropdown.id !== 0){
-      this.props.openServerEditForm(this.state.dropdown.id);
+      this.props.openServerEditForm(this.state.dropdown.id, this.props.history);
     }
 
     this.closeContextMenu(e);

@@ -81,6 +81,10 @@ class ServerEditForm extends React.Component{
     e.preventDefault();
     this.props.delete(this.props.currentUserId, this.props.serverId);
     this.props.closeModal();
+
+    if(this.props.history.location.pathname.indexOf(`/channels/${this.props.serverId}`) > -1){
+      this.props.history.push("/channels/@me");
+    }
   }
 
   changed(){

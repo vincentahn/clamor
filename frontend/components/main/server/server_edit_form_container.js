@@ -14,7 +14,8 @@ const mapStateToProps = (store, ownProps) => {
     profileUrl: server.profile_url
     ? server.profile_url
     : window.defaultProfilePic,
-    currentUserId: store.session.currentUserId
+    currentUserId: store.session.currentUserId,
+    history: ownProps.history
   });
 };
 
