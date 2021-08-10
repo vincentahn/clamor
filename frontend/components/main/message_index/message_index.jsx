@@ -3,6 +3,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faAt } from '@fortawesome/free-solid-svg-icons';
 
+import jstz from 'jstz';
+import moment from 'moment';
+
 // Triggers subscribed method
 const subscribeProps = (channelId, streamType, currentUser) => ({ 
   channel: streamType,
@@ -140,6 +143,22 @@ class MessageIndex extends React.Component{
         : window.defaultProfilePic;
     }
 
+    const timezone = jstz.determine().name() || 'Etc/UTC';
+    const moment = require('moment-timezone');
+
+    const updateTimeZone = time => {
+      let currentTime = moment();
+      let messageTime = moment(time);
+
+      if(currentTime.diff(messageTime, 'd') > 1){
+        return messageTime.tz(timezone).format('MM/DD/YYYY');
+      }else if(currentTime.diff(messageTime, 'd') === 1){
+        return `Yesterday at ${messageTime.tz(timezone).format('hh:mm A')}`;
+      }else{
+        return `Today at ${messageTime.tz(timezone).format('hh:mm A')}`;
+      }
+    }
+
     let headingTag = null;
 
     if(this.props.type === 'TextChannel'){
@@ -164,7 +183,7 @@ class MessageIndex extends React.Component{
                 <h2>{this.props.users[message.author_id].username}</h2>
               </div>
               <div className="message-time">
-                <h4>{message.created_at}</h4>
+                <h4>{updateTimeZone(message.created_at)}</h4>
               </div>
             </div>
             <div className="message-body">
