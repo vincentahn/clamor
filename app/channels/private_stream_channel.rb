@@ -17,7 +17,7 @@ class PrivateStreamChannel < ApplicationCable::Channel
           author_id: message.author_id,
           typeable_id: message.typeable_id,
           typeable_type: message.typeable_type,
-          created_at: message.created_at.strftime("Today at %l:%M%p")
+          created_at: message.created_at
         }
       }
 
