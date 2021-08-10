@@ -13,17 +13,17 @@ class Splash extends React.Component{
             <div>
               <nav>
                 <div className="nav-link">
-                  <a href="https://github.com/vincentahn/clamor">
+                  <a href="https://github.com/vincentahn/clamor" target="_blank" rel="noopener noreferrer">
                     Github
                   </a>
                 </div>
                 <div className="nav-link">
-                  <a href="https://www.linkedin.com/in/junminvincentahn/">
+                  <a href="https://www.linkedin.com/in/junminvincentahn/" target="_blank" rel="noopener noreferrer">
                     LinkedIn
                   </a>
                 </div>
                 <div className="nav-link">
-                  <a href="https://angel.co/u/jun-min-vincent-ahn">
+                  <a href="https://angel.co/u/jun-min-vincent-ahn" target="_blank" rel="noopener noreferrer">
                     AngelList
                   </a>
                 </div>
@@ -43,7 +43,7 @@ class Splash extends React.Component{
             </div>
             {/* <div className="attribution">
               <h4>
-                <a href="https://unsplash.com/@korpa">
+                <a href="https://unsplash.com/@korpa" target="_blank" rel="noopener noreferrer">
                   Header by Jr Korpa
                 </a>
               </h4>
@@ -68,17 +68,17 @@ class Splash extends React.Component{
           <div className="footer-nav">
             <nav>
               <div className="nav-link">
-                <a href="https://github.com/vincentahn/clamor">
+                <a href="https://github.com/vincentahn/clamor" target="_blank" rel="noopener noreferrer">
                   Github
                 </a>
               </div>
               <div className="nav-link">
-                <a href="https://www.linkedin.com/in/junminvincentahn/">
+                <a href="https://www.linkedin.com/in/junminvincentahn/" target="_blank" rel="noopener noreferrer">
                   LinkedIn
                 </a>
               </div>
               <div className="nav-link">
-                <a href="https://angel.co/u/jun-min-vincent-ahn">
+                <a href="https://angel.co/u/jun-min-vincent-ahn" target="_blank" rel="noopener noreferrer">
                   AngelList
                 </a>
               </div>
