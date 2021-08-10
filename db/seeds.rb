@@ -46,6 +46,8 @@ og = Server.create!(
   founder_id: demo.id
 )
 
+og.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'og.jpg')), filename: 'og.jpg')
+
 ServerMembership.create!(
   user_id: demo.id,
   server_id: og.id
@@ -73,25 +75,33 @@ Message.create!(
   typeable_type: "TextChannel"
 )
 
-Server.create!(
+valo = Server.create!(
   name: "Valorant",
   founder_id: founder.id
 )
 
-Server.create!(
+valo.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'valorant.png')), filename: 'valorant.png')
+
+anime = Server.create!(
   name: "Anime",
   founder_id: founder.id
 )
 
-Server.create!(
+anime.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'demon_slayer.jpg')), filename: 'demon_slayer.jpg')
+
+aA = Server.create!(
   name: "AppAcademy",
   founder_id: founder.id
 )
 
-Server.create!(
+aA.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'app_academy.png')), filename: 'app_academy.png')
+
+swe = Server.create!(
   name: "Software Engineers",
   founder_id: founder.id
 )
+
+swe.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'swe.png')), filename: 'swe.png')
 
 sc = PrivateChannel.create!(
   name: 'Secret Chat'
