@@ -130,6 +130,10 @@ class ServerEditForm extends React.Component{
                   className="profile-photo-container"
                   style={{backgroundImage: `url(${this.state.profileUrl})`}}>
 
+                  <div className="change-image-overlay">
+                    CHANGE IMAGE
+                  </div>
+
                   <input 
                     className="profile-input"
                     type="file" 

@@ -89,7 +89,25 @@
   
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center
+    background-position: center center;
+
+    .change-image-overlay{
+      display: none;
+      text-align: center;
+      align-items: center;
+      background-color: rgba(100, 100, 100, 0.8);
+      border-radius: 50%;
+      content: "CHANGE ICON";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .profile-photo-container:hover > .change-image-overlay{
+    display: flex;
   }
   
   .profile-input{
