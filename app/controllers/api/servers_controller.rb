@@ -19,7 +19,10 @@ class Api::ServersController < ApplicationController
       if @server
         render "api/servers/show"
       else
-        render json: { errors: ["Could not find server"] }, status: 422
+        render json: { 
+          errors: ["Could not find server"],
+          server_does_not_exist: true  
+        }, status: 422
       end
     else
       render json: { errors: ["IMPOSTER!"] }, status: 401
@@ -79,7 +82,10 @@ class Api::ServersController < ApplicationController
           render json: @server.errors.full_messages, status: 422
         end
       else
-        render json: { errors: ["Couldn't find server"] }, status: 422
+        render json: { 
+          errors: ["Could not find server"],
+          server_does_not_exist: true 
+        }, status: 422
       end
     else
       render json: { errors: ["IMPOSTER!"] }, status: 401

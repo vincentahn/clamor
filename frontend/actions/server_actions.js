@@ -76,7 +76,7 @@ export const fetchServers = (currentUserId) => dispatch => {
     )
 }
 
-export const fetchServer = (currentUserId, serverId, callback) => dispatch => {
+export const fetchServer = (currentUserId, serverId) => dispatch => {
   return ServerApiUtil.fetchServer(currentUserId, serverId)
     .then(
       data => {
@@ -87,6 +87,10 @@ export const fetchServer = (currentUserId, serverId, callback) => dispatch => {
         
         dispatch(receiveUsers(data.users));
       },
-      errorData => dispatch(receiveServerError(errorData.responseJSON.errors))
+      errorData => {
+        dispatch(receiveServerError(errorData.responseJSON.errors));
+
+        if(errorData.responseJSON.server_does_not_exist) dispatch(removeServer(serverId));
+      }
     )
 }
