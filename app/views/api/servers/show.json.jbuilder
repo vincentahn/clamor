@@ -28,7 +28,7 @@ end
 
 json.messages do
   @server.text_channels.each do |text_channel|
-    text_channel.messages.each do |message|
+    text_channel.messages.order("messages.created_at desc").each do |message|
       json.set! message.id do
         json.extract! message, :id, :body, :author_id, :created_at
       end
