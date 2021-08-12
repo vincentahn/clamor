@@ -4,6 +4,7 @@ class Api::PrivateChannelsController < ApplicationController
       @private_channels = PrivateChannel
         .joins(:users)
         .where("users.id = ?", params[:currentUserId].to_i)
+        .includes(channel_photo_attachment: :blob)
 
       render "api/private_channels/index"
     else
@@ -13,7 +14,7 @@ class Api::PrivateChannelsController < ApplicationController
 
   def show
     if current_user.id === params[:currentUserId].to_i
-      @channel = PrivateChannel.find(params[:id])
+      @channel = PrivateChannel.includes(:messages, users: [profile_photo_attachment: :blob]).find(params[:id])
 
       if @channel
         render "api/private_channels/show"

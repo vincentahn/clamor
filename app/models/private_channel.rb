@@ -18,6 +18,7 @@ class PrivateChannel < ApplicationRecord
   def self.getPrivateChannelByUser(current_user, otherUserId)
     channel = current_user.private_channels
       .joins(:users)
+      .includes(:messages, users: [profile_photo_attachment: :blob])
       .find_by("users.id = ?", otherUserId)
 
     if channel
