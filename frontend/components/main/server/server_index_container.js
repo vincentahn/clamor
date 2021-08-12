@@ -11,10 +11,10 @@ const mapStateToProps = (store, ownProps) => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
 
   const privateChannelNotifications = Object.values(store.entities.privateChannels).reduce((filtered, privateChannel) => {
-    if(privateChannel.count){
+    if(privateChannel.notificationCount){
       filtered.push({
         id: privateChannel.id,
-        count: privateChannel.count,
+        count: privateChannel.notificationCount,
         name: privateChannel.name.length > 15 ? `${privateChannel.name.slice(0, 15)}...` : privateChannel.name,
         profileUrl: checkPhoto(privateChannel.profile_url)
       });

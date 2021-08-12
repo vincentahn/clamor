@@ -15,10 +15,15 @@ const privateChannelReducer = (oldState = {}, action) => {
       return newState;
 
     case RECEIVE_PRIVATE_CHANNEL_NOTIFICATION:
-      newState[action.channel.id] = action.channel
-      if(!action.channel.message_ids) newState[action.channel.id].message_ids = [];
-      if(!newState[action.channel.id].notificationCount) newState[action.channel.id].count = 1;
-      else newState[action.channel.id].notificationCount++;
+      if(!newState[action.channel.id]){
+        newState[action.channel.id] = action.channel;
+        if(!action.channel.message_ids) newState[action.channel.id].message_ids = [];
+        if(!newState[action.channel.id].notificationCount) newState[action.channel.id].notificationCount = 1;
+      }else{
+        newState[action.channel.id] = Object.assign(newState[action.channel.id], action.channel)
+        if(!newState[action.channel.id].notificationCount) newState[action.channel.id].notificationCount = 1;
+        else newState[action.channel.id].notificationCount++;
+      }
       return newState;
 
     case RECEIVE_MESSAGE:
