@@ -107,7 +107,6 @@ class ServerIndex extends React.Component{
   }
 
   render(){
-    // debugger;
     const privateLinks = this.props.privateChannelNotifications.map(notification => (
       <div 
         key={`private-channel-notification-${notification.id}`} 
