@@ -22,13 +22,14 @@ const mapStateToProps = (store, ownProps) => {
     messages,
     type: 'TextChannel',
     streamType: 'TextStreamChannel',
-    currentUser: store.entities.users[store.session.currentUserId]
+    currentUser: store.entities.users[store.session.currentUserId],
+    stream: store.entities.stream.textChannelStream ? store.entities.stream.textChannelStream : null
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  create: (message, channelId) => dispatch(createMessage(message, channelId)),
-  delete: (messageId, currentUserId) => dispatch(deleteMessage(messageId, currentUserId)),
+  create: (stream, message, channelId) => dispatch(createMessage(stream, message, channelId)),
+  delete: (stream, messageId, currentUserId) => dispatch(deleteMessage(stream, messageId, currentUserId)),
   receiveMessage: message => dispatch(receiveMessage(message)),
   removeMessage: message => dispatch(removeMessage(message)),
   createChannel: stream => dispatch(receiveTextChannelStream(stream)),

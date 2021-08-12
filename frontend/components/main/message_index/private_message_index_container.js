@@ -22,7 +22,8 @@ const mapStateToProps = (store, ownProps) => {
     messages,
     type: 'PrivateChannel',
     streamType: 'PrivateStreamChannel',
-    currentUser: store.entities.users[store.session.currentUserId]
+    currentUser: store.entities.users[store.session.currentUserId],
+    stream: store.entities.stream.privateChannelStream ? store.entities.stream.privateChannelStream : null
   };
 };
 
@@ -32,8 +33,8 @@ const mapDispatchToProps = dispatch => {
   }
 
   return {
-    create: (message, channelId) => dispatch(createMessage(message, channelId)),
-    delete: (messageId, currentUserId) => dispatch(deleteMessage(messageId, currentUserId)),
+    create: (stream, message, channelId) => dispatch(createMessage(stream, message, channelId)),
+    delete: (stream, messageId, currentUserId) => dispatch(deleteMessage(stream, messageId, currentUserId)),
     receiveMessage: message => dispatch(receiveMessage(message)),
     removeMessage: message => dispatch(removeMessage(message)),
     createChannel: stream => dispatch(receivePrivateChannelStream(stream)),

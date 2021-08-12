@@ -24,6 +24,16 @@ class ServerIndex extends React.Component{
     this.handleOpenServer = this.handleOpenServer.bind(this);
   }
 
+  componentDidMount(){
+    this.stream = this.props.createChannel(this.props.currentUserId, {
+      receiveNotification: this.props.obtainPrivateChannelNotification
+    });
+  }
+
+  componentWillUnmount(){
+    this.stream.unsubscribe();
+  }
+
   openContextMenu(id){
     return e => {
       e.preventDefault();

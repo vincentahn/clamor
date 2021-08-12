@@ -4,6 +4,8 @@ import ServerIndex from "./server_index";
 import { openModal } from "../../../actions/modal_actions";
 import { fetchServer, unsubscribeServer} from "../../../actions/server_actions";
 import { withRouter } from "react-router";
+import { createStream } from "../../../streams/users/user_stream_channel";
+import { obtainPrivateChannelNotification } from "../../../actions/private_channel_actions";
 
 const mapStateToProps = (store, ownProps) => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
@@ -46,7 +48,9 @@ const mapDispatchToProps = dispatch => ({
 
     return dispatch(openModal(modal));
   },
-  unsubscribeServer: (currentUserId, serverId) => dispatch(unsubscribeServer(currentUserId, serverId))
+  unsubscribeServer: (currentUserId, serverId) => dispatch(unsubscribeServer(currentUserId, serverId)),
+  createChannel: (currentUserId, props) => createStream(currentUserId, props),
+  obtainPrivateChannelNotification: privateChannel => dispatch(obtainPrivateChannelNotification(privateChannel))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ServerIndex));

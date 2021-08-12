@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faAt } from '@fortawesome/free-solid-svg-icons';
 
 import jstz from 'jstz';
-import moment from 'moment';
 
 // Triggers subscribed method
 const subscribeProps = (channelId, streamType, currentUser) => ({ 
@@ -99,7 +98,7 @@ class MessageIndex extends React.Component{
       );
 
       this.props.createChannel(stream);
-      this.setState({ channelId: this.props.channelId })
+      this.setState({ channelId: this.props.channelId });
     }
 
     if(this.listRef){
@@ -121,14 +120,14 @@ class MessageIndex extends React.Component{
       typeable_type: this.props.type
     };
 
-    this.props.create(message, this.props.channelId);
+    this.props.create(this.props.stream, message, this.props.channelId);
     this.setState({ body: "" });
   }
 
   handleDelete(messageId){
     return e => {
       e.preventDefault();
-      this.props.delete(messageId, this.props.currentUserId);
+      this.props.delete(this.props.stream, messageId, this.props.currentUserId);
     }
   }
   

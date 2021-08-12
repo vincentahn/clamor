@@ -20,10 +20,10 @@ export const removeMessage = message => ({
   message
 })
 
-export const createMessage = (message, channelId) => dispatch => {
-  MessageApiUtil.createMessage(message, channelId);
+export const createMessage = (stream, message, channelId) => dispatch => {
+  MessageApiUtil.createMessage(stream, message, channelId);
 }
 
-export const deleteMessage = (messageId, currentUserId) => dispatch => {
-  MessageApiUtil.deleteMessage(messageId, currentUserId)
+export const deleteMessage = (stream, messageId, currentUserId) => dispatch => {
+  MessageApiUtil.deleteMessage(stream, messageId, currentUserId)
 }

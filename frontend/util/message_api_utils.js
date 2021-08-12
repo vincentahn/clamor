@@ -1,13 +1,13 @@
-export const createMessage = (message, channelId) => {
-  App.cable.subscriptions.subscriptions[0].sendMessage({
+export const createMessage = (stream, message, channelId) => {
+  stream.sendMessage({
     channelId,
     message
   });
 }
 
-export const deleteMessage = (messageId, currentUserId) => (
-  App.cable.subscriptions.subscriptions[0].deleteMessage({
+export const deleteMessage = (stream, messageId, currentUserId) => {
+  stream.deleteMessage({
     currentUserId,
     messageId
   })
-)
+}

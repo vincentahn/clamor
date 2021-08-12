@@ -9,7 +9,7 @@ class PrivateStreamChannel < ApplicationCable::Channel
     message = Message.new(data['message'])
     
     if private_channel && message.save
-      socket = { 
+      privateStreamSocket = { 
         type: 'receiveMessage',
         message: {  
           id: message.id,
@@ -21,7 +21,18 @@ class PrivateStreamChannel < ApplicationCable::Channel
         }
       }
 
-      PrivateStreamChannel.broadcast_to(private_channel, socket)
+      users = User.joins(:private_channels).where("users.id != ? AND private_channels.id = ?", message.author_id, private_channel.id);
+
+      userSocket = {
+        type: 'receivePrivateChannelNotification',
+        private_channel: private_channel
+      }
+
+      users.each do |user|
+        UserStreamChannel.broadcast_to(user, userSocket)
+      end
+
+      PrivateStreamChannel.broadcast_to(private_channel, privateStreamSocket)
     else
       socket = {
         type: 'error',

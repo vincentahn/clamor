@@ -1,5 +1,5 @@
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";
-import { RECEIVE_PRIVATE_CHANNELS, RECEIVE_PRIVATE_CHANNEL } from "../actions/private_channel_actions";
+import { RECEIVE_PRIVATE_CHANNELS, RECEIVE_PRIVATE_CHANNEL, RECEIVE_PRIVATE_CHANNEL_NOTIFICATION } from "../actions/private_channel_actions";
 
 const privateChannelReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -10,6 +10,11 @@ const privateChannelReducer = (oldState = {}, action) => {
       return action.channels;
 
     case RECEIVE_PRIVATE_CHANNEL:
+      newState[action.channel.id] = action.channel
+      if(!action.channel.message_ids) newState[action.channel.id].message_ids = [];
+      return newState;
+
+    case RECEIVE_PRIVATE_CHANNEL_NOTIFICATION:
       newState[action.channel.id] = action.channel
       if(!action.channel.message_ids) newState[action.channel.id].message_ids = [];
       return newState;

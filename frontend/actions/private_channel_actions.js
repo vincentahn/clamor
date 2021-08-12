@@ -5,6 +5,7 @@ import { receiveUsers } from "./user_actions";
 
 export const RECEIVE_PRIVATE_CHANNELS = "RECEIVE_PRIVATE_CHANNELS";
 export const RECEIVE_PRIVATE_CHANNEL = "RECEIVE_PRIVATE_CHANNEL";
+export const RECEIVE_PRIVATE_CHANNEL_NOTIFICATION = "RECEIVE_PRIVATE_CHANNEL_NOTIFICATION";
 
 const receivePrivateChannels = channels => ({
   type: RECEIVE_PRIVATE_CHANNELS,
@@ -13,6 +14,11 @@ const receivePrivateChannels = channels => ({
 
 const receivePrivateChannel = channel => ({
   type: RECEIVE_PRIVATE_CHANNEL,
+  channel
+})
+
+const receivePrivateChannelNotification = channel => ({
+  type: RECEIVE_PRIVATE_CHANNEL_NOTIFICATION,
   channel
 })
 
@@ -47,4 +53,8 @@ export const fetchChannelByUser = (currentUserId, otherUserId, history) => dispa
       },
       errors => dispatch(receiveServerError(errors))
     );
+}
+
+export const obtainPrivateChannelNotification = privateChannel => dispatch => {
+  dispatch(receivePrivateChannelNotification(privateChannel))
 }
