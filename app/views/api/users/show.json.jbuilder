@@ -19,5 +19,3 @@ json.servers do
     end
   end
 end
-
-

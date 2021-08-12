@@ -30,7 +30,10 @@ class User < ApplicationRecord
   has_one_attached :profile_photo
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.includes(
+      :servers => [server_photo_attachment: :blob],
+      profile_photo_attachment: :blob
+    ).find_by(email: email)
 
     if user && user.is_password?(password)
       user

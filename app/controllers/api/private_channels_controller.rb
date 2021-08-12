@@ -14,7 +14,10 @@ class Api::PrivateChannelsController < ApplicationController
 
   def show
     if current_user.id === params[:currentUserId].to_i
-      @channel = PrivateChannel.includes(:messages, users: [profile_photo_attachment: :blob]).find(params[:id])
+      @channel = PrivateChannel.includes(
+        :messages, 
+        users: [profile_photo_attachment: :blob]
+      ).find(params[:id])
 
       if @channel
         render "api/private_channels/show"

@@ -4,7 +4,7 @@ class Api::ServersController < ApplicationController
   def index
     # Eventually will start getting 10 servers sorted by created_at but for now get all
     if current_user.id === params[:currentUserId].to_i
-      @servers = Server.all
+      @servers = Server.all.includes(server_photo_attachment: :blob)
       render "api/servers/index"
     else
       render json: { errors: ["IMPOSTER!"] }, status: 401
@@ -13,7 +13,11 @@ class Api::ServersController < ApplicationController
 
   def show
     if current_user.id === params[:currentUserId].to_i
-      servers = Server.all.includes(:members, :text_channels => [:messages])
+      servers = Server.all.includes(
+        :members => [profile_photo_attachment: :blob], 
+        :text_channels => [:messages], 
+        server_photo_attachment: :blob
+      )
       @server = servers.find_by(id: params[:id])
 
       if @server
