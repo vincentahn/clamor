@@ -18,19 +18,19 @@ class Api::MessagesController < ApplicationController
   def update
   end
 
-  def destroy
-    if current_user.id === params[:currentUserId].to_i
-      @message = Message.find(params[:id])
+  # def destroy
+  #   if current_user.id === params[:currentUserId].to_i
+  #     @message = Message.find(params[:id])
 
-      if @message.destroy
-        render "api/messages/post"
-      else
-        render json: @message.errors.full_messages, status: 422
-      end
-    else
-      render json: { errors: ["IMPOSTER!"] }, status: 401
-    end
-  end
+  #     if @message.destroy
+  #       render "api/messages/post"
+  #     else
+  #       render json: @message.errors.full_messages, status: 422
+  #     end
+  #   else
+  #     render json: { errors: ["IMPOSTER!"] }, status: 401
+  #   end
+  # end
 
   private
   def message_params

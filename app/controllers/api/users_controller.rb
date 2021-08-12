@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
     else
       render json: { errors: ["IMPOSTER!"] }, status: 401
     end
-
   end
 
   def create
@@ -19,7 +18,7 @@ class Api::UsersController < ApplicationController
       login!(user)
       render "api/users/show"
     else
-      render json: user.errors.full_messages, status: 422
+      render json: { errors: user.errors.full_messages }, status: 422
     end
   end
 
