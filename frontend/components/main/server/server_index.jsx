@@ -97,7 +97,37 @@ class ServerIndex extends React.Component{
     }
   }
 
+  handleOpenPrivateChannel(channelId){
+    let that = this;
+
+    return e => {
+      e.preventDefault();
+      that.props.history.push(`/channels/@me/${channelId}`);
+    }
+  }
+
   render(){
+    // debugger;
+    const privateLinks = this.props.privateChannelNotifications.map(notification => (
+      <div 
+        key={`private-channel-notification-${notification.id}`} 
+        className="server-index-item">
+
+        <div className="before">
+          <p>{notification.name}</p>
+        </div>
+        <a onClick={this.handleOpenPrivateChannel(notification.id)}>
+          <img 
+            src={notification.profileUrl} 
+            alt="" />
+            <div className="notification-count">
+              {notification.count}
+            </div>
+        </a>
+        <div className="after"></div>
+      </div>
+    ));
+
     const serverLinks = this.props.servers ? this.props.servers.map(server => (
       <div 
         key={`subscribed-server-${server.id}`} 
@@ -129,6 +159,7 @@ class ServerIndex extends React.Component{
           </Link>
           <div className="after"></div>
         </div>
+        {privateLinks}
         {serverLinks}
         <div className="server-index-item">
           <div className="before">

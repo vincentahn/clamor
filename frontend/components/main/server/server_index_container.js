@@ -10,6 +10,19 @@ import { obtainPrivateChannelNotification } from "../../../actions/private_chann
 const mapStateToProps = (store, ownProps) => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
 
+  const privateChannelNotifications = Object.values(store.entities.privateChannels).reduce((filtered, privateChannel) => {
+    if(privateChannel.count){
+      filtered.push({
+        id: privateChannel.id,
+        count: privateChannel.count,
+        name: privateChannel.name.length > 15 ? `${privateChannel.name.slice(0, 15)}...` : privateChannel.name,
+        profileUrl: checkPhoto(privateChannel.profile_url)
+      });
+    }
+
+    return filtered;
+  }, []);
+
   const servers = store.session.subscribedServers ? store.session.subscribedServers.map(id => {
     const server = store.entities.servers[id];
 
@@ -21,10 +34,11 @@ const mapStateToProps = (store, ownProps) => {
   }) : null;
   
   return({
-    currentUserPhoto: checkPhoto(store.session.profile_url),
-    servers,
     currentUserId: store.session.currentUserId,
-    history: ownProps.history
+    currentUserPhoto: checkPhoto(store.session.profile_url),
+    history: ownProps.history,
+    privateChannelNotifications,
+    servers
   })
 }
 

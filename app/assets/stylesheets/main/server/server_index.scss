@@ -94,5 +94,17 @@
       cursor: pointer;
     }
   }
+
+  .notification-count{
+    background-color: red;
+    border: 5px solid black;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    right: -5px;
+    bottom: 2.5px;
+    height: 15px;
+    width: 15px;
+  }
 }
 
