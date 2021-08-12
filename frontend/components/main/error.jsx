@@ -16,8 +16,10 @@ class ErrorModal extends React.Component{
   }
 
   render(){
-    const errors = this.props.errors.map(error => (
-      <div>{error}</div>
+    const errors = this.props.errors.map((error, idx) => (
+      <div key={`error-message-${idx}`}>
+        {error}
+      </div>
     ));
 
     return this.props.errors.length !== 0 ?
