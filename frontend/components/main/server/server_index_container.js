@@ -10,14 +10,19 @@ import { obtainPrivateChannelNotification } from "../../../actions/private_chann
 const mapStateToProps = (store, ownProps) => {
   const checkPhoto = photo => photo ? photo : window.defaultProfilePic;
 
+  const privateChannelPage = parseInt(ownProps.history.location.pathname.split("/channels/@me/")[1]);
   const privateChannelNotifications = Object.values(store.entities.privateChannels).reduce((filtered, privateChannel) => {
     if(privateChannel.notificationCount){
-      filtered.push({
-        id: privateChannel.id,
-        count: privateChannel.notificationCount,
-        name: privateChannel.name.length > 15 ? `${privateChannel.name.slice(0, 15)}...` : privateChannel.name,
-        profileUrl: checkPhoto(privateChannel.profile_url)
-      });
+      if(privateChannel.id === privateChannelPage){
+        delete privateChannel.notificationCount
+      }else{
+        filtered.push({
+          id: privateChannel.id,
+          count: privateChannel.notificationCount,
+          name: privateChannel.name.length > 15 ? `${privateChannel.name.slice(0, 15)}...` : privateChannel.name,
+          profileUrl: checkPhoto(privateChannel.profile_url)
+        });
+      }
     }
 
     return filtered;
