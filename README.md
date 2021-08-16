@@ -30,6 +30,100 @@ Text channels provide access to messaging functionality allowing users to talk w
 
 ![Image could not be rendered](https://cdn.discordapp.com/attachments/863876583714455553/865587715503816734/unknown.png "Server Subscribe Functionality")
 
+## Notable Code
+
+### Realtime Messaging with ActionCable
+
+Since I wanted to be able to use a single component to display messages (for both text channels and private channels), I needed to make my ActionCable stream/channel subscription more dynamic. The below modular method of retrieving the necessary information from props of two different containers and appropriately subscribing in different ways was the end result.
+
+```
+/frontend/components/main/message_index/message_index.jsx
+
+const actionProps = actions => ({
+  received: data => {
+    switch(data.type){
+      case 'receiveNewOnlineUser':
+        actions.receiveUser(data.user);
+        break;
+
+      case 'receiveMessage':
+        actions.receiveMessage(data.message);
+        break;
+
+      case 'removeMessage':
+        actions.removeMessage(data.message);
+        break;
+      
+      case 'error':
+        actions.sendErrors(data.errors);
+        break;
+
+      default:
+        break;
+    }
+  },
+  sendMessage: function(data){
+    return this.perform("sendMessage", data)
+  },
+  deleteMessage: function(data){
+    return this.perform("deleteMessage", data)
+  }
+});
+
+class MessageIndex extends React.Component{
+  componentDidMount(){
+    this.props.setup(this.props);
+
+    const stream = App.cable.subscriptions.create(
+      subscribeProps(this.props.channelId, this.props.streamType, this.props.currentUser), 
+      actionProps({
+        receiveMessage: this.props.receiveMessage,
+        removeMessage: this.props.removeMessage,
+        sendErrors: this.props.sendErrors,
+        receiveUser: this.props.receiveUser
+      })
+    );
+
+    this.props.createChannel(stream);
+
+    this.listRef = document.getElementById('scroll-id');
+    if(this.listRef){
+      this.listRef.scrollIntoView(false);
+    }
+  }
+}
+```
+
+### Loading Associated Records
+
+Many of my views required information that wasn't related to just one table in the PostgreSQL database. Retrieving a single server meant retrieving its members and their images, text channels and their messages, and also the images associated with the server. Luckily, Rails makes that somewhat easy to do with its includes method.
+
+```
+/app/controllers/api/servers_controller.rb
+
+def show
+  if current_user.id === params[:currentUserId].to_i
+    servers = Server.all.includes(
+      :members => [profile_photo_attachment: :blob], 
+      :text_channels => [:messages], 
+      server_photo_attachment: :blob
+    )
+    @server = servers.find_by(id: params[:id])
+
+    if @server
+      render "api/servers/show"
+    else
+      render json: { 
+        errors: ["Could not find server"],
+        server_does_not_exist: true  
+      }, status: 422
+    end
+  else
+    render json: { errors: ["IMPOSTER!"] }, status: 401
+  end
+end
+```
+
 ## Future Features
 
 * Voice Channels
