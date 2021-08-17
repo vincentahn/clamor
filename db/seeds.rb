@@ -96,12 +96,22 @@ aA = Server.create!(
 
 aA.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'app_academy.png')), filename: 'app_academy.png')
 
+ServerMembership.create!(
+  user_id: demo.id,
+  server_id: aA.id
+)
+
 swe = Server.create!(
   name: "Software Engineers",
   founder_id: founder.id
 )
 
 swe.server_photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'swe.png')), filename: 'swe.png')
+
+ServerMembership.create!(
+  user_id: demo.id,
+  server_id: swe.id
+)
 
 sc = PrivateChannel.create!(
   name: 'Secret Chat'
