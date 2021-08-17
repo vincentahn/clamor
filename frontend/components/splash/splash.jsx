@@ -27,6 +27,11 @@ class Splash extends React.Component{
                     AngelList
                   </a>
                 </div>
+                <div className="nav-link">
+                  <a href="https://vincent-ahn-portfolio.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                    Portfolio
+                  </a>
+                </div>
               </nav>
             </div>
             <div className="link-button-container">
@@ -80,6 +85,11 @@ class Splash extends React.Component{
               <div className="nav-link">
                 <a href="https://angel.co/u/jun-min-vincent-ahn" target="_blank" rel="noopener noreferrer">
                   AngelList
+                </a>
+              </div>
+              <div className="nav-link">
+                <a href="https://vincent-ahn-portfolio.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                  Portfolio
                 </a>
               </div>
             </nav>
