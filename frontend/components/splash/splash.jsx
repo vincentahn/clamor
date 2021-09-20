@@ -28,7 +28,7 @@ class Splash extends React.Component{
                   </a>
                 </div>
                 <div className="nav-link">
-                  <a href="https://vincent-ahn-portfolio.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://vincentahn.com/" target="_blank" rel="noopener noreferrer">
                     Portfolio
                   </a>
                 </div>
@@ -88,7 +88,7 @@ class Splash extends React.Component{
                 </a>
               </div>
               <div className="nav-link">
-                <a href="https://vincent-ahn-portfolio.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://vincentahn.com/" target="_blank" rel="noopener noreferrer">
                   Portfolio
                 </a>
               </div>
